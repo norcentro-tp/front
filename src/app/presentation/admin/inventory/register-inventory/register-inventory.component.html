@@ -1,39 +1,35 @@
-<div class="p-inputgroup grid" style="height: 100%; padding: 2rem;">
+<div class="p-inputgroup grid" style="height: 100%; padding-bottom: 10rem;">
     <div class="container-input col-5">
         <span class="p-float-label">
-            <input pInputText id="codigoVin" [(ngModel)]="codigoVin" />
+            <input pInputText id="codigoVin" [(ngModel)]="codigoVin" required/>
             <label htmlFor="codigoVin">Codigo Vin</label>
         </span>
     </div>
     <div class="container-input col-5">
         <span class="p-float-label">
-            <input pInputText id="codigoColor" [(ngModel)]="codigoColor" />
+            <input pInputText id="codigoColor" [(ngModel)]="codigoColor" required/>
             <label htmlFor="codigoColor">Color</label>
         </span>
     </div>
     <div class="container-input col-5">
-        <p-dropdown [options]="listaCategoriaMotos" [(ngModel)]="categoriaMoto" optionLabel="nombre"></p-dropdown>
+        <p-dropdown [options]="listaCategoriaMotos" [(ngModel)]="categoriaMoto" optionLabel="nombre"
+            optionValue="_id"></p-dropdown>
     </div>
-
+    <div class="container-input col-5">
+        <p-dropdown [options]="listaModelo" [(ngModel)]="modelo" optionLabel="nombre" optionValue="_id"></p-dropdown>
+    </div>
 
     <div class="container-input col-5">
-        <p-dropdown [options]="listaModelo" [(ngModel)]="modelo" optionLabel="nombre"></p-dropdown>
+        <p-dropdown [options]="listaMarca" [(ngModel)]="marca" optionLabel="nombre" optionValue="_id"></p-dropdown>
     </div>
 
     <div class="container-input col-5">
-        <p-dropdown [options]="listaMarca" [(ngModel)]="marca" optionLabel="nombre"></p-dropdown>
+        <p-dropdown [options]="listaProveedor" [(ngModel)]="proveedor" optionLabel="nombre"
+            optionValue="_id"></p-dropdown>
     </div>
-
 
     <div class="container-input col-5">
-        <p-dropdown [options]="listaProveedor" [(ngModel)]="proveedor" optionLabel="nombre"></p-dropdown>
+        <p-dropdown [options]="listaStatus" [(ngModel)]="status" optionLabel="nombre" optionValue="_id"></p-dropdown>
     </div>
-    <!------------------------------------------------------------------------------------------>
-
-    <div class="container-input col-5">
-        <p-dropdown [options]="listaStatus" [(ngModel)]="status" optionLabel="nombre"></p-dropdown>
-    </div>
-
-
-
+    <button (click)="addMoto()">Agregar moto</button>
 </div>

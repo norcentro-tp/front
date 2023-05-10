@@ -9,30 +9,24 @@ import { ManageInventoryComponent } from './manage-inventory/manage-inventory.co
 import { RegisterInventoryComponent } from './register-inventory/register-inventory.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
-
-
-const COMPONENTS = [ 
-    ManageInventoryComponent,
-    RegisterInventoryComponent
-]
+const COMPONENTS = [ManageInventoryComponent, RegisterInventoryComponent];
 
 @NgModule({
-    declarations: [
-        COMPONENTS
-    ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        FormsModule,
-        ReactiveFormsModule,
-        PrimeNGModule,
-        SharedModule,
-        InventoryRoutingModule,
-        InputTextModule,
-        DropdownModule
-    ],
-    providers: []
+  declarations: [COMPONENTS],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PrimeNGModule,
+    SharedModule,
+    InventoryRoutingModule,
+    InputTextModule,
+    DropdownModule,
+    DynamicDialogModule,
+  ],
+  providers: [],
 })
-
-export class InventoryModule { }
+export class InventoryModule {}
