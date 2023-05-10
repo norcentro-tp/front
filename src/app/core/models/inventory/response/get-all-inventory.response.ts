@@ -9,7 +9,13 @@ export interface GetAllInventoryResponse {
   estado: Status;
   oferta: string[];
 }
-
+export interface GetAllSupplierResponse{
+  _id: string;
+  nombre: string;
+  telefono: string;
+  correo: string;
+  direccion: string;
+}
 export interface Category {
   _id: string;
   nombre: string;
@@ -55,4 +61,10 @@ export interface PostInventoryRequest {
   marca: Brand;
   proveedor: Supplier;
   estado: Status;
+}
+export interface PostSupplierRequest {
+  nombre: string;
+  telefono: string;
+  correo: string;
+  direccion: string;
 }

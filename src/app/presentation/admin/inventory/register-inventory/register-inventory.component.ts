@@ -12,7 +12,7 @@ import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-c
 import { PostMotoUseCase } from 'src/app/core/usecase/inventory/post-moto.usecase';
 import { GetAllModelsUseCase } from 'src/app/core/usecase/modelo/get-all-models.usecase';
 import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
-import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-brands.usecase';
+import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 

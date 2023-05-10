@@ -5,6 +5,8 @@ import {
 
 export abstract class InventoryRepository {
   abstract getAllInventory(): Promise<GetAllInventoryResponse[]>;
-  
-  abstract postMoto(bodyRequest: PostInventoryRequest): Promise<GetAllInventoryResponse>;
+
+  abstract postMoto(
+    bodyRequest: PostInventoryRequest
+  ): Promise<GetAllInventoryResponse>;
 }
