@@ -17,7 +17,6 @@ export class ManageInventoryComponent implements OnInit {
 
     private _getAllInventory: GetAllInventoryUseCase
   ) {}
-  ref: DynamicDialogRef;
   ngOnInit() {
     this.getAllInventory();
   }
@@ -28,21 +27,20 @@ export class ManageInventoryComponent implements OnInit {
         await this._getAllInventory.execute();
 
       console.log('INVENTARIO RESPUESTA BACKEND', response);
-      this.lInventory = response;
+      this.lInventory = response.reverse();
     } catch (error) {
       console.log(error);
     }
   }
 
   openDialog() {
-    this.ref = this.dialogService.open(RegisterInventoryComponent, {
+    const ref = this.dialogService.open(RegisterInventoryComponent, {
       header: 'Agregar moto',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      width: '80rem',
+      width: '60rem',
     });
 
-    this.ref.onClose.subscribe((result) => {
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO')
       this.getAllInventory();
     });
   }

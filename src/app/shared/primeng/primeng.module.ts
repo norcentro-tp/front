@@ -36,6 +36,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { MenuModule } from 'primeng/menu';
 import { StepsModule } from 'primeng/steps';
 import { TreeTableModule } from 'primeng/treetable';
+import { PanelMenuModule } from 'primeng/panelmenu';
 
 const COMPONENTS = [
   AnimateModule,
@@ -75,6 +76,7 @@ const COMPONENTS = [
   MenuModule,
   StepsModule,
   TreeTableModule,
+  PanelMenuModule
 ];
 
 @NgModule({

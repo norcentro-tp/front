@@ -6,7 +6,9 @@
     </div>
 
     <div class="col-12">
-        <p-table [value]="lInventory">
+        <p-table [value]="lInventory" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+            [rowsPerPageOptions]="[5, 10, 15]">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Codigo Vin</th>
@@ -23,8 +25,7 @@
                 <tr>
                     <td>{{inventory.codigo_vin}}</td>
                     <td class="text-center">
-                        <i class="pi pi-circle-fill" [style]="'color: '+ inventory.color"
-                            [pTooltip]="inventory.color">
+                        <i class="pi pi-circle-fill" [style]="'color: '+ inventory.color" [pTooltip]="inventory.color">
                         </i>
                     </td>
                     <td>{{inventory.categoria.nombre}}</td>
@@ -33,12 +34,13 @@
                     <td>S/. {{inventory.modelo.precio | number : "1.2-2"}}</td>
                     <td>{{inventory.estado.nombre}}</td>
                     <td class="text-center">
-                        <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-primary mr-2" 
-                        (click)="openDialog()">
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="Ver Detalle"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2" (click)="openDialog()">
                         </button>
-                        <button pButton pRipple icon="pi pi-pencil"
-                            class="p-button-rounded p-button-success mr-2"></button>
-                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning">
+                        <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"></button>
+                        <button pButton pRipple icon="pi pi-trash" pTooltip="Eliminar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised">
                         </button>
                     </td>
                 </tr>

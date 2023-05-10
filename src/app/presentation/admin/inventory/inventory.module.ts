@@ -7,9 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { InventoryRoutingModule } from './inventory.routing';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
 import { RegisterInventoryComponent } from './register-inventory/register-inventory.component';
-import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
+
 
 const COMPONENTS = [ManageInventoryComponent, RegisterInventoryComponent];
 
@@ -22,10 +20,7 @@ const COMPONENTS = [ManageInventoryComponent, RegisterInventoryComponent];
     ReactiveFormsModule,
     PrimeNGModule,
     SharedModule,
-    InventoryRoutingModule,
-    InputTextModule,
-    DropdownModule,
-    DynamicDialogModule,
+    InventoryRoutingModule
   ],
   providers: [],
 })

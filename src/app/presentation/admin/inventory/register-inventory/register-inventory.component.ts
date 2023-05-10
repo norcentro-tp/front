@@ -3,7 +3,6 @@ import {
   Brand,
   Category,
   Model,
-  PostInventoryRequest,
   Status,
   Supplier,
 } from 'src/app/core/models/inventory/response/get-all-inventory.response';
@@ -14,15 +13,17 @@ import { GetAllModelsUseCase } from 'src/app/core/usecase/modelo/get-all-models.
 import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { PostInventoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-register-inventory',
   templateUrl: 'register-inventory.component.html',
-  styleUrls: ['register-inventory.component.css'],
-  providers: [DynamicDialogRef],
+  styleUrls: ['register-inventory.component.css']
 })
 export class RegisterInventoryComponent implements OnInit {
+
   constructor(
     private _getAllCategories: GetAllCategoriesUseCase,
     private _getAllModels: GetAllModelsUseCase,
@@ -30,8 +31,9 @@ export class RegisterInventoryComponent implements OnInit {
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getAllStatus: GetAllStatusUseCase,
     private _postMoto: PostMotoUseCase,
-    public ref: DynamicDialogRef
-  ) {}
+    private _dialogRef: DynamicDialogRef,
+    private _alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -40,6 +42,7 @@ export class RegisterInventoryComponent implements OnInit {
     this.getAllSuppliers();
     this.getAllStatus();
   }
+
   codigoVin: string | null = null;
   codigoColor: string | null = null;
   categoriaMoto: Category;
@@ -114,13 +117,19 @@ export class RegisterInventoryComponent implements OnInit {
       estado: this.status,
     };
     try {
+      debugger
       const response: GetAllInventoryResponse = await this._postMoto.execute(
         this.bodyRequestMotos
       );
-      console.log(response);
-      this.ref.close();
+
+      this._alertService.success('Se realizo el registro')
+      this.close()
     } catch (error) {
       console.error(error);
     }
+  }
+
+  close() {
+    this._dialogRef.close()
   }
 }

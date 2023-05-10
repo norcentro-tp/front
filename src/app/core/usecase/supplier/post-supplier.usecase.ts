@@ -5,7 +5,6 @@ import {
   GetAllSupplierResponse,
   PostSupplierRequest,
 } from '../../models/inventory/response/get-all-inventory.response';
-import { PostInventoryRequest } from '../../models/inventory/response/get-all-inventory.response';
 import { SupplierRepository } from '../../repository/supplier/supplier.repository';
 
 @Injectable({

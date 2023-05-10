@@ -9,7 +9,8 @@ export interface GetAllInventoryResponse {
   estado: Status;
   oferta: string[];
 }
-export interface GetAllSupplierResponse{
+
+export interface GetAllSupplierResponse {
   _id: string;
   nombre: string;
   telefono: string;
@@ -53,14 +54,8 @@ export interface Supplier {
   direccion: string;
 }
 
-export interface PostInventoryRequest {
-  codigo_vin: string;
-  color: string;
-  categoria: Category;
-  modelo: Model;
-  marca: Brand;
-  proveedor: Supplier;
-  estado: Status;
+export interface PostCategoryRequest {
+  nombre: string;
 }
 export interface PostSupplierRequest {
   nombre: string;

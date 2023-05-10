@@ -1,6 +1,6 @@
+import { PostInventoryRequest } from '../../models/inventory/request/post-moto.request';
 import {
-  GetAllInventoryResponse,
-  PostInventoryRequest,
+  GetAllInventoryResponse
 } from '../../models/inventory/response/get-all-inventory.response';
 
 export abstract class InventoryRepository {

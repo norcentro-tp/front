@@ -7,15 +7,7 @@
     </ng-template>
 
     <div>
-        <ul class="layout-menu">
-            <li *ngFor="let menu of items" class="layout-root-menuitem" [routerLink]="menu.url">
-                <a>
-                    <span class="layout-menuitem-root-text">{{menu.label}}</span>
-                    <i class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
-                    <span class="p-ink"></span>
-                </a>
-            </li>
-        </ul>
+        <p-panelMenu [model]="items"></p-panelMenu>
     </div>
 </p-sidebar>
 
