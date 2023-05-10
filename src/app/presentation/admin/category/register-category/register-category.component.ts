@@ -3,17 +3,12 @@ import {
   Brand,
   Category,
   Model,
-  PostCategoryRequest,
   Status,
   Supplier,
 } from 'src/app/core/models/inventory/response/get-all-inventory.response';
-import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
-import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
-import { PostMotoUseCase } from 'src/app/core/usecase/inventory/post-moto.usecase';
-import { GetAllModelsUseCase } from 'src/app/core/usecase/modelo/get-all-models.usecase';
-import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
-import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
-import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import {
+  PostCategoryRequest,
+} from 'src/app/core/models/inventory/request/post-moto.request';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostCategoryUseCase } from 'src/app/core/usecase/category/post-category.usecase';
 

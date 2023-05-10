@@ -1,7 +1,7 @@
 <div class="grid justify-content-center">
 
     <div class="field col-12 text-center">
-        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Producto" (click)="openDialog()">
+        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Producto" (click)="openRegisterDialog()">
         </button>
     </div>
 
@@ -35,10 +35,9 @@
                     <td>{{inventory.estado.nombre}}</td>
                     <td class="text-center">
                         <button pButton pRipple icon="pi pi-eye" pTooltip="Ver Detalle"
-                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2" (click)="openDialog()">
-                        </button>
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"(click)="openVisualizeDialog(inventory._id)"></button>
                         <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
-                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"></button>
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"(click)="openUpdateDialog(inventory._id)"></button>
                         <button pButton pRipple icon="pi pi-trash" pTooltip="Eliminar"
                             class="p-button-rounded p-button-text p-button-primary p-button-raised">
                         </button>

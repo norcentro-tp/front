@@ -9,9 +9,11 @@ import {
   Category,
   GetAllSupplierResponse,
   Model,
-  PostSupplierRequest,
   Supplier,
 } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import {
+  PostSupplierRequest
+} from 'src/app/core/models/inventory/request/post-moto.request';
 import { SupplierRepository } from 'src/app/core/repository/supplier/supplier.repository';
 
 @Injectable({

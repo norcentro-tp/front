@@ -7,9 +7,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { InventoryRoutingModule } from './inventory.routing';
 import { ManageInventoryComponent } from './manage-inventory/manage-inventory.component';
 import { RegisterInventoryComponent } from './register-inventory/register-inventory.component';
+import { UpdateInventoryComponent } from './update-inventory/update-inventory.component';
+import { VisualizeInventoryComponent } from './visualize-inventory/visualize-inventory.component';
 
 
-const COMPONENTS = [ManageInventoryComponent, RegisterInventoryComponent];
+const COMPONENTS = [ManageInventoryComponent, RegisterInventoryComponent, UpdateInventoryComponent, VisualizeInventoryComponent];
 
 @NgModule({
   declarations: [COMPONENTS],

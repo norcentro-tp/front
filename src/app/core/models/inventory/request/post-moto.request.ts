@@ -9,3 +9,29 @@ export interface PostInventoryRequest {
     proveedor: Supplier;
     estado: Status;
 }
+
+export interface PostCategoryRequest {
+  nombre: string;
+}
+export interface PostSupplierRequest {
+  nombre: string;
+  telefono: string;
+  correo: string;
+  direccion: string;
+}
+
+export interface PutInventoryRequest {
+  codigo_vin: string;
+  color: string;
+  categoria: Category;
+  modelo: Model;
+  marca: Brand;
+  proveedor: Supplier;
+  estado: Status;
+}
+export interface PutSupplierRequest {
+  nombre: string;
+  telefono: string;
+  correo: string;
+  direccion: string;
+}

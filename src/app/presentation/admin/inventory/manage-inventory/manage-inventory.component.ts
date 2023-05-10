@@ -3,6 +3,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { GetAllInventoryUseCase } from 'src/app/core/usecase/inventory/get-all-inventory.usecase';
 import { RegisterInventoryComponent } from '../register-inventory/register-inventory.component';
+import { UpdateInventoryComponent } from '../update-inventory/update-inventory.component';
 
 @Component({
   selector: 'app-manage-inventory',
@@ -33,11 +34,47 @@ export class ManageInventoryComponent implements OnInit {
     }
   }
 
-  openDialog() {
+  openRegisterDialog() {
     const ref = this.dialogService.open(RegisterInventoryComponent, {
-      header: 'Agregar moto',
+      header: 'Agregar Moto',
       width: '60rem',
     });
+
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO')
+      this.getAllInventory();
+    });
+  }
+  
+
+  openVisualizeDialog(id:string) {
+    const ref = this.dialogService.open(UpdateInventoryComponent, {
+      header: 'Visualizar Moto',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      width: '80rem',      
+      data: {
+        id: id
+      }
+    });    
+
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO')
+      this.getAllInventory();
+    });
+  }
+  
+
+  openUpdateDialog(id:string) {
+    const ref = this.dialogService.open(UpdateInventoryComponent, {
+      header: 'Editar Moto',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      width: '80rem',      
+      data: {
+        id: id
+      }
+    });    
 
     ref.onClose.subscribe((result) => {
       console.log('SE CERRO')

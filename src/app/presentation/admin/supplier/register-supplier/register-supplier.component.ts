@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GetAllSupplierResponse,
-  PostSupplierRequest,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { GetAllSupplierResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { PostSupplierRequest } from 'src/app/core/models/inventory/request/post-moto.request';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostSupplierUseCase } from 'src/app/core/usecase/supplier/post-supplier.usecase';
 

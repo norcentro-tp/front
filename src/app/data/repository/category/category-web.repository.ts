@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { CATEGORY_URL, INVENTORY_URL } from 'src/app/shared/helpers/constants/url.constants';
-import { Category, PostCategoryRequest } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { PostCategoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
 import { CategoryRepository } from 'src/app/core/repository/category/category.repository';
 
 @Injectable({

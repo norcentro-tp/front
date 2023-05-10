@@ -11,11 +11,22 @@ export interface GetAllInventoryResponse {
 }
 
 export interface GetAllSupplierResponse {
-  _id: string;
+  _id?: string;
   nombre: string;
   telefono: string;
   correo: string;
   direccion: string;
+}
+export interface InventoryItemResponse {
+  _id: string;
+  codigo_vin: string;
+  color: string;
+  categoria: Category;
+  modelo: Model;
+  marca: Brand;
+  proveedor: Supplier;
+  estado: Status;
+  oferta: string[];
 }
 export interface Category {
   _id: string;
@@ -47,17 +58,7 @@ export interface Photo {
 }
 
 export interface Supplier {
-  _id: string;
-  nombre: string;
-  telefono: string;
-  correo: string;
-  direccion: string;
-}
-
-export interface PostCategoryRequest {
-  nombre: string;
-}
-export interface PostSupplierRequest {
+  _id?: string;
   nombre: string;
   telefono: string;
   correo: string;
