@@ -1,0 +1,28 @@
+<p-sidebar class="layout-sidebar" [(visible)]="display">
+
+    <ng-template pTemplate="header">
+        <a class="app-logo">
+            <img src="../../../../assets/img/logo-zongshen.svg" class="w-10">
+        </a>
+    </ng-template>
+
+    <div>
+        <ul class="layout-menu">
+            <li *ngFor="let menu of items" class="layout-root-menuitem" [routerLink]="menu.url">
+                <a>
+                    <span class="layout-menuitem-root-text">{{menu.label}}</span>
+                    <i class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
+                    <span class="p-ink"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</p-sidebar>
+
+<div class="md:px-6 py-3">
+    <div class="grid pt-4">
+        <button pButton pRipple icon="pi pi-bars" class="p-button-rounded p-button-text"
+            (click)="display = true"></button>
+    </div>
+    <router-outlet></router-outlet>
+</div>

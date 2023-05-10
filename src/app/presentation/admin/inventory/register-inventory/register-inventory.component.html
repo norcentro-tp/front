@@ -1,0 +1,39 @@
+<div class="p-inputgroup grid" style="height: 100%; padding: 2rem;">
+    <div class="container-input col-5">
+        <span class="p-float-label">
+            <input pInputText id="codigoVin" [(ngModel)]="codigoVin" />
+            <label htmlFor="codigoVin">Codigo Vin</label>
+        </span>
+    </div>
+    <div class="container-input col-5">
+        <span class="p-float-label">
+            <input pInputText id="codigoColor" [(ngModel)]="codigoColor" />
+            <label htmlFor="codigoColor">Color</label>
+        </span>
+    </div>
+    <div class="container-input col-5">
+        <p-dropdown [options]="listaCategoriaMotos" [(ngModel)]="categoriaMoto" optionLabel="nombre"></p-dropdown>
+    </div>
+
+
+    <div class="container-input col-5">
+        <p-dropdown [options]="listaModelo" [(ngModel)]="modelo" optionLabel="nombre"></p-dropdown>
+    </div>
+
+    <div class="container-input col-5">
+        <p-dropdown [options]="listaMarca" [(ngModel)]="marca" optionLabel="nombre"></p-dropdown>
+    </div>
+
+
+    <div class="container-input col-5">
+        <p-dropdown [options]="listaProveedor" [(ngModel)]="proveedor" optionLabel="nombre"></p-dropdown>
+    </div>
+    <!------------------------------------------------------------------------------------------>
+
+    <div class="container-input col-5">
+        <p-dropdown [options]="listaStatus" [(ngModel)]="status" optionLabel="nombre"></p-dropdown>
+    </div>
+
+
+
+</div>
