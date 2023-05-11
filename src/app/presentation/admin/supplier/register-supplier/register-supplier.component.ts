@@ -3,41 +3,59 @@ import { GetAllSupplierResponse } from 'src/app/core/models/inventory/response/g
 import { PostSupplierRequest } from 'src/app/core/models/inventory/request/post-moto.request';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostSupplierUseCase } from 'src/app/core/usecase/supplier/post-supplier.usecase';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register-inventory',
   templateUrl: 'register-supplier.component.html',
-  providers: [DynamicDialogRef],
+
 })
 export class RegisterSupplierComponent implements OnInit {
+  formSupplier:FormGroup;
   constructor(
     private _postSupplier: PostSupplierUseCase,
-    public ref: DynamicDialogRef
+    public _dialogref: DynamicDialogRef,
+    private _formBuilder:FormBuilder
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createformSupplier();
+  }
 
   nombre: string | null = null;
   telefono: string | null = null;
-  email: string | null = null;
+  correo: string | null = null;
   direccion: string | null = null;
-  bodyRequestSupplier: PostSupplierRequest;
+  
+  
+  createformSupplier(){
+    this.formSupplier = this._formBuilder.group({
+      nombre:[null],
+      telefono:[null],
+      correo: [null],
+      direccion:[null]
+    })
+  }
 
   async addSupplier() {
-    this.bodyRequestSupplier = {
-      nombre: this.nombre,
-      telefono: this.telefono,
-      correo: this.email,
-      direccion: this.direccion,
+    const form=this.formSupplier.value
+    const bodyRequestSupplier: PostSupplierRequest ={
+      nombre: form.nombre,
+      telefono: form.telefono,
+      correo: form.correo,
+      direccion: form.direccion
     };
     try {
       const response: GetAllSupplierResponse = await this._postSupplier.execute(
-        this.bodyRequestSupplier
+        bodyRequestSupplier
       );
       console.log(response);
-      this.ref.close();
+      this.close();
     } catch (error) {
       console.error(error);
     }
+  }
+  close(){
+    this._dialogref.close()
   }
 }
