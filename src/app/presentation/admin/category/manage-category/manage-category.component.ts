@@ -4,6 +4,8 @@ import { Category } from 'src/app/core/models/inventory/response/get-all-invento
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { RegisterInventoryComponent } from '../../inventory/register-inventory/register-inventory.component';
 import { RegisterCategoryComponent } from '../register-category/register-category.component';
+import { ConfirmationService } from 'primeng/api';
+import { UpdateCategoryComponent } from '../update-category/update-category.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class ManageCategoryComponent implements OnInit {
 
   constructor(
     public dialogService: DialogService,
-
+    private _confirmationService: ConfirmationService,
     
     private _getAllCategory: GetAllCategoriesUseCase
   ) {}
@@ -49,4 +51,32 @@ export class ManageCategoryComponent implements OnInit {
       this.getAllCategory();
     });
   }
+  deleteCategory(id: string){
+    try { this._confirmationService.confirm({ 
+      message: "Estás seguro que desea eliminar? ",
+      accept: ()=> {},
+      reject: ()=> {},
+    })
+      
+    } catch (error) {
+      
+    }
+}
+
+  openUpdateDialog(id:string) {
+    const ref = this.dialogService.open(UpdateCategoryComponent, {
+      header: 'Editar Categoria',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      width: '80rem',      
+      data: {
+        id: id
+      }
+    });    
+
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO')
+      this.getAllCategory();
+    });
+}
 }

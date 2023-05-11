@@ -5,6 +5,7 @@ import { GetAllSupplierResponse } from 'src/app/core/models/inventory/response/g
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { UpdateSupplierComponent } from '../update-supplier/update-supplier.component';
 import { VisualizeSupplierComponent } from '../visualize-supplier/visualize-supplier.component';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-manage-supplier',
@@ -15,6 +16,7 @@ export class ManageSupplierComponent implements OnInit {
   lSuppliers: any[] = [];
   constructor(
     public dialogService: DialogService,
+    private _confirmationService: ConfirmationService,
     private _getAllSuppliers: GetAllSuppliersUseCase
   ) {}
   ref: DynamicDialogRef;
@@ -78,4 +80,15 @@ export class ManageSupplierComponent implements OnInit {
       this.getAllSupplier();
     });
   }
+   deleteSupplier(id: string){
+    try { this._confirmationService.confirm({ 
+      message: "Estás seguro que desea eliminar? ",
+      accept: ()=> {},
+      reject: ()=> {},
+    })
+      
+    } catch (error) {
+      
+    }
+}
 }

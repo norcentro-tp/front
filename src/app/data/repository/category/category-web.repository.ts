@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { CATEGORY_URL, INVENTORY_URL } from 'src/app/shared/helpers/constants/url.constants';
-import { Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
-import { PostCategoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+import { Category, CategoryItemResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { PostCategoryRequest, PutCategoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
 import { CategoryRepository } from 'src/app/core/repository/category/category.repository';
 
 @Injectable({
@@ -30,5 +30,18 @@ export class CategoryWebRepository extends CategoryRepository  {
           this.http.post<Category>(url, bodyRequest)
         );
       }
+      putCategory(request: PutCategoryRequest): Promise<Category | null> {
+
+        const url = `${CATEGORY_URL}/${request.id}`;
+    
+        return lastValueFrom(
+          this.http.put<Category>(url, request)
+        );
+      }
+      getCategoryById(id: string): Promise<CategoryItemResponse | null> {
+        const url = `${CATEGORY_URL}/${id}`;
+        return lastValueFrom(this.http.get<CategoryItemResponse>(url));
+      }
+    
     
 }

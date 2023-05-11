@@ -13,6 +13,9 @@ export interface PostInventoryRequest {
 export interface PostCategoryRequest {
   nombre: string;
 }
+export interface PostBrandRequest {
+  nombre: string;
+}
 export interface PostSupplierRequest {
   nombre: string;
   telefono: string;
@@ -35,3 +38,12 @@ export interface PutSupplierRequest {
   correo: string;
   direccion: string;
 }
+export interface PutBrandRequest {
+  id: string;
+  nombre: string;
+}
+export interface PutCategoryRequest {
+  id: string;
+  nombre: string;
+}
+

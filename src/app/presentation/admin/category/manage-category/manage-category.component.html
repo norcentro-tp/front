@@ -1,7 +1,7 @@
 <div class="grid justify-content-center">
 
     <div class="field col-12 text-center">
-        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Producto" (click)="openDialog()">
+        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Categoria" (click)="openDialog()">
         </button>
     </div>
 
@@ -17,12 +17,10 @@
                 <tr>
                     <td>{{category.nombre}}</td>
                     <td class="text-center">
-                        <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-primary mr-2"
-                            (click)="openDialog()">
-                        </button>
+                       
                         <button pButton pRipple icon="pi pi-pencil"
-                            class="p-button-rounded p-button-success mr-2"></button>
-                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning">
+                            class="p-button-rounded p-button-success mr-2" (click)="openUpdateDialog(category._id)"> </button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"(click)="deleteCategory(category._id)">
                         </button>
                     </td>
                 </tr>

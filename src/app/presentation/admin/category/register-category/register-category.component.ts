@@ -6,9 +6,7 @@ import {
   Status,
   Supplier,
 } from 'src/app/core/models/inventory/response/get-all-inventory.response';
-import {
-  PostCategoryRequest,
-} from 'src/app/core/models/inventory/request/post-moto.request';
+import {PostCategoryRequest,} from 'src/app/core/models/inventory/request/post-moto.request';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostCategoryUseCase } from 'src/app/core/usecase/category/post-category.usecase';
 

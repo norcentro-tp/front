@@ -24,6 +24,16 @@ export interface SupplierItemResponse {
   correo: string;
   direccion: string;
 }
+export interface BrandItemResponse {
+  _id?: string;
+  nombre: string;
+  
+}
+export interface CategoryItemResponse {
+  _id?: string;
+  nombre: string;
+  
+}
 export interface InventoryItemResponse {
   _id: string;
   codigo_vin: string;

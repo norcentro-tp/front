@@ -4,6 +4,7 @@ import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/
 import { GetAllInventoryUseCase } from 'src/app/core/usecase/inventory/get-all-inventory.usecase';
 import { RegisterInventoryComponent } from '../register-inventory/register-inventory.component';
 import { UpdateInventoryComponent } from '../update-inventory/update-inventory.component';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-manage-inventory',
@@ -15,7 +16,7 @@ export class ManageInventoryComponent implements OnInit {
 
   constructor(
     public dialogService: DialogService,
-
+  private _confirmationService: ConfirmationService,
     private _getAllInventory: GetAllInventoryUseCase
   ) {}
   ngOnInit() {
@@ -80,5 +81,17 @@ export class ManageInventoryComponent implements OnInit {
       console.log('SE CERRO')
       this.getAllInventory();
     });
+  }
+  deleteInventory(id: string){
+    try { this._confirmationService.confirm({ 
+      message: "Estás seguro que desea eliminar? ",
+      accept: ()=> {},
+      reject: ()=> {},
+    })
+      
+    } catch (error) {
+      
+    }
+
   }
 }

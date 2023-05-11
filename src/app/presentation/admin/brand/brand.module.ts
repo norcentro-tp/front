@@ -4,17 +4,20 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimeNGModule } from 'src/app/shared/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CategoryRoutingModule } from './category.routing';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { TableModule } from 'primeng/table';
-import { RegisterCategoryComponent } from './register-category/register-category.component';
-import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { ManageBrandComponent } from './manage-brand/manage-brand.component';
+import { BrandRoutingModule } from './brand.routing';
+import { RegisterBrandComponent } from './register-brand/register-brand.component';
+import { UpdateBrandComponent } from './update-brand/update-brand.component';
 
-const COMPONENTS = [ManageCategoryComponent, RegisterCategoryComponent, UpdateCategoryComponent];
-
+const COMPONENTS = [
+  ManageBrandComponent,
+  RegisterBrandComponent,
+  UpdateBrandComponent,
+];
 
 @NgModule({
   declarations: [COMPONENTS],
@@ -28,9 +31,9 @@ const COMPONENTS = [ManageCategoryComponent, RegisterCategoryComponent, UpdateCa
     InputTextModule,
     DropdownModule,
     DynamicDialogModule,
-    CategoryRoutingModule,
-    TableModule
+    BrandRoutingModule,
+    TableModule,
   ],
   providers: [],
 })
-export class CategoryModule { }
+export class BrandModule {}

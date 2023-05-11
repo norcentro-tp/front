@@ -37,7 +37,7 @@ export class LayoutComponent implements OnInit {
                     {
                         label: 'Gestionar Marca',
                         icon: 'pi pi-fw pi-apple',
-                        command: () => this._router.navigate([''])
+                        command: () => this._router.navigate(['admin/brand'])
                     },
                     {
                         label: 'Gestionar Categoria',
