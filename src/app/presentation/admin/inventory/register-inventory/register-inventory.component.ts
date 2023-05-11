@@ -16,20 +16,25 @@ import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/
 import { PostInventoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register-inventory',
   templateUrl: 'register-inventory.component.html',
-  styleUrls: ['register-inventory.component.css']
+  styleUrls: ['register-inventory.component.css'],
 })
 export class RegisterInventoryComponent implements OnInit {
   formInventory: FormGroup;
-  listaCategoriaMotos: Category[] = []
-  listaModelo: Model[] = []
-  listaMarca: Brand[] = []
-  listaProveedor: Supplier[] = []
-  listaStatus: Status[] = []
+  listaCategoriaMotos: Category[] = [];
+  listaModelo: Model[] = [];
+  listaMarca: Brand[] = [];
+  listaProveedor: Supplier[] = [];
+  listaStatus: Status[] = [];
 
   constructor(
     private _getAllCategories: GetAllCategoriesUseCase,
@@ -41,7 +46,7 @@ export class RegisterInventoryComponent implements OnInit {
     private _dialogRef: DynamicDialogRef,
     private _alertService: AlertService,
     private _formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.createformInventory();
@@ -54,18 +59,22 @@ export class RegisterInventoryComponent implements OnInit {
 
   createformInventory() {
     this.formInventory = this._formBuilder.group({
-      codigoVin: [null],
-      codigoColor: [null],
+      codigoVin: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
+      codigoColor:new FormControl(null, [
+        Validators.required,
+      ]),
       categoriaMotos: [null],
       modelo: [null],
       marca: [null],
       proveedor: [null],
-      estado: [null]
-
-    })
+      estado: [null],
+    });
   }
 
-  async getAllCategories() {    
+  async getAllCategories() {
     try {
       const response: Category[] = await this._getAllCategories.execute();
       this.listaCategoriaMotos = response;
@@ -74,7 +83,9 @@ export class RegisterInventoryComponent implements OnInit {
     }
   }
 
-  async getAllModels() {    
+  get codigoVin() { return this.formInventory.get('codigoVin'); }
+
+  async getAllModels() {
     try {
       const response: Model[] = await this._getAllModels.execute();
       this.listaModelo = response;
@@ -83,7 +94,7 @@ export class RegisterInventoryComponent implements OnInit {
     }
   }
 
-  async getAllBrands() {        
+  async getAllBrands() {
     try {
       const response: Brand[] = await this._getAllBrands.execute();
       this.listaMarca = response;
@@ -110,31 +121,32 @@ export class RegisterInventoryComponent implements OnInit {
     }
   }
   async addMoto() {
-    const form =this.formInventory.value
+    if(!this.formInventory.valid) return
+    const form = this.formInventory.value;
     const bodyRequestMotos: PostInventoryRequest = {
-        codigo_vin: form.codigoVin,
-        color: form.codigoColor,
-        categoria: form.categoriaMotos,
-        modelo: form.modelo,
-        marca: form.marca,
-        proveedor: form.proveedor,
-        estado: form.estado,
-      };
+      codigo_vin: form.codigoVin,
+      color: form.codigoColor,
+      categoria: form.categoriaMotos,
+      modelo: form.modelo,
+      marca: form.marca,
+      proveedor: form.proveedor,
+      estado: form.estado,
+    };
     try {
-      debugger
+      debugger;
       const response: GetAllInventoryResponse = await this._postMoto.execute(
         bodyRequestMotos
       );
 
-      this._alertService.success('Se realizo el registro')
+      this._alertService.success('Se realizo el registro');
       console.log(response);
-      this.close()
+      this.close();
     } catch (error) {
       console.error(error);
     }
   }
 
   close() {
-    this._dialogRef.close()
+    this._dialogRef.close();
   }
 }

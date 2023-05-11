@@ -7,7 +7,7 @@
             <!-- Correo -->
             <div class="field col-12">
                 <span class="p-float-label">
-                    <input type="text" id="inputtext" pInputText>
+                    <input type="text" id="inputtext" pInputText [(ngModel)]="user" [ngClass]="{'ng-invalid ng-dirty' : errorUser}">
                     <label for="inputtext">Correo</label>
                 </span>
             </div>
@@ -15,7 +15,7 @@
             <!-- Contraseña -->
             <div class="field col-12">
                 <span class="p-float-label">
-                    <p-password [feedback]="false" [toggleMask]="true"></p-password>
+                    <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password" [ngClass]="{'ng-invalid ng-dirty' : errorPassword}"></p-password>
                     <label for="inputtext-left">Contraseña</label>
                 </span>
             </div>
