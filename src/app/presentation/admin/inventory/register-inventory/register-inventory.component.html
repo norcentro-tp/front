@@ -1,59 +1,78 @@
 <div class="px-5 pt-4">
 
-    <form [formGroup]="formInventory">
+  <form [formGroup]="formInventory">
 
-        <div class="p-fluid grid">
-            <div class="field col-12 md:col-4">
-                <span class="p-float-label">
-                    <input pInputText id="codigoVin" formControlName="codigoVin" required />
-                    <label htmlFor="codigoVin">Codigo Vin</label>
-                </span>
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+
+            <div *ngIf="codigoVin.errors?.['required']">
+              Codigo Vin es requerido
             </div>
 
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <input pInputText id="codigoColor" formControlName="codigoColor" required />
-                    <label htmlFor="codigoColor">Color</label>
-                </span>
+            <div *ngIf="codigoVin.errors?.['minLength']">
+              Codigo Vin minimo de 5 caracteres
             </div>
+          </div>
+          <input pInputText id="codigoVin" formControlName="codigoVin" required />
+          <label htmlFor="codigoVin">Codigo Vin</label>
+        </span>
+      </div>
 
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaCategoriaMotos" optionLabel="nombre" optionValue="_id" formControlName="categoriaMotos"></p-dropdown>
-                </span>
-            </div>
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="codigoColor" formControlName="codigoColor" required />
+          <label htmlFor="codigoColor">Color</label>
+        </span>
+      </div>
 
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaModelo" optionLabel="nombre" optionValue="_id" formControlName="modelo"></p-dropdown>
-                </span>
-            </div>
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaCategoriaMotos" optionLabel="nombre" optionValue="_id"
+            formControlName="categoriaMotos"></p-dropdown>
+          <label for="inputtext-left">Categoria Moto</label>
+        </span>
+      </div>
 
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id" formControlName="marca"></p-dropdown>
-                </span>
-            </div>
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaModelo" optionLabel="nombre" optionValue="_id"
+            formControlName="modelo"></p-dropdown>
+          <label for="inputtext-left">Modelo Moto</label>
+        </span>
+      </div>
 
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaProveedor" optionLabel="nombre" optionValue="_id" formControlName="proveedor"></p-dropdown>
-                </span>
-            </div>
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id"
+            formControlName="marca"></p-dropdown>
+          <label for="inputtext-left">Marca Moto</label>
+        </span>
+      </div>
 
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaStatus" optionLabel="nombre" optionValue="_id"
-                        appendTo="body" formControlName="estado"></p-dropdown>
-                </span>
-            </div>
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaProveedor" optionLabel="nombre" optionValue="_id"
+            formControlName="proveedor"></p-dropdown>
+          <label for="inputtext-left">Proveedor</label>
+        </span>
+      </div>
 
-        </div>
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaStatus" optionLabel="nombre" optionValue="_id" appendTo="body"
+            formControlName="estado"></p-dropdown>
+          <label for="inputtext-left">Estado Moto</label>
+        </span>
+      </div>
 
-    </form>
-    <div class="col-12 text-center py-3">
-        <button pButton class="b-primary px-5 py-2" label="Agregar Moto" (click)="addMoto()">
-        </button>
     </div>
+
+  </form>
+  <div class="col-12 text-center py-3">
+    <button pButton class="b-primary px-5 py-2" label="Agregar Moto" (click)="addMoto()">
+    </button>
+  </div>
 
 </div>
