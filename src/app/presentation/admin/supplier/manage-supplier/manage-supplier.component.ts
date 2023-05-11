@@ -30,7 +30,7 @@ export class ManageSupplierComponent implements OnInit {
         await this._getAllSuppliers.execute();
 
       console.log('INVENTARIO RESPUESTA BACKEND', response);
-      this.lSuppliers = response;
+      this.lSuppliers = response.reverse();
     } catch (error) {
       console.log(error);
     }

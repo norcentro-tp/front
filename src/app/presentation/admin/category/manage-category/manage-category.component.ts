@@ -33,7 +33,7 @@ export class ManageCategoryComponent implements OnInit {
         await this._getAllCategory.execute();
 
       console.log('CATEGORY RESPUESTA BACKEND', response);
-      this.lCategory = response;
+      this.lCategory = response.reverse();
     } catch (error) {
       console.log(error);
     }
@@ -42,9 +42,7 @@ export class ManageCategoryComponent implements OnInit {
   openDialog() {
     this.ref = this.dialogService.open(RegisterCategoryComponent, {
       header: 'Agregar category',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      width: '80rem',
+      width: '40rem',
     });
 
     this.ref.onClose.subscribe((result) => {
@@ -66,9 +64,7 @@ export class ManageCategoryComponent implements OnInit {
   openUpdateDialog(id:string) {
     const ref = this.dialogService.open(UpdateCategoryComponent, {
       header: 'Editar Categoria',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      width: '80rem',      
+      width: '40rem',      
       data: {
         id: id
       }

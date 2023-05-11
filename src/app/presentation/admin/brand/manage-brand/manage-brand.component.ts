@@ -32,7 +32,7 @@ export class ManageBrandComponent implements OnInit {
       const response: Brand[] = await this._getAllBrands.execute();
 
       console.log('Brand RESPUESTA BACKEND', response);
-      this.lBrand = response;
+      this.lBrand = response.reverse();
     } catch (error) {
       console.log(error);
     }
@@ -41,9 +41,7 @@ export class ManageBrandComponent implements OnInit {
   openRegister() {
     this.ref = this.dialogService.open(RegisterBrandComponent, {
       header: 'Agregar marca',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      width: '80rem',
+      width: '40rem',
     });
 
     this.ref.onClose.subscribe((result) => {
@@ -53,9 +51,7 @@ export class ManageBrandComponent implements OnInit {
   openUpdate(id: string) {
     const ref = this.dialogService.open(UpdateBrandComponent, {
       header: 'Editar Marca',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      width: '80rem',
+      width: '40rem',
       data: {
         id: id,
       },
@@ -66,6 +62,7 @@ export class ManageBrandComponent implements OnInit {
       this.getAllBrands();
     });
   }
+
   deleteBrand(id: string){
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",

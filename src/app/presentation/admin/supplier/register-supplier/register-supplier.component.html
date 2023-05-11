@@ -1,35 +1,34 @@
-<div class="p-inputgroup grid" style="height: 100%; padding-bottom: 10rem;">
-
-    <!--Nombre-->
-    <div class="container-input col-5">
-        <span class="p-float-label">
-            <input pInputText id="nombre" [(ngModel)]="nombre" required />
-            <label htmlFor="nombre">Nombre</label>
-        </span>
-    </div>
-    <!--Telefono-->
-    <div class="container-input col-5">
-        <span class="p-float-label">
-            <input pInputText id="telefono" [(ngModel)]="telefono" required />
-            <label htmlFor="telefono">Telefono</label>
-        </span>
-    </div>
-    <!--Correo-->
-    <div class="container-input col-5">
-        <span class="p-float-label">
-            <input pInputText id="correo" [(ngModel)]="correo" required />
-            <label htmlFor="email">Correo</label>
-        </span>
-    </div>
-
-    <!--Dirección-->
-    <div class="container-input col-5">
-        <span class="p-float-label">
-            <input pInputText id="direccion" [(ngModel)]="direccion" required />
-            <label htmlFor="direccion">Direccion</label>
-        </span>
+<div class="px-5 pt-4">
+    <div class="p-fluid grid">
+        <div class="col-12 md:col-4">
+            <span class="p-float-label">
+                <input pInputText id="nombre" [(ngModel)]="nombre" required />
+                <label htmlFor="nombre">Nombre</label>
+            </span>
+        </div>
+        <div class=" col-12 md:col-4">
+            <span class="p-float-label">
+                <input pInputText id="telefono" [(ngModel)]="telefono" required />
+                <label htmlFor="telefono">Telefono</label>
+            </span>
+        </div>
+        <div class=" col-12 md:col-4">
+            <span class="p-float-label">
+                <input pInputText id="correo" [(ngModel)]="correo" required />
+                <label htmlFor="email">Correo</label>
+            </span>
+        </div>
+        <div class=" col-12 md:col-4">
+            <span class="p-float-label">
+                <input pInputText id="direccion" [(ngModel)]="direccion" required />
+                <label htmlFor="direccion">Direccion</label>
+            </span>
+        </div>
     </div>
 
-    <!--Boton registrar-->
-    <button (click)="addSupplier()">Agregar proveedor</button>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Agregar proveedor" (click)="addSupplier()">
+        </button>
+    </div>
+
 </div>

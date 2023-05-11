@@ -11,6 +11,7 @@ import { ConfirmationService } from 'primeng/api';
   templateUrl: 'manage-inventory.component.html',
   providers: [DialogService],
 })
+
 export class ManageInventoryComponent implements OnInit {
   lInventory: any[] = [];
 
@@ -46,7 +47,6 @@ export class ManageInventoryComponent implements OnInit {
       this.getAllInventory();
     });
   }
-  
 
   openVisualizeDialog(id:string) {
     const ref = this.dialogService.open(UpdateInventoryComponent, {
@@ -65,7 +65,6 @@ export class ManageInventoryComponent implements OnInit {
     });
   }
   
-
   openUpdateDialog(id:string) {
     const ref = this.dialogService.open(UpdateInventoryComponent, {
       header: 'Editar Moto',
@@ -82,6 +81,7 @@ export class ManageInventoryComponent implements OnInit {
       this.getAllInventory();
     });
   }
+  
   deleteInventory(id: string){
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",

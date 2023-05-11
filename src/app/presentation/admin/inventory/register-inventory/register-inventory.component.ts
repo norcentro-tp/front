@@ -46,7 +46,7 @@ export class RegisterInventoryComponent implements OnInit {
     private _dialogRef: DynamicDialogRef,
     private _alertService: AlertService,
     private _formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.createformInventory();
@@ -63,7 +63,7 @@ export class RegisterInventoryComponent implements OnInit {
         Validators.required,
         Validators.minLength(5),
       ]),
-      codigoColor:new FormControl(null, [
+      codigoColor: new FormControl(null, [
         Validators.required,
       ]),
       categoriaMotos: [null],
@@ -121,7 +121,7 @@ export class RegisterInventoryComponent implements OnInit {
     }
   }
   async addMoto() {
-    if(!this.formInventory.valid) return
+    if (!this.formInventory.valid) return
     const form = this.formInventory.value;
     const bodyRequestMotos: PostInventoryRequest = {
       codigo_vin: form.codigoVin,

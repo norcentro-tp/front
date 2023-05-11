@@ -8,9 +8,7 @@ import { PostBrandUseCase } from 'src/app/core/usecase/brand/post-brand.usecase'
 import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-register-brand',
-  templateUrl: 'register-brand.component.html',
-  
-  providers: [DynamicDialogRef],
+  templateUrl: 'register-brand.component.html'
 })
 export class RegisterBrandComponent implements OnInit {
   formBrand:FormGroup;
