@@ -10,9 +10,11 @@ import {
   GetAllSupplierResponse,
   Model,
   Supplier,
+  SupplierItemResponse,
 } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import {
-  PostSupplierRequest
+  PostSupplierRequest,
+  PutSupplierRequest,
 } from 'src/app/core/models/inventory/request/post-moto.request';
 import { SupplierRepository } from 'src/app/core/repository/supplier/supplier.repository';
 
@@ -36,5 +38,19 @@ export class SupplierWebRepository extends SupplierRepository {
     return lastValueFrom(
       this.http.post<GetAllSupplierResponse>(url, bodyRequest)
     );
+  }
+
+  putSupplier(
+    id: string,
+    bodyRequest: PutSupplierRequest
+  ): Promise<GetAllSupplierResponse | null> {
+    const url = `${SUPPLIER_URL}/${id}`;
+    return lastValueFrom(
+      this.http.put<GetAllSupplierResponse>(url, bodyRequest)
+    );
+  }
+  getSupplierById(id: string): Promise<SupplierItemResponse | null> {
+    const url = `${SUPPLIER_URL}/${id}`;
+    return lastValueFrom(this.http.get<SupplierItemResponse>(url));
   }
 }

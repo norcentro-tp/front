@@ -17,6 +17,13 @@ export interface GetAllSupplierResponse {
   correo: string;
   direccion: string;
 }
+export interface SupplierItemResponse {
+  _id?: string;
+  nombre: string;
+  telefono: string;
+  correo: string;
+  direccion: string;
+}
 export interface InventoryItemResponse {
   _id: string;
   codigo_vin: string;

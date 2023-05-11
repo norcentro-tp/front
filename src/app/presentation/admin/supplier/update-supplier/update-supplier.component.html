@@ -1,0 +1,42 @@
+<div class="px-5 pt-4">
+    <form [formGroup]="formSupplier">
+        <div class="p-fluid grid">
+            <!--Nombre-->
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombre" formControlName="nombre" required />
+                    <label htmlFor="nombre">Nombre</label>
+                </span>
+            </div>
+            <!--Telefono-->
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="telefono" formControlName="telefono" required />
+                    <label htmlFor="telefono">Telefono</label>
+                </span>
+            </div>
+            <!--Correo-->
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="correo" formControlName="correo" required />
+                    <label htmlFor="correo">Correo</label>
+                </span>
+            </div>
+
+            <!--Dirección-->
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="direccion" formControlName="direccion" required />
+                    <label htmlFor="direccion">Direccion</label>
+                </span>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
+            (click)="updateSupplier(this.config.data.id)">
+        </button>
+    </div>
+
+</div>

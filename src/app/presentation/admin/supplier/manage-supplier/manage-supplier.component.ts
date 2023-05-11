@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { RegisterSupplierComponent } from '../register-supplier/register-supplier.component';
-import {
-  GetAllInventoryResponse,
-  GetAllSupplierResponse,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { GetAllSupplierResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
+import { UpdateSupplierComponent } from '../update-supplier/update-supplier.component';
+import { VisualizeSupplierComponent } from '../visualize-supplier/visualize-supplier.component';
 
 @Component({
   selector: 'app-manage-supplier',
@@ -35,16 +34,48 @@ export class ManageSupplierComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    this.ref = this.dialogService.open(RegisterSupplierComponent, {
-      header: 'Agregar Proveedor',
+  openRegister() {
+    const ref = this.dialogService.open(RegisterSupplierComponent, {
+      header: 'Agregar Moto',
+      width: '60rem',
+    });
+
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO');
+      this.getAllSupplier();
+    });
+  }
+
+  openUpdateDialog(id: string) {
+    const ref = this.dialogService.open(UpdateSupplierComponent, {
+      header: 'Editar Proveedor',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       width: '80rem',
+      data: {
+        id: id,
+      },
     });
 
-    this.ref.onClose.subscribe((result) => {
-      console.log(result);
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO');
+      this.getAllSupplier();
+    });
+  }
+  openVisualizeDialog(id: string) {
+    const ref = this.dialogService.open(VisualizeSupplierComponent, {
+      header: 'Visualizar Proveedor',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      width: '80rem',
+      data: {
+        id: id,
+      },
+    });
+
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO');
+      this.getAllSupplier();
     });
   }
 }
