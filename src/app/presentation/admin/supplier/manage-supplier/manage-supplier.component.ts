@@ -7,6 +7,7 @@ import { DeleteSupplierUseCase } from 'src/app/core/usecase/supplier/delete-supp
 import { UpdateSupplierComponent } from '../update-supplier/update-supplier.component';
 import { VisualizeSupplierComponent } from '../visualize-supplier/visualize-supplier.component';
 import { ConfirmationService } from 'primeng/api';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-manage-supplier',
@@ -18,6 +19,7 @@ export class ManageSupplierComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
+    private _alertService: AlertService,
 
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _deleteSupplier: DeleteSupplierUseCase
@@ -25,9 +27,9 @@ export class ManageSupplierComponent implements OnInit {
   ref: DynamicDialogRef;
 
   ngOnInit() {
-    this.getAllSupplier();
+    this.getAllSuppliers();
   }
-  async getAllSupplier() {
+  async getAllSuppliers() {
     try {
       const response: GetAllSupplierResponse[] =
         await this._getAllSuppliers.execute();
@@ -47,7 +49,7 @@ export class ManageSupplierComponent implements OnInit {
 
     ref.onClose.subscribe((result) => {
       console.log('SE CERRO');
-      this.getAllSupplier();
+      this.getAllSuppliers();
     });
   }
 
@@ -64,7 +66,7 @@ export class ManageSupplierComponent implements OnInit {
 
     ref.onClose.subscribe((result) => {
       console.log('SE CERRO');
-      this.getAllSupplier();
+      this.getAllSuppliers();
     });
   }
   openVisualizeDialog(id: string) {
@@ -80,15 +82,17 @@ export class ManageSupplierComponent implements OnInit {
 
     ref.onClose.subscribe((result) => {
       console.log('SE CERRO');
-      this.getAllSupplier();
+      this.getAllSuppliers();
     });
   }
    deleteSupplier(id: string){
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",
       accept: ()=> {
-        this._deleteSupplier.execute(id);
-        this.getAllSupplier()
+        this._deleteSupplier.execute(id).then(() => {
+          this.getAllSuppliers();
+          this._alertService.success('Se elimino el proveedor seleccionado');
+        });
       },
       reject: ()=> {},
     })

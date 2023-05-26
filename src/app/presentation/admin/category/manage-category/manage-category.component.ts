@@ -6,6 +6,7 @@ import { DeleteCategoryUseCase } from 'src/app/core/usecase/category/delete-cate
 import { RegisterCategoryComponent } from '../register-category/register-category.component';
 import { UpdateCategoryComponent } from '../update-category/update-category.component';
 import { ConfirmationService } from 'primeng/api';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ManageCategoryComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
+    private _alertService: AlertService,
     
     private _getAllCategory: GetAllCategoriesUseCase,
     private _deleteCategory: DeleteCategoryUseCase
@@ -70,8 +72,10 @@ export class ManageCategoryComponent implements OnInit {
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",
       accept: ()=> {
-        this._deleteCategory.execute(id);
-        this.getAllCategories()
+        this._deleteCategory.execute(id).then(() => {
+          this.getAllCategories();
+          this._alertService.success('Se elimino la categoria seleccionada');
+        });
       },
       reject: ()=> {},
     })

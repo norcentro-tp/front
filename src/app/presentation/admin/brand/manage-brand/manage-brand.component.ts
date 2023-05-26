@@ -6,6 +6,7 @@ import { DeleteBrandUseCase } from 'src/app/core/usecase/brand/delete-brand.usec
 import { RegisterBrandComponent } from '../register-brand/register-brand.component';
 import { UpdateBrandComponent } from '../update-brand/update-brand.component';
 import { ConfirmationService } from 'primeng/api';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-manage-brand',
@@ -18,6 +19,7 @@ export class ManageBrandComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
+    private _alertService: AlertService,
 
     private _getAllBrands: GetAllBrandsUseCase,
     private _deleteBrand: DeleteBrandUseCase
@@ -67,8 +69,10 @@ export class ManageBrandComponent implements OnInit {
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",
       accept: ()=> {
-        this._deleteBrand.execute(id);
-        this.getAllBrands()
+        this._deleteBrand.execute(id).then(() => {
+          this.getAllBrands();
+          this._alertService.success('Se elimino la marca seleccionada');
+        });
       },
       reject: ()=> {},
     })
