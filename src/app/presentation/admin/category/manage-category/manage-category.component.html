@@ -1,12 +1,14 @@
 <div class="grid justify-content-center">
 
     <div class="field col-12 text-center">
-        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Categoria" (click)="openDialog()">
+        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Proveedor" (click)="openRegisterDialog()">
         </button>
     </div>
 
     <div class="col-12">
-        <p-table [value]="lCategory">
+        <p-table [value]="lCategories" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+            [rowsPerPageOptions]="[5, 10, 15]">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Nombre</th>
@@ -17,14 +19,17 @@
                 <tr>
                     <td>{{category.nombre}}</td>
                     <td class="text-center">
-                       
-                        <button pButton pRipple icon="pi pi-pencil"
-                            class="p-button-rounded p-button-success mr-2" (click)="openUpdateDialog(category._id)"> </button>
-                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"(click)="deleteCategory(category._id)">
+                        <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"
+                            (click)="openUpdateDialog(category._id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" pTooltip="Eliminar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised"
+                             (click)="deleteCategory(category._id)">
                         </button>
                     </td>
                 </tr>
             </ng-template>
         </p-table>
     </div>
+
 </div>

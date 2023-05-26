@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import {
-  Brand,
-  Category,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { Brand } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
+import { DeleteBrandUseCase } from 'src/app/core/usecase/brand/delete-brand.usecase';
 import { RegisterBrandComponent } from '../register-brand/register-brand.component';
 import { UpdateBrandComponent } from '../update-brand/update-brand.component';
 import { ConfirmationService } from 'primeng/api';
@@ -15,12 +13,14 @@ import { ConfirmationService } from 'primeng/api';
   providers: [DialogService],
 })
 export class ManageBrandComponent implements OnInit {
-  lBrand: Brand[] = [];
+  lBrands: any[] = [];
 
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
-    private _getAllBrands: GetAllBrandsUseCase
+
+    private _getAllBrands: GetAllBrandsUseCase,
+    private _deleteBrand: DeleteBrandUseCase
   ) {}
   ref: DynamicDialogRef;
   ngOnInit() {
@@ -31,14 +31,14 @@ export class ManageBrandComponent implements OnInit {
     try {
       const response: Brand[] = await this._getAllBrands.execute();
 
-      console.log('Brand RESPUESTA BACKEND', response);
-      this.lBrand = response.reverse();
+      console.log('CATEGORY RESPUESTA BACKEND', response);
+      this.lBrands = response.reverse();
     } catch (error) {
       console.log(error);
     }
   }
-  //
-  openRegister() {
+
+  openRegisterDialog() {
     this.ref = this.dialogService.open(RegisterBrandComponent, {
       header: 'Agregar marca',
       width: '40rem',
@@ -48,7 +48,7 @@ export class ManageBrandComponent implements OnInit {
       this.getAllBrands();
     });
   }
-  openUpdate(id: string) {
+  openUpdateDialog(id: string) {
     const ref = this.dialogService.open(UpdateBrandComponent, {
       header: 'Editar Marca',
       width: '40rem',
@@ -66,7 +66,10 @@ export class ManageBrandComponent implements OnInit {
   deleteBrand(id: string){
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",
-      accept: ()=> {},
+      accept: ()=> {
+        this._deleteBrand.execute(id);
+        this.getAllBrands()
+      },
       reject: ()=> {},
     })
       

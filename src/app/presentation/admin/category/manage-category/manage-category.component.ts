@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
-import { RegisterInventoryComponent } from '../../inventory/register-inventory/register-inventory.component';
+import { DeleteCategoryUseCase } from 'src/app/core/usecase/category/delete-category.usecase';
 import { RegisterCategoryComponent } from '../register-category/register-category.component';
-import { ConfirmationService } from 'primeng/api';
 import { UpdateCategoryComponent } from '../update-category/update-category.component';
+import { ConfirmationService } from 'primeng/api';
 
 
 @Component({
@@ -14,52 +14,42 @@ import { UpdateCategoryComponent } from '../update-category/update-category.comp
   providers: [DialogService],
 })
 export class ManageCategoryComponent implements OnInit {
-  lCategory: Category[] = [];
+  lCategories: any[] = [];
 
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
     
-    private _getAllCategory: GetAllCategoriesUseCase
+    private _getAllCategory: GetAllCategoriesUseCase,
+    private _deleteCategory: DeleteCategoryUseCase
   ) {}
   ref: DynamicDialogRef;
   ngOnInit() {
-    this.getAllCategory();
+    this.getAllCategories();
   }
 
-  async getAllCategory() {
+  async getAllCategories() {
     try {
-      const response: Category[] =
-        await this._getAllCategory.execute();
+      const response: Category[] = await this._getAllCategory.execute();
 
       console.log('CATEGORY RESPUESTA BACKEND', response);
-      this.lCategory = response.reverse();
+      this.lCategories = response.reverse();
     } catch (error) {
       console.log(error);
     }
   }
 
-  openDialog() {
-    this.ref = this.dialogService.open(RegisterCategoryComponent, {
-      header: 'Agregar category',
-      width: '40rem',
+  openRegisterDialog() {
+    const ref = this.dialogService.open(RegisterCategoryComponent, {
+      header: 'Agregar Categoria',
+      width: '60rem',
     });
 
-    this.ref.onClose.subscribe((result) => {
-      this.getAllCategory();
+    ref.onClose.subscribe((result) => {
+      console.log('SE CERRO');
+      this.getAllCategories();
     });
   }
-  deleteCategory(id: string){
-    try { this._confirmationService.confirm({ 
-      message: "Estás seguro que desea eliminar? ",
-      accept: ()=> {},
-      reject: ()=> {},
-    })
-      
-    } catch (error) {
-      
-    }
-}
 
   openUpdateDialog(id:string) {
     const ref = this.dialogService.open(UpdateCategoryComponent, {
@@ -72,7 +62,22 @@ export class ManageCategoryComponent implements OnInit {
 
     ref.onClose.subscribe((result) => {
       console.log('SE CERRO')
-      this.getAllCategory();
+      this.getAllCategories();
     });
+}
+
+  deleteCategory(id: string){
+    try { this._confirmationService.confirm({ 
+      message: "Estás seguro que desea eliminar? ",
+      accept: ()=> {
+        this._deleteCategory.execute(id);
+        this.getAllCategories()
+      },
+      reject: ()=> {},
+    })
+      
+    } catch (error) {
+      
+    }
 }
 }

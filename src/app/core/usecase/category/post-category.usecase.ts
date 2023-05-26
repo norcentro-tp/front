@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UseCasePromise } from 'src/app/core/base/use-case-promise';
-import { Category, GetAllInventoryResponse } from '../../models/inventory/response/get-all-inventory.response';
+import { Category } from '../../models/inventory/response/get-all-inventory.response';
 import { PostCategoryRequest } from '../../models/inventory/request/post-moto.request';
 import { CategoryRepository } from '../../repository/category/category.repository';
 

@@ -42,4 +42,9 @@ export class InventoryWebRepository extends InventoryRepository {
       this.http.put<GetAllInventoryResponse>(url, bodyRequest)
     );
   }
+    
+  deleteMoto(id: string): Promise<void> {
+      const url = `${INVENTORY_URL}/${id}`;
+      return lastValueFrom(this.http.delete<void>(url));
+    }
 }

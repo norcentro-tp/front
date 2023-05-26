@@ -21,4 +21,6 @@ export abstract class InventoryRepository {
     id: string,
     bodyRequest: PutInventoryRequest
   ): Promise<GetAllInventoryResponse>;
+
+  abstract deleteMoto(id: string): Promise<void>;
 }

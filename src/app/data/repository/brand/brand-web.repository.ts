@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { BRAND_URL, CATEGORY_URL, INVENTORY_URL } from 'src/app/shared/helpers/constants/url.constants';
+import { BRAND_URL } from 'src/app/shared/helpers/constants/url.constants';
 import { Brand, BrandItemResponse, Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { BrandRepository } from 'src/app/core/repository/brand/brand.repository';
 import { PostBrandRequest, PutBrandRequest } from 'src/app/core/models/inventory/request/post-moto.request';
@@ -42,6 +42,11 @@ export class BrandWebRepository extends BrandRepository {
   getBrandById(id: string): Promise<BrandItemResponse | null> {
     const url = `${BRAND_URL}/${id}`;
     return lastValueFrom(this.http.get<BrandItemResponse>(url));
+  }
+    
+  deleteBrand(id: string): Promise<void> {
+      const url = `${BRAND_URL}/${id}`;
+      return lastValueFrom(this.http.delete<void>(url));
   }
 
 }

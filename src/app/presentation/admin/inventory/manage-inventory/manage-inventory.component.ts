@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { GetAllInventoryUseCase } from 'src/app/core/usecase/inventory/get-all-inventory.usecase';
+import { DeleteMotoUseCase } from 'src/app/core/usecase/inventory/delete-moto.usecase';
 import { RegisterInventoryComponent } from '../register-inventory/register-inventory.component';
 import { UpdateInventoryComponent } from '../update-inventory/update-inventory.component';
 import { ConfirmationService } from 'primeng/api';
@@ -18,7 +19,9 @@ export class ManageInventoryComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
   private _confirmationService: ConfirmationService,
-    private _getAllInventory: GetAllInventoryUseCase
+
+    private _getAllInventory: GetAllInventoryUseCase,
+    private _deleteMoto: DeleteMotoUseCase
   ) {}
   ngOnInit() {
     this.getAllInventory();
@@ -85,7 +88,9 @@ export class ManageInventoryComponent implements OnInit {
   deleteInventory(id: string){
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",
-      accept: ()=> {},
+      accept: ()=> {
+        this._deleteMoto.execute(id);
+        this.getAllInventory()},
       reject: ()=> {},
     })
       

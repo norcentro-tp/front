@@ -3,6 +3,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { RegisterSupplierComponent } from '../register-supplier/register-supplier.component';
 import { GetAllSupplierResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
+import { DeleteSupplierUseCase } from 'src/app/core/usecase/supplier/delete-supplier.usecase';
 import { UpdateSupplierComponent } from '../update-supplier/update-supplier.component';
 import { VisualizeSupplierComponent } from '../visualize-supplier/visualize-supplier.component';
 import { ConfirmationService } from 'primeng/api';
@@ -17,7 +18,9 @@ export class ManageSupplierComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
-    private _getAllSuppliers: GetAllSuppliersUseCase
+
+    private _getAllSuppliers: GetAllSuppliersUseCase,
+    private _deleteSupplier: DeleteSupplierUseCase
   ) {}
   ref: DynamicDialogRef;
 
@@ -83,7 +86,10 @@ export class ManageSupplierComponent implements OnInit {
    deleteSupplier(id: string){
     try { this._confirmationService.confirm({ 
       message: "Estás seguro que desea eliminar? ",
-      accept: ()=> {},
+      accept: ()=> {
+        this._deleteSupplier.execute(id);
+        this.getAllSupplier()
+      },
       reject: ()=> {},
     })
       

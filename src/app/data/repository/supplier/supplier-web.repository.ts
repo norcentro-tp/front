@@ -2,13 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import {
-  MODEL_URL,
   SUPPLIER_URL,
 } from 'src/app/shared/helpers/constants/url.constants';
 import {
-  Category,
   GetAllSupplierResponse,
-  Model,
   Supplier,
   SupplierItemResponse,
 } from 'src/app/core/models/inventory/response/get-all-inventory.response';
@@ -53,4 +50,9 @@ export class SupplierWebRepository extends SupplierRepository {
     const url = `${SUPPLIER_URL}/${id}`;
     return lastValueFrom(this.http.get<SupplierItemResponse>(url));
   }
+    
+  deleteSupplier(id: string): Promise<void> {
+      const url = `${SUPPLIER_URL}/${id}`;
+      return lastValueFrom(this.http.delete<void>(url));
+    }
 }
