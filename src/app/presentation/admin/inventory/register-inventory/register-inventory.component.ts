@@ -9,7 +9,6 @@ import {
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { PostMotoUseCase } from 'src/app/core/usecase/inventory/post-moto.usecase';
-import { GetAllModelsUseCase } from 'src/app/core/usecase/modelo/get-all-models.usecase';
 import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
@@ -22,6 +21,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { GetAllModeloUseCase } from 'src/app/core/usecase/modelo/get-all-modelo.usecase';
 
 @Component({
   selector: 'app-register-inventory',
@@ -38,7 +38,7 @@ export class RegisterInventoryComponent implements OnInit {
 
   constructor(
     private _getAllCategories: GetAllCategoriesUseCase,
-    private _getAllModels: GetAllModelsUseCase,
+    private _getAllModelo: GetAllModeloUseCase,
     private _getAllBrands: GetAllBrandsUseCase,
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getAllStatus: GetAllStatusUseCase,
@@ -51,7 +51,7 @@ export class RegisterInventoryComponent implements OnInit {
   ngOnInit() {
     this.createformInventory();
     this.getAllCategories();
-    this.getAllModels();
+    this.getAllModelo();
     this.getAllBrands();
     this.getAllSuppliers();
     this.getAllStatus();
@@ -85,9 +85,9 @@ export class RegisterInventoryComponent implements OnInit {
 
   get codigoVin() { return this.formInventory.get('codigoVin'); }
 
-  async getAllModels() {
+  async getAllModelo() {
     try {
-      const response: Model[] = await this._getAllModels.execute();
+      const response: Model[] = await this._getAllModelo.execute();
       this.listaModelo = response;
     } catch (error) {
       console.error(error);

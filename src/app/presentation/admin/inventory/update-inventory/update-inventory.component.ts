@@ -10,7 +10,7 @@ import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.u
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { GetInventoryByIdUseCase } from 'src/app/core/usecase/inventory/get-moto-byid.usecase';
 import { PutMotoUseCase } from 'src/app/core/usecase/inventory/put-moto.usecase';
-import { GetAllModelsUseCase } from 'src/app/core/usecase/modelo/get-all-models.usecase';
+import { GetAllModeloUseCase } from 'src/app/core/usecase/modelo/get-all-modelo.usecase';
 import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { InventoryItemResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
@@ -33,7 +33,7 @@ export class UpdateInventoryComponent implements OnInit {
   listaStatus: Status[] = []
   constructor(
     private _getAllCategories: GetAllCategoriesUseCase,
-    private _getAllModels: GetAllModelsUseCase,
+    private _getAllModels: GetAllModeloUseCase,
     private _getAllBrands: GetAllBrandsUseCase,
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getAllStatus: GetAllStatusUseCase,

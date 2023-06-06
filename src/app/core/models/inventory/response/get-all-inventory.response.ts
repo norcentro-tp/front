@@ -66,7 +66,14 @@ export interface Model {
   anio: string;
   descripcion: string;
   precio: number;
+  cilindrada: string;
+  velocidades: string;
+  capacidadTanque: string;
+  torque: string;
+  motor: string;
+  potencia: string;
   fotos: Photo[];
+ 
 }
 
 export interface Photo {

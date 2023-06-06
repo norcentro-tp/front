@@ -43,6 +43,11 @@ export class LayoutComponent implements OnInit {
                         label: 'Gestionar Categoria',
                         icon: 'pi pi-fw pi-briefcase',
                         command: () => this._router.navigate(['admin/category'])
+                    },
+                    {
+                        label: 'Gestionar Modelo',
+                        icon: 'pi pi-fw pi-slack',
+                        command: () => this._router.navigate(['admin/modelo'])
                     }
                 ]
             },
@@ -63,7 +68,7 @@ export class LayoutComponent implements OnInit {
                 items: [
                     {
                         label: 'Gestionar Usuario',
-                        icon: 'pi pi-fw pi-box',
+                        icon: 'pi pi-fw pi-reddit',
                         command: () => this._router.navigate(['admin/user'])
                     }
                 ]

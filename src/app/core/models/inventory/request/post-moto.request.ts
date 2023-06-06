@@ -16,6 +16,21 @@ export interface PostCategoryRequest {
 export interface PostBrandRequest {
   nombre: string;
 }
+export interface PostModeloRequest {
+  nombre: string;
+  cilindrada:string;
+  velocidades:string;
+  capacidadTanque:string;
+  torque:string;
+  motor:string;
+  potencia:string;
+  precio:string;
+  descripcion:string;
+  foto:string;
+    
+  }
+
+
 export interface PostSupplierRequest {
   nombre: string;
   telefono: string;
@@ -42,6 +57,20 @@ export interface PutBrandRequest {
   id: string;
   nombre: string;
 }
+export interface PutModeloRequest {
+  id:string;
+  nombre: string;
+  cilindrada:string;
+  velocidades:string;
+  capacidadTanque:string;
+  torque:string;
+  motor:string;
+  potencia:string;
+  precio:string;
+  descripcion:string;
+  foto:string;
+    
+  }
 export interface PutCategoryRequest {
   id: string;
   nombre: string;
