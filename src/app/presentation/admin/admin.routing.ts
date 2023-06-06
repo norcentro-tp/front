@@ -38,8 +38,8 @@ const routes: Routes = [
                 loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)
             },
             {
-                path: 'modelo',
-                loadChildren: () => import('./modelo/Modelo.module').then(m => m.ModeloModule)
+                path: 'model',
+                loadChildren: () => import('./model/model.module').then(m => m.ModelModule)
             }
         ]
     }

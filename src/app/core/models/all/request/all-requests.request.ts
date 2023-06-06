@@ -1,4 +1,4 @@
-import { Brand, Category, Model, Status, Supplier } from "../response/get-all-inventory.response";
+import { Brand, Category, Model, Status, Supplier } from "../response/all-responses.response";
 
 export interface PostInventoryRequest {
     codigo_vin: string;
@@ -16,7 +16,7 @@ export interface PostCategoryRequest {
 export interface PostBrandRequest {
   nombre: string;
 }
-export interface PostModeloRequest {
+export interface PostModelRequest {
   nombre: string;
   cilindrada:string;
   velocidades:string;
@@ -57,7 +57,7 @@ export interface PutBrandRequest {
   id: string;
   nombre: string;
 }
-export interface PutModeloRequest {
+export interface PutModelRequest {
   id:string;
   nombre: string;
   cilindrada:string;

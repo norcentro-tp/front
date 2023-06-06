@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UseCasePromise } from 'src/app/core/base/use-case-promise';
 import {
   BrandItemResponse,
-} from '../../models/inventory/response/get-all-inventory.response';
+} from '../../models/all/response/all-responses.response';
 import { BrandRepository } from '../../repository/brand/brand.repository';
 
 @Injectable({

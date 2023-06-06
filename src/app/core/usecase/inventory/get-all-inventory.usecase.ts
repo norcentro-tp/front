@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UseCasePromise } from 'src/app/core/base/use-case-promise';
-import { GetAllInventoryResponse } from '../../models/inventory/response/get-all-inventory.response';
+import { GetAllInventoryResponse } from '../../models/all/response/all-responses.response';
 import { InventoryRepository } from '../../repository/inventory/inventory.repository';
 
 @Injectable({

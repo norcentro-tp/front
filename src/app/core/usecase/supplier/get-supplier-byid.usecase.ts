@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UseCasePromise } from 'src/app/core/base/use-case-promise';
-import {
-  InventoryItemResponse,
-  SupplierItemResponse,
-} from '../../models/inventory/response/get-all-inventory.response';
+import { SupplierItemResponse } from '../../models/all/response/all-responses.response';
 import { SupplierRepository } from '../../repository/supplier/supplier.repository';
 
 @Injectable({

@@ -1,5 +1,5 @@
-import { PostBrandRequest, PutBrandRequest } from "../../models/inventory/request/post-moto.request";
-import { Brand, BrandItemResponse } from "../../models/inventory/response/get-all-inventory.response";
+import { PostBrandRequest, PutBrandRequest } from "../../models/all/request/all-requests.request";
+import { Brand, BrandItemResponse } from "../../models/all/response/all-responses.response";
 
 export abstract class BrandRepository {
   abstract getBrandById(id: string): Promise<BrandItemResponse | null>;

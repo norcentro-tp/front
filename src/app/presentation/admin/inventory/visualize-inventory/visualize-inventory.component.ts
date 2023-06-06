@@ -5,14 +5,14 @@ import {
   Model,
   Status,
   Supplier,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+} from 'src/app/core/models/all/response/all-responses.response';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { GetInventoryByIdUseCase } from 'src/app/core/usecase/inventory/get-moto-byid.usecase';
-import { GetAllModeloUseCase } from 'src/app/core/usecase/modelo/get-all-modelo.usecase';
+import { GetAllModelsUseCase } from 'src/app/core/usecase/model/get-all-models.usecase';
 import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
-import { InventoryItemResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { InventoryItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -30,7 +30,7 @@ export class VisualizeInventoryComponent implements OnInit {
   listaStatus: Status[] = []
   constructor(
     private _getAllCategories: GetAllCategoriesUseCase,
-    private _getAllModels: GetAllModeloUseCase,
+    private _getAllModels: GetAllModelsUseCase,
     private _getAllBrands: GetAllBrandsUseCase,
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getAllStatus: GetAllStatusUseCase,

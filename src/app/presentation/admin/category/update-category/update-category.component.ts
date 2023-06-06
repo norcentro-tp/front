@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  Brand,
-  BrandItemResponse,
   Category,
   CategoryItemResponse,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+} from 'src/app/core/models/all/response/all-responses.response';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetCategoryByIdUseCase } from 'src/app/core/usecase/category/get-category-byid.usecase';
-import { PutBrandRequest, PutCategoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
-import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
+import { PutCategoryRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { PutCategoryUseCase } from 'src/app/core/usecase/category/put-category.usecase';
 
 @Component({
@@ -20,10 +17,8 @@ import { PutCategoryUseCase } from 'src/app/core/usecase/category/put-category.u
 })
 export class UpdateCategoryComponent implements OnInit {
   formCategory: FormGroup;
-  listaCategory: Category[] = [];
 
   constructor(
-    private _getAllCategories: GetAllCategoriesUseCase,
     private _getCategoryById: GetCategoryByIdUseCase,
     private _putCategory: PutCategoryUseCase,
     private _alertService: AlertService,
@@ -34,7 +29,6 @@ export class UpdateCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.createformCategory();
-    this.getAllCategories();
     this.getCategorybyId(this.config.data.id);
   }
 
@@ -51,16 +45,6 @@ export class UpdateCategoryComponent implements OnInit {
       this.formCategory.setValue({
         nombre: response.nombre,
       });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async getAllCategories() {
-    try {
-      const response: Category[] = await this._getAllCategories.execute();
-      this.listaCategory = response;
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

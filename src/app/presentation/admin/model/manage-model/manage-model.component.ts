@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Model } from 'src/app/core/models/inventory/response/get-all-inventory.response';
-
+import { Model } from 'src/app/core/models/all/response/all-responses.response';
 import { ConfirmationService } from 'primeng/api';
 import { AlertService } from 'src/app/shared/services/alert.service';
-
-import { GetAllModeloUseCase } from 'src/app/core/usecase/modelo/get-all-modelo.usecase';
-import { DeleteModeloUseCase } from 'src/app/core/usecase/modelo/delete-modelo.usecase';
-import { UpdateModeloComponent } from '../update-modelo/update-modelo.component';
-import { RegisterModeloComponent } from '../register-modelo/register-modelo.component';
-import { VisualizeModeloComponent } from '../visualize-modelo/visualize-modelo.component';
+import { GetAllModelsUseCase } from 'src/app/core/usecase/model/get-all-models.usecase';
+import { DeleteModelUseCase } from 'src/app/core/usecase/model/delete-model.usecase';
+import { UpdateModelComponent } from '../update-model/update-model.component';
+import { RegisterModelComponent } from '../register-model/register-model.component';
+import { VisualizeModelComponent } from '../visualize-model/visualize-model.component';
 
 @Component({
   selector: 'app-manage-modelo',
-  templateUrl: 'manage-modelo.component.html',
+  templateUrl: 'manage-model.component.html',
   providers: [DialogService],
 })
 export class ManageModeloComponent implements OnInit {
@@ -23,8 +21,8 @@ export class ManageModeloComponent implements OnInit {
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
     private _alertService: AlertService,
-    private _getAllModelo: GetAllModeloUseCase,
-    private _deleteModelo: DeleteModeloUseCase
+    private _getAllModels: GetAllModelsUseCase,
+    private _deleteModel: DeleteModelUseCase
   ) {}
   ngOnInit() {
     this.getAllModels();
@@ -32,7 +30,7 @@ export class ManageModeloComponent implements OnInit {
 
   async getAllModels() {
     try {
-      const response: Model[] = await this._getAllModelo.execute();
+      const response: Model[] = await this._getAllModels.execute();
 
       console.log('MODELO RESPUESTA BACKEND', response);
       this.lModelo = response.reverse();
@@ -41,7 +39,7 @@ export class ManageModeloComponent implements OnInit {
     }
   }
   openRegisterDialog() {
-    const ref = this.dialogService.open(RegisterModeloComponent, {
+    const ref = this.dialogService.open(RegisterModelComponent, {
       header: 'Agregar Categoria',
       width: '60rem',
     });
@@ -52,7 +50,7 @@ export class ManageModeloComponent implements OnInit {
     });
   }
   openUpdateDialog(id: string) {
-    const ref = this.dialogService.open(UpdateModeloComponent, {
+    const ref = this.dialogService.open(UpdateModelComponent, {
       header: 'Editar Modelo',
       width: '40rem',
       data: {
@@ -66,7 +64,7 @@ export class ManageModeloComponent implements OnInit {
     });
   }
   openVisualizeDialog(id: string) {
-    const ref = this.dialogService.open(VisualizeModeloComponent, {
+    const ref = this.dialogService.open(VisualizeModelComponent, {
       header: 'Visualizar Modelo',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -82,7 +80,7 @@ export class ManageModeloComponent implements OnInit {
       this._confirmationService.confirm({
         message: 'Estás seguro que desea eliminar? ',
         accept: () => {
-          this._deleteModelo.execute(id).then(() => {
+          this._deleteModel.execute(id).then(() => {
             this.getAllModels();
             this._alertService.success('Se elimino la marca seleccionada');
           });

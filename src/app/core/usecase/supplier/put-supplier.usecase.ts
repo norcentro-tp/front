@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UseCasePromise } from 'src/app/core/base/use-case-promise';
-import { GetAllSupplierResponse } from '../../models/inventory/response/get-all-inventory.response';
-import { PutSupplierRequest } from '../../models/inventory/request/post-moto.request';
+import { GetAllSupplierResponse } from '../../models/all/response/all-responses.response';
+import { PutSupplierRequest } from '../../models/all/request/all-requests.request';
 import { SupplierRepository } from '../../repository/supplier/supplier.repository';
 
 @Injectable({

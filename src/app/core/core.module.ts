@@ -4,8 +4,8 @@ import { InventoryRepository } from './repository/inventory/inventory.repository
 import { InventoryWebRepository } from '../data/repository/inventory/inventory-web.repository';
 import { CategoryRepository } from './repository/category/category.repository';
 import { CategoryWebRepository } from '../data/repository/category/category-web.repository';
-import { ModeloRepository } from './repository/modelo/modelo.repository';
-import { ModeloWebRepository } from '../data/repository/modelo/modelo-web.repository';
+import { ModelRepository } from './repository/model/model.repository';
+import { ModelWebRepository } from '../data/repository/model/model-web.repository';
 import { BrandRepository } from './repository/brand/brand.repository';
 import { BrandWebRepository } from '../data/repository/brand/brand-web.repository';
 import { SupplierRepository } from './repository/supplier/supplier.repository';
@@ -24,7 +24,7 @@ import { StatusWebRepository } from '../data/repository/status/modelo-web.reposi
 
         { provide: InventoryRepository, useClass: InventoryWebRepository },
         { provide: CategoryRepository, useClass: CategoryWebRepository },
-        { provide: ModeloRepository, useClass: ModeloWebRepository },
+        { provide: ModelRepository, useClass: ModelWebRepository },
         { provide: BrandRepository, useClass: BrandWebRepository },
         { provide: SupplierRepository, useClass: SupplierWebRepository },
         { provide: StatusRepository, useClass: StatusWebRepository }

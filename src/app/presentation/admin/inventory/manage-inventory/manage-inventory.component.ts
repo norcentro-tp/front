@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { GetAllInventoryResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { GetAllInventoryUseCase } from 'src/app/core/usecase/inventory/get-all-inventory.usecase';
 import { DeleteMotoUseCase } from 'src/app/core/usecase/inventory/delete-moto.usecase';
 import { RegisterInventoryComponent } from '../register-inventory/register-inventory.component';

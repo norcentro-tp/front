@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { Category } from 'src/app/core/models/all/response/all-responses.response';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { DeleteCategoryUseCase } from 'src/app/core/usecase/category/delete-category.usecase';
 import { RegisterCategoryComponent } from '../register-category/register-category.component';

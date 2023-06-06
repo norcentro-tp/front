@@ -2,11 +2,11 @@ import {
   GetAllSupplierResponse,
   Supplier,
   SupplierItemResponse,
-} from '../../models/inventory/response/get-all-inventory.response';
+} from '../../models/all/response/all-responses.response';
 import {
   PostSupplierRequest,
   PutSupplierRequest,
-} from '../../models/inventory/request/post-moto.request';
+} from '../../models/all/request/all-requests.request';
 
 export abstract class SupplierRepository {
   abstract getSupplierById(id: string): Promise<SupplierItemResponse | null>;

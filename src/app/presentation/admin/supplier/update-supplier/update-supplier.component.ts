@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Supplier,
-  SupplierItemResponse,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
-import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
-import { PutSupplierRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+import { SupplierItemResponse } from 'src/app/core/models/all/response/all-responses.response';
+import { PutSupplierRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -18,10 +14,8 @@ import { PutSupplierUseCase } from 'src/app/core/usecase/supplier/put-supplier.u
 })
 export class UpdateSupplierComponent implements OnInit {
   formSupplier: FormGroup;
-  listaProveedor: Supplier[] = [];
 
   constructor(
-    private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getSupplierById: GetSupplierByIdUseCase,
     private _putSupplier: PutSupplierUseCase,
     private _alertService: AlertService,
@@ -32,7 +26,6 @@ export class UpdateSupplierComponent implements OnInit {
 
   ngOnInit() {
     this.createformSupplier();
-    this.getAllSuppliers();
     this.getSupplierbyId(this.config.data.id);
   }
 
@@ -56,16 +49,6 @@ export class UpdateSupplierComponent implements OnInit {
         correo: response.correo,
         direccion: response.direccion,
       });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async getAllSuppliers() {
-    try {
-      const response: Supplier[] = await this._getAllSuppliers.execute();
-      this.listaProveedor = response;
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

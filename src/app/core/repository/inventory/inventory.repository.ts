@@ -1,12 +1,12 @@
 import { 
   PostInventoryRequest,
   PutInventoryRequest
- } from '../../models/inventory/request/post-moto.request';
+ } from '../../models/all/request/all-requests.request';
 
 import {
   GetAllInventoryResponse,
   InventoryItemResponse
-} from '../../models/inventory/response/get-all-inventory.response';
+} from '../../models/all/response/all-responses.response';
 
 export abstract class InventoryRepository {
   abstract getAllInventory(): Promise<GetAllInventoryResponse[]>;

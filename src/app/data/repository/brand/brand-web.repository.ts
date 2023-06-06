@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { BRAND_URL } from 'src/app/shared/helpers/constants/url.constants';
-import { Brand, BrandItemResponse, Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { Brand, BrandItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { BrandRepository } from 'src/app/core/repository/brand/brand.repository';
-import { PostBrandRequest, PutBrandRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+import { PostBrandRequest, PutBrandRequest } from 'src/app/core/models/all/request/all-requests.request';
 
 @Injectable({
   providedIn: 'root'

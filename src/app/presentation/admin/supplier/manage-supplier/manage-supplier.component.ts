@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { RegisterSupplierComponent } from '../register-supplier/register-supplier.component';
-import { GetAllSupplierResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { GetAllSupplierResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { DeleteSupplierUseCase } from 'src/app/core/usecase/supplier/delete-supplier.usecase';
 import { UpdateSupplierComponent } from '../update-supplier/update-supplier.component';
@@ -20,7 +20,6 @@ export class ManageSupplierComponent implements OnInit {
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
     private _alertService: AlertService,
-
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _deleteSupplier: DeleteSupplierUseCase
   ) {}

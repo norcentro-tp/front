@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UseCasePromise } from 'src/app/core/base/use-case-promise';
-import { Brand,  } from '../../models/inventory/response/get-all-inventory.response';
-import { PostBrandRequest } from '../../models/inventory/request/post-moto.request';
+import { Brand } from '../../models/all/response/all-responses.response';
+import { PostBrandRequest } from '../../models/all/request/all-requests.request';
 import { BrandRepository } from '../../repository/brand/brand.repository';
 
 @Injectable({

@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Brand,
-  BrandItemResponse,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { BrandItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetBrandByIdUseCase } from 'src/app/core/usecase/brand/get-brand-byid.usecase';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
-import { PutBrandRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+import { PutBrandRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { PutBrandUseCase } from 'src/app/core/usecase/brand/put-brand.usecase';
 
 @Component({
@@ -18,7 +15,6 @@ import { PutBrandUseCase } from 'src/app/core/usecase/brand/put-brand.usecase';
 })
 export class UpdateBrandComponent implements OnInit {
   formBrand: FormGroup;
-  listaBrand: Brand[] = [];
 
   constructor(
     private _getAllBrand: GetAllBrandsUseCase,
@@ -32,7 +28,6 @@ export class UpdateBrandComponent implements OnInit {
 
   ngOnInit() {
     this.createformBrand();
-    this.getAllBrand();
     this.getBrandbyId(this.config.data.id);
   }
 
@@ -49,16 +44,6 @@ export class UpdateBrandComponent implements OnInit {
       this.formBrand.setValue({
         nombre: response.nombre,
       });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async getAllBrand() {
-    try {
-      const response: Brand[] = await this._getAllBrand.execute();
-      this.listaBrand = response;
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

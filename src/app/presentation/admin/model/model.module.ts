@@ -8,18 +8,17 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { TableModule } from 'primeng/table';
-import { ManageModeloComponent } from './manage-modelo/manage-modelo.component';
-import { ModeloRoutingModule } from './Modelo.routing';
-import { RegisterModeloComponent } from './register-modelo/register-modelo.component';
-import { UpdateBrandComponent } from '../brand/update-brand/update-brand.component';
-import { UpdateModeloComponent } from './update-modelo/update-modelo.component';
-import { VisualizeModeloComponent } from './visualize-modelo/visualize-modelo.component';
+import { ManageModeloComponent } from './manage-model/manage-model.component';
+import { ModeloRoutingModule } from './model.routing';
+import { RegisterModelComponent } from './register-model/register-model.component';
+import { UpdateModelComponent } from './update-model/update-model.component';
+import { VisualizeModelComponent } from './visualize-model/visualize-model.component';
 
 const COMPONENTS = [
   ManageModeloComponent,
-  RegisterModeloComponent,
-  UpdateModeloComponent,
-  VisualizeModeloComponent
+  RegisterModelComponent,
+  UpdateModelComponent,
+  VisualizeModelComponent
  
 ];
 
@@ -40,5 +39,5 @@ const COMPONENTS = [
   ],
   providers: [],
 })
-export class ModeloModule {}
+export class ModelModule {}
 

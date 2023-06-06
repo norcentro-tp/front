@@ -5,14 +5,14 @@ import {
   Model,
   Status,
   Supplier,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+} from 'src/app/core/models/all/response/all-responses.response';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { PostMotoUseCase } from 'src/app/core/usecase/inventory/post-moto.usecase';
 import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.usecase';
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
-import { GetAllInventoryResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
-import { PostInventoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+import { GetAllInventoryResponse } from 'src/app/core/models/all/response/all-responses.response';
+import { PostInventoryRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import {
@@ -21,7 +21,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { GetAllModeloUseCase } from 'src/app/core/usecase/modelo/get-all-modelo.usecase';
+import { GetAllModelsUseCase } from 'src/app/core/usecase/model/get-all-models.usecase';
 
 @Component({
   selector: 'app-register-inventory',
@@ -38,7 +38,7 @@ export class RegisterInventoryComponent implements OnInit {
 
   constructor(
     private _getAllCategories: GetAllCategoriesUseCase,
-    private _getAllModelo: GetAllModeloUseCase,
+    private _getAllModels: GetAllModelsUseCase,
     private _getAllBrands: GetAllBrandsUseCase,
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getAllStatus: GetAllStatusUseCase,
@@ -51,7 +51,7 @@ export class RegisterInventoryComponent implements OnInit {
   ngOnInit() {
     this.createformInventory();
     this.getAllCategories();
-    this.getAllModelo();
+    this.getAllModels();
     this.getAllBrands();
     this.getAllSuppliers();
     this.getAllStatus();
@@ -85,9 +85,9 @@ export class RegisterInventoryComponent implements OnInit {
 
   get codigoVin() { return this.formInventory.get('codigoVin'); }
 
-  async getAllModelo() {
+  async getAllModels() {
     try {
-      const response: Model[] = await this._getAllModelo.execute();
+      const response: Model[] = await this._getAllModels.execute();
       this.listaModelo = response;
     } catch (error) {
       console.error(error);

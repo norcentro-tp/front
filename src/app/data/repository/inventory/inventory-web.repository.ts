@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { 
   PostInventoryRequest,
-  PutInventoryRequest } from 'src/app/core/models/inventory/request/post-moto.request';
+  PutInventoryRequest } from 'src/app/core/models/all/request/all-requests.request';
 import {
   GetAllInventoryResponse,
-  InventoryItemResponse } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+  InventoryItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { InventoryRepository } from 'src/app/core/repository/inventory/inventory.repository';
 import { INVENTORY_URL } from 'src/app/shared/helpers/constants/url.constants';
 

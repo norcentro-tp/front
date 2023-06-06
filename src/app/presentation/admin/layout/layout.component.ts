@@ -47,7 +47,7 @@ export class LayoutComponent implements OnInit {
                     {
                         label: 'Gestionar Modelo',
                         icon: 'pi pi-fw pi-slack',
-                        command: () => this._router.navigate(['admin/modelo'])
+                        command: () => this._router.navigate(['admin/model'])
                     }
                 ]
             },

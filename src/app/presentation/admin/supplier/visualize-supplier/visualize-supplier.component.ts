@@ -1,25 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Status,
-  Supplier,
-  SupplierItemResponse,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
-import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
+import { SupplierItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetSupplierByIdUseCase } from 'src/app/core/usecase/supplier/get-supplier-byid.usecase';
 
 @Component({
-  selector: 'app-supplier-inventory',
+  selector: 'app-visualize-supplier',
   templateUrl: 'visualize-supplier.component.html',
   styleUrls: ['visualize-supplier.component.css'],
 })
 export class VisualizeSupplierComponent implements OnInit {
   formSupplier: FormGroup;
-  listaProveedor: Supplier[] = [];
-  listaStatus: Status[] = [];
   constructor(
-    private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getSupplierById: GetSupplierByIdUseCase,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
@@ -28,7 +20,6 @@ export class VisualizeSupplierComponent implements OnInit {
 
   ngOnInit() {
     this.createformSupplier();
-    this.getAllSuppliers();
     this.getSupplierbyId(this.config.data.id);
   }
 
@@ -52,15 +43,6 @@ export class VisualizeSupplierComponent implements OnInit {
         correo: response.correo,
         direccion: response.direccion,
       });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  async getAllSuppliers() {
-    try {
-      const response: Supplier[] = await this._getAllSuppliers.execute();
-      this.listaProveedor = response;
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

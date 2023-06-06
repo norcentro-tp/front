@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Brand } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { Brand } from 'src/app/core/models/all/response/all-responses.response';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
 import { DeleteBrandUseCase } from 'src/app/core/usecase/brand/delete-brand.usecase';
 import { RegisterBrandComponent } from '../register-brand/register-brand.component';

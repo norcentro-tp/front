@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Model,
-  Status,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import {  Model } from 'src/app/core/models/all/response/all-responses.response';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { GetAllModeloUseCase } from 'src/app/core/usecase/modelo/get-all-modelo.usecase';
-import { GetModeloByIdUseCase } from 'src/app/core/usecase/modelo/get-modelo-byid.usecase';
+import { PutModelRequest } from 'src/app/core/models/all/request/all-requests.request';
+import { PutModelUseCase } from 'src/app/core/usecase/model/put-model.usecase';
+import { GetModelByIdUseCase } from 'src/app/core/usecase/model/get-model-byid.usecase';
 
 @Component({
-  selector: 'app-modelo-inventory',
-  templateUrl: 'visualize-modelo.component.html',
-  styleUrls: ['visualize-modelo.component.css'],
+  selector: 'app-update-model',
+  templateUrl: 'update-model.component.html',
+  styleUrls: ['update-model.component.css'],
 })
-export class VisualizeModeloComponent implements OnInit {
+export class UpdateModelComponent implements OnInit {
   formModelo: FormGroup;
   listaModelo: Model[] = [];
-  listaStatus: Status[] = [];
+
   constructor(
-    private _getAllModelo: GetAllModeloUseCase,
-    private _getModeloById: GetModeloByIdUseCase,
+    private _getModeloById: GetModelByIdUseCase,
+    private _putModelo: PutModelUseCase,
+    private _alertService: AlertService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private _formBuilder: FormBuilder
@@ -27,7 +27,6 @@ export class VisualizeModeloComponent implements OnInit {
 
   ngOnInit() {
     this.createformModelo();
-    this.getAllModelo();
     this.getModelobyId(this.config.data.id);
   }
 
@@ -60,22 +59,38 @@ export class VisualizeModeloComponent implements OnInit {
         potencia: response.potencia,
         precio: response.precio,
         descripcion: response.descripcion,
-        anio: response.anio
+        anio: response.anio,
       });
     } catch (error) {
       console.error(error);
     }
   }
-  async getAllModelo() {
+  async updateModelo(id: string) {
+    const form = this.formModelo.value;
+    const bodyRequestModelo: PutModelRequest = {
+      id: id,
+      nombre: form.nombre,
+      cilindrada: form.cilindrada,
+      velocidades: form.velocidades,
+      capacidadTanque: form.capacidadTanque,
+      torque: form.torque,
+      motor: form.motor,
+      potencia: form.potencia,
+      precio: form.precio,
+      descripcion: form.descripcion,
+      foto: form.foto,
+    };
     try {
-      const response: Model[] = await this._getAllModelo.execute();
-      this.listaModelo = response;
+      const response: Model = await this._putModelo.execute({
+        id: id,
+        bodyRequest: bodyRequestModelo,
+      });
+
+      this._alertService.success('Cambios Guardados');
       console.log(response);
+      this.ref.close();
     } catch (error) {
       console.error(error);
     }
-  }
-  async close() {
-    this.ref.close();
   }
 }

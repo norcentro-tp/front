@@ -8,11 +8,11 @@ import {
   GetAllSupplierResponse,
   Supplier,
   SupplierItemResponse,
-} from 'src/app/core/models/inventory/response/get-all-inventory.response';
+} from 'src/app/core/models/all/response/all-responses.response';
 import {
   PostSupplierRequest,
   PutSupplierRequest,
-} from 'src/app/core/models/inventory/request/post-moto.request';
+} from 'src/app/core/models/all/request/all-requests.request';
 import { SupplierRepository } from 'src/app/core/repository/supplier/supplier.repository';
 
 @Injectable({

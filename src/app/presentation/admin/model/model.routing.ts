@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
-import { ManageModeloComponent } from "./manage-modelo/manage-modelo.component";
+import { ManageModeloComponent } from "./manage-model/manage-model.component";
 
 const routes: Routes = [
 
