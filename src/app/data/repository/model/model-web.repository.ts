@@ -34,12 +34,17 @@ export class ModelWebRepository extends ModelRepository {
   }
 
   putModel(
-    id: string,
-    bodyRequest: PutModelRequest
+    request: PutModelRequest
   ): Promise<Model | null> {
-    const url = `${MODEL_URL}/${id}`;
+    const formData = new FormData();
+    const keys = Object.keys(request);
+
+    keys.forEach((key) => {
+      formData.append(key, request[key]);
+    });
+    const url = `${MODEL_URL}/${request.id}`;
     return lastValueFrom(
-      this.http.put<Model>(url, bodyRequest)
+      this.http.put<Model>(url, formData)
     );
   }
   getModelById(id: string): Promise<Model | null> {

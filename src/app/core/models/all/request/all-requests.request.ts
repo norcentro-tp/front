@@ -15,19 +15,22 @@ export interface PostCategoryRequest {
 }
 export interface PostBrandRequest {
   nombre: string;
+  descripcion: string;
+  imageFiles: File;
 }
 export interface PostModelRequest {
   nombre: string;
   cilindrada:string;
   velocidades:string;
-  capacidadTanque:string;
+  capacidad_tanque:string;
   torque:string;
   motor:string;
   potencia:string;
   precio:string;
   descripcion:string;
   foto:string;
-    
+  anio:string;
+  imageFiles: File;    
   }
 
 
@@ -56,20 +59,24 @@ export interface PutSupplierRequest {
 export interface PutBrandRequest {
   id: string;
   nombre: string;
+  descripcion:string;
+  icono:string;
+  imageFiles: File;
 }
 export interface PutModelRequest {
   id:string;
   nombre: string;
   cilindrada:string;
   velocidades:string;
-  capacidadTanque:string;
+  capacidad_tanque:string;
   torque:string;
   motor:string;
   potencia:string;
   precio:string;
   descripcion:string;
   foto:string;
-    
+  anio:string;
+  imageFiles: File;    
   }
 export interface PutCategoryRequest {
   id: string;

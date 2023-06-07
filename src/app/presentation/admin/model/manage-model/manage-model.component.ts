@@ -40,8 +40,8 @@ export class ManageModeloComponent implements OnInit {
   }
   openRegisterDialog() {
     const ref = this.dialogService.open(RegisterModelComponent, {
-      header: 'Agregar Categoria',
-      width: '60rem',
+      header: 'Agregar Modelo',
+      width: '80rem',
     });
 
     ref.onClose.subscribe((result) => {
@@ -52,7 +52,7 @@ export class ManageModeloComponent implements OnInit {
   openUpdateDialog(id: string) {
     const ref = this.dialogService.open(UpdateModelComponent, {
       header: 'Editar Modelo',
-      width: '40rem',
+      width: '80rem',
       data: {
         id: id,
       },

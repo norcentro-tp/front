@@ -7,6 +7,21 @@
                     <label htmlFor="nombre">Nombre</label>
                 </span>
             </div>
+            <div class="field col-12">
+                <span class="p-float-label">
+                    <textarea pInputTextarea id="descripcion" formControlName="descripcion" required></textarea>
+                    <label htmlFor="descripcion">Descripcion</label>
+                </span>
+            </div>
+            <div class="field col-12">
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="1000000" chooseLabel="Escoger">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="selectedFiles.length">
+                            <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
         </div>
     </form>
     <div class="col-12 text-center py-3">

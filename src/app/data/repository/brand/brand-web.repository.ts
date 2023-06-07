@@ -26,17 +26,29 @@ export class BrandWebRepository extends BrandRepository {
   }
 
   postBrand(bodyRequest: PostBrandRequest): Promise<Brand> {
+    const formData = new FormData();
+    const keys = Object.keys(bodyRequest);
+
+    keys.forEach((key) => {
+      formData.append(key, bodyRequest[key]);
+    });
     const url = `${BRAND_URL}`;
     return lastValueFrom(
-      this.http.post<Brand>(url, bodyRequest)
+      this.http.post<Brand>(url, formData)
     );
   }
   putBrand(request: PutBrandRequest): Promise<Brand | null> {
+    const formData = new FormData();
+    const keys = Object.keys(request);
+
+    keys.forEach((key) => {
+      formData.append(key, request[key]);
+    });
 
     const url = `${BRAND_URL}/${request.id}`;
 
     return lastValueFrom(
-      this.http.put<Brand>(url, request)
+      this.http.put<Brand>(url, formData)
     );
   }
   getBrandById(id: string): Promise<BrandItemResponse | null> {

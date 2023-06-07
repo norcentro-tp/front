@@ -44,7 +44,7 @@ export class ManageInventoryComponent implements OnInit {
   openRegisterDialog() {
     const ref = this.dialogService.open(RegisterInventoryComponent, {
       header: 'Agregar Moto',
-      width: '60rem',
+      width: '80rem',
     });
 
     ref.onClose.subscribe((result) => {

@@ -1,69 +1,76 @@
 <div class="px-5 pt-4">
     <form [formGroup]="formModelo">
         <div class="p-fluid grid">
-          <div class="field col-12 md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="nombre" formControlName="nombre" required readonly />
-                <label htmlFor="nombre">Nombre</label>
-            </span>
-        </div>
-
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="" formControlName="descripcion" required />
-                <label htmlFor="descripcion" >Descripcion</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="precio" formControlName="precio" required />
-                <label htmlFor="precio">Precio</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="foto" formControlName="foto" required />
-                <label htmlFor="foto">Foto</label>
-            </span>
-        </div>
-        
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="motor" formControlName="motor" required />
-                <label htmlFor="motor">Motor</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="cilindrada" formControlName="cilindrada" required />
-                <label htmlFor="motor">Cilindrada</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="velocidades" formControlName="velocidades" required />
-                <label htmlFor="velocidades">Velocidades</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="capacidadTanque" formControlName="capacidadTanque" required />
-                <label htmlFor="capacidadTanque">Capacidad de Tanque</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="torque" formControlName="torque" required />
-                    <label htmlFor="torque">Torque</label>
-            </span>
-        </div>
-        <div class="field col-12  md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="potencia" formControlName="potencia"  required />
-                <label htmlFor="potencia" >Potencia</label>
-            </span>
-        </div>
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombre" formControlName="nombre" required />
+                    <label htmlFor="nombre">Nombre</label>
+                </span>
             </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="precio" formControlName="precio" required />
+                    <label htmlFor="precio">Precio</label>
+                </span>
+            </div>            
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="motor" formControlName="motor" required />
+                    <label htmlFor="motor">Motor</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="cilindrada" formControlName="cilindrada" required />
+                    <label htmlFor="motor">Cilindrada</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="velocidades" formControlName="velocidades" required />
+                    <label htmlFor="velocidades">Velocidades</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="capacidad_tanque" formControlName="capacidad_tanque" required />
+                    <label htmlFor="capacidad_tanque">Capacidad de Tanque</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="torque" formControlName="torque" required />
+                        <label htmlFor="torque">Torque</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="potencia" formControlName="potencia"  required />
+                    <label htmlFor="potencia" >Potencia</label>
+                </span>
+            </div>           
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="anio" formControlName="anio" required />
+                    <label htmlFor="anio">Año</label>
+                </span>
+            </div>
+            <div class="field col-12">
+                <span class="p-float-label">
+                    <textarea pInputTextarea id="descripcion" formControlName="descripcion" required></textarea>
+                    <label htmlFor="descripcion">Descripcion</label>
+                </span>
+            </div>
+            <div class="field col-12">
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="1000000" chooseLabel="Escoger">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="selectedFiles.length">
+                            <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
       
     </form>
     <div class="col-12 text-center py-3">

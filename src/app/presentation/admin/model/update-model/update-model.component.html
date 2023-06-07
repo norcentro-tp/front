@@ -8,13 +8,6 @@
                     <label htmlFor="nombre">Nombre</label>
                 </span>
             </div>
-
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <input pInputText id="" formControlName="descripcion" required />
-                    <label htmlFor="descripcion">Descripcion</label>
-                </span>
-            </div>
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="precio" formControlName="precio" required />
@@ -27,7 +20,6 @@
                     <label htmlFor="anio">Año</label>
                 </span>
             </div>
-
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="motor" formControlName="motor" required />
@@ -48,8 +40,8 @@
             </div>
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
-                    <input pInputText id="capacidadTanque" formControlName="capacidadTanque" required />
-                    <label htmlFor="capacidadTanque">Capacidad de Tanque</label>
+                    <input pInputText id="capacidad_tanque" formControlName="capacidad_tanque" required />
+                    <label htmlFor="capacidad_tanque">Capacidad de Tanque</label>
                 </span>
             </div>
             <div class="field col-12  md:col-4">
@@ -63,6 +55,27 @@
                     <input pInputText id="potencia" formControlName="potencia" required />
                     <label htmlFor="potencia">Potencia</label>
                 </span>
+            </div>
+            <div class="field col-12">
+                <span class="p-float-label">
+                    <textarea pInputTextarea id="descripcion" formControlName="descripcion" required></textarea>
+                    <label htmlFor="descripcion">Descripcion</label>
+                </span>
+            </div> 
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="anio" formControlName="anio" required />
+                    <label htmlFor="anio">Año</label>
+                </span>
+            </div>
+            <div class="field col-12">
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="1000000" chooseLabel="Reemplazar">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="selectedFiles.length">
+                            <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
             </div>
 
             <div class="col-12 text-center py-3">

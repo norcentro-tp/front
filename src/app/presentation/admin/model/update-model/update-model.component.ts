@@ -14,7 +14,7 @@ import { GetModelByIdUseCase } from 'src/app/core/usecase/model/get-model-byid.u
 })
 export class UpdateModelComponent implements OnInit {
   formModelo: FormGroup;
-  listaModelo: Model[] = [];
+  selectedFiles: File[]=[];
 
   constructor(
     private _getModeloById: GetModelByIdUseCase,
@@ -35,7 +35,7 @@ export class UpdateModelComponent implements OnInit {
       nombre: [null],
       cilindrada: [null],
       velocidades: [null],
-      capacidadTanque: [null],
+      capacidad_tanque: [null],
       torque: [null],
       motor: [null],
       potencia: [null],
@@ -43,6 +43,12 @@ export class UpdateModelComponent implements OnInit {
       descripcion: [null],
       anio: [null],
     });
+  }
+  onSelect(event: any)  {
+    if (event.files && event.files.length > 0) {
+      this.selectedFiles[0]= event.files[0];
+      console.log(this.selectedFiles[0])
+    }
   }
 
   async getModelobyId(id: string) {
@@ -53,7 +59,7 @@ export class UpdateModelComponent implements OnInit {
         nombre: response.nombre,
         cilindrada: response.cilindrada,
         velocidades: response.velocidades,
-        capacidadTanque: response.capacidadTanque,
+        capacidad_tanque: response.capacidad_tanque,
         torque: response.torque,
         motor: response.motor,
         potencia: response.potencia,
@@ -72,19 +78,20 @@ export class UpdateModelComponent implements OnInit {
       nombre: form.nombre,
       cilindrada: form.cilindrada,
       velocidades: form.velocidades,
-      capacidadTanque: form.capacidadTanque,
+      capacidad_tanque: form.capacidad_tanque,
       torque: form.torque,
       motor: form.motor,
       potencia: form.potencia,
       precio: form.precio,
       descripcion: form.descripcion,
       foto: form.foto,
+      anio:form.anio,
+      imageFiles:this.selectedFiles[0]
     };
     try {
-      const response: Model = await this._putModelo.execute({
-        id: id,
-        bodyRequest: bodyRequestModelo,
-      });
+      const response: Model = await this._putModelo.execute( 
+        bodyRequestModelo
+      );
 
       this._alertService.success('Cambios Guardados');
       console.log(response);

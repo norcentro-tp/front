@@ -9,20 +9,11 @@ import { ModelRepository } from '../../repository/model/model.repository';
 })
 export class PutModelUseCase
   implements
-    UseCasePromise<
-      { id: string; bodyRequest: PutModelRequest },
-      Model
-    >
+    UseCasePromise<PutModelRequest,Model>
 {
   constructor(private _modelRepository: ModelRepository) {}
 
-  execute({
-    id,
-    bodyRequest,
-  }: {
-    id: string;
-    bodyRequest: PutModelRequest;
-  }): Promise<Model> {
-    return this._modelRepository.putModel(id, bodyRequest);
+  execute(request: PutModelRequest): Promise<Model> {
+    return this._modelRepository.putModel(request);
   }
 }

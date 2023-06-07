@@ -27,6 +27,8 @@ export interface SupplierItemResponse {
 export interface BrandItemResponse {
   _id?: string;
   nombre: string;
+  descripcion:string;
+  icono:string;
   
 }
 export interface CategoryItemResponse {
@@ -53,6 +55,8 @@ export interface Category {
 export interface Brand {
   _id: string;
   nombre: string;
+  descripcion:string;
+  icono:string;
 }
 
 export interface Status {
@@ -68,7 +72,7 @@ export interface Model {
   precio: number;
   cilindrada: string;
   velocidades: string;
-  capacidadTanque: string;
+  capacidad_tanque: string;
   torque: string;
   motor: string;
   potencia: string;

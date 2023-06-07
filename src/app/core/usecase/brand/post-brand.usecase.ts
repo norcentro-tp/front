@@ -12,7 +12,7 @@ export class PostBrandUseCase
 {
   constructor(private _brandRepository:BrandRepository) {}
 
-  execute(bodyrequest: PostBrandRequest): Promise<Brand> {
+  execute(bodyrequest: PostBrandRequest, ): Promise<Brand> {
     return this._brandRepository.postBrand(bodyrequest);
   }
 }

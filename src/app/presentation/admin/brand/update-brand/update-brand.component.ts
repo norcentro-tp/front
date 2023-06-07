@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BrandItemResponse } from 'src/app/core/models/all/response/all-responses.response';
+import { BrandItemResponse} from 'src/app/core/models/all/response/all-responses.response';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -15,9 +15,9 @@ import { PutBrandUseCase } from 'src/app/core/usecase/brand/put-brand.usecase';
 })
 export class UpdateBrandComponent implements OnInit {
   formBrand: FormGroup;
+  selectedFiles: File[]=[];
 
   constructor(
-    private _getAllBrand: GetAllBrandsUseCase,
     private _getBrandById: GetBrandByIdUseCase,
     private _putBrand: PutBrandUseCase,
     private _alertService: AlertService,
@@ -34,7 +34,15 @@ export class UpdateBrandComponent implements OnInit {
   createformBrand() {
     this.formBrand = this._formBuilder.group({
       nombre: [null],
+      descripcion: [null],
+      icono: [null]
     });
+  }
+  onSelect(event: any)  {
+    if (event.files && event.files.length > 0) {
+      this.selectedFiles[0]= event.files[0];
+      console.log(this.selectedFiles[0])
+    }
   }
 
   async getBrandbyId(id: string) {
@@ -43,6 +51,8 @@ export class UpdateBrandComponent implements OnInit {
       console.log(response);
       this.formBrand.setValue({
         nombre: response.nombre,
+        descripcion: response.descripcion,
+        icono: response.icono,
       });
     } catch (error) {
       console.error(error);
@@ -53,6 +63,9 @@ export class UpdateBrandComponent implements OnInit {
     const bodyRequestBrand: PutBrandRequest = {
       id: id,
       nombre: form.nombre,
+      descripcion: form.descripcion,
+      imageFiles:this.selectedFiles[0],
+      icono: form.icono,
     };
     try {
       const response: BrandItemResponse = await this._putBrand.execute(

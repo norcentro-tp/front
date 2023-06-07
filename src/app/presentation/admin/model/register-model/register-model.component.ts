@@ -11,6 +11,7 @@ import { PostModelUseCase } from 'src/app/core/usecase/model/post-model.usecase'
 })
 export class RegisterModelComponent implements OnInit {
   formModelo:FormGroup;
+  selectedFiles: File[]=[];
 
   constructor(
     private _postModelo: PostModelUseCase,
@@ -24,7 +25,7 @@ export class RegisterModelComponent implements OnInit {
   nombre: string | null = null;
   cilindrada:string| null = null;
   velocidades:string| null = null;
-  capacidadTanque:string| null = null;
+  capacidad_tanque:string| null = null;
   torque:string| null = null;
   motor:string| null = null;
   potencia:string| null = null;
@@ -38,7 +39,7 @@ export class RegisterModelComponent implements OnInit {
       nombre:[null],
       cilindrada:[null],
       velocidades:[null],
-      capacidadTanque:[null],
+      capacidad_tanque:[null],
       torque:[null],
       motor:[null],
       potencia:[null],
@@ -48,6 +49,12 @@ export class RegisterModelComponent implements OnInit {
       foto:[null]
     })
   }
+  onSelect(event: any)  {
+    if (event.files && event.files.length > 0) {
+      this.selectedFiles[0]= event.files[0];
+      console.log(this.selectedFiles[0])
+    }
+  }
 
   async addModelo() {
     const form=this.formModelo.value
@@ -55,13 +62,15 @@ export class RegisterModelComponent implements OnInit {
       nombre: form.nombre,
       cilindrada:form.cilindrada,
       velocidades:form.velocidades,
-      capacidadTanque:form.capacidadTanque,
+      capacidad_tanque:form.capacidad_tanque,
       torque:form.torque,
       motor: form.motor,
       potencia:form.potencia,
       precio:form.precio,
       descripcion:form.descripcion,
-      foto:form.foto
+      foto:form.foto,
+      anio:form.anio,
+      imageFiles:this.selectedFiles[0]
       };
     try {
       const response: Model = await this._postModelo.execute(

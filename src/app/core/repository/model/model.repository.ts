@@ -10,10 +10,7 @@ export abstract class ModelRepository {
     bodyRequest: PostModelRequest
   ): Promise<Model>;
 
-  abstract putModel(
-    id: string,
-    bodyRequest: PutModelRequest
-  ): Promise<Model>;
+  abstract putModel(request: PutModelRequest): Promise<Model>;
 
   abstract deleteModel(id: string): Promise<void>;
 }

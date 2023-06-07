@@ -12,6 +12,7 @@ import { ManageBrandComponent } from './manage-brand/manage-brand.component';
 import { BrandRoutingModule } from './brand.routing';
 import { RegisterBrandComponent } from './register-brand/register-brand.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 const COMPONENTS = [
   ManageBrandComponent,
@@ -33,6 +34,7 @@ const COMPONENTS = [
     DynamicDialogModule,
     BrandRoutingModule,
     TableModule,
+    FileUploadModule,
   ],
   providers: [],
 })

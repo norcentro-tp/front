@@ -13,8 +13,7 @@ export class PutBrandUseCase
 {
   constructor(private _brandRepository: BrandRepository) {}
 
-  execute(request: PutBrandRequest): Promise<Brand> {
-    
+  execute(request: PutBrandRequest): Promise<Brand> {    
     return this._brandRepository.putBrand(request);
   }
 }
