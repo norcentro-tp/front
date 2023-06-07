@@ -26,9 +26,9 @@ export class RegisterModelComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.createformModelo();
     this.getAllCategories();
     this.getAllBrands();
+    this.createformModelo();
   }
   nombre: string | null = null;
   cilindrada:string| null = null;

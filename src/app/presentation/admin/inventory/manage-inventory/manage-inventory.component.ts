@@ -21,7 +21,6 @@ export class ManageInventoryComponent implements OnInit {
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
     private _alertService: AlertService,
-
     private _getAllInventory: GetAllInventoryUseCase,
     private _deleteMoto: DeleteMotoUseCase
   ) {}
