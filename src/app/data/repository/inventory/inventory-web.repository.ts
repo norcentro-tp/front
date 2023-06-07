@@ -36,10 +36,10 @@ export class InventoryWebRepository extends InventoryRepository {
     );
   }
 
-  putMoto(id:string, bodyRequest: PutInventoryRequest): Promise<GetAllInventoryResponse | null> {
-    const url = `${INVENTORY_URL}/${id}`;
+  putMoto(request: PutInventoryRequest): Promise<GetAllInventoryResponse | null> {
+    const url = `${INVENTORY_URL}/${request.id}`;
     return lastValueFrom(
-      this.http.put<GetAllInventoryResponse>(url, bodyRequest)
+      this.http.put<GetAllInventoryResponse>(url, request)
     );
   }
     

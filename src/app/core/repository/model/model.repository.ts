@@ -6,9 +6,7 @@ export abstract class ModelRepository {
 
   abstract getAllModels(): Promise<Model[]>;
 
-  abstract postModel(
-    bodyRequest: PostModelRequest
-  ): Promise<Model>;
+  abstract postModel(bodyRequest: PostModelRequest): Promise<Model>;
 
   abstract putModel(request: PutModelRequest): Promise<Model>;
 

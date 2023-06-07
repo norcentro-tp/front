@@ -8,6 +8,21 @@
                 </span>
             </div>
             <div class="field col-12  md:col-4">
+              <span class="p-float-label">
+                <p-dropdown [options]="listaCategoria" optionLabel="nombre" optionValue="_id"
+                  formControlName="categoria"></p-dropdown>
+                <label for="inputtext-left">Categoria Moto</label>
+              </span>
+            </div>
+      
+            <div class="field col-12  md:col-4">
+              <span class="p-float-label">
+                <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id"
+                  formControlName="marca"></p-dropdown>
+                <label for="inputtext-left">Marca Moto</label>
+              </span>
+            </div>
+            <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="precio" formControlName="precio" required />
                     <label htmlFor="precio">Precio</label>

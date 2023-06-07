@@ -67,6 +67,8 @@ export interface Status {
 export interface Model {
   _id: string;
   nombre: string;
+  categoria: Category;
+  marca: Brand;
   anio: string;
   descripcion: string;
   precio: number;

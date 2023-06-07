@@ -134,6 +134,7 @@ export class UpdateInventoryComponent implements OnInit {
   async updateMoto(id: string) {
     const form = this.formInventory.value
     const bodyRequestMotos: PutInventoryRequest = {
+      id:id,
       codigo_vin: form.codigoVin,
       color: form.codigoColor,
       categoria: form.categoriaMotos,
@@ -143,10 +144,7 @@ export class UpdateInventoryComponent implements OnInit {
       estado: form.estado,
     };
     try {
-      const response: InventoryItemResponse = await this._putMoto.execute({
-        id: id,
-        bodyRequest: bodyRequestMotos
-      });
+      const response: InventoryItemResponse = await this._putMoto.execute(bodyRequestMotos);
 
       this._alertService.success('Cambios Guardados')
       console.log(response);

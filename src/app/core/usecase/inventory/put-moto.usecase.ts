@@ -8,11 +8,11 @@ import { PutInventoryRequest } from '../../models/all/request/all-requests.reque
   providedIn: 'root',
 })
 export class PutMotoUseCase
-  implements UseCasePromise<{ id: string; bodyRequest: PutInventoryRequest }, GetAllInventoryResponse>
+  implements UseCasePromise<PutInventoryRequest, GetAllInventoryResponse>
 {
   constructor(private _inventoryRepository: InventoryRepository) {}
 
-  execute({ id, bodyRequest }: { id: string; bodyRequest: PutInventoryRequest }): Promise<GetAllInventoryResponse> {
-    return this._inventoryRepository.putMoto(id, bodyRequest);
+  execute( request: PutInventoryRequest): Promise<GetAllInventoryResponse> {
+    return this._inventoryRepository.putMoto(request);
   }
 }

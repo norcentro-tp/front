@@ -133,7 +133,6 @@ export class RegisterInventoryComponent implements OnInit {
       estado: form.estado,
     };
     try {
-      debugger;
       const response: GetAllInventoryResponse = await this._postMoto.execute(
         bodyRequestMotos
       );

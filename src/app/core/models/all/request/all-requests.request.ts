@@ -20,6 +20,8 @@ export interface PostBrandRequest {
 }
 export interface PostModelRequest {
   nombre: string;
+  categoria: Category;
+  marca: Brand;
   cilindrada:string;
   velocidades:string;
   capacidad_tanque:string;
@@ -28,7 +30,7 @@ export interface PostModelRequest {
   potencia:string;
   precio:string;
   descripcion:string;
-  foto:string;
+  fotos:string;
   anio:string;
   imageFiles: File;    
   }
@@ -42,6 +44,7 @@ export interface PostSupplierRequest {
 }
 
 export interface PutInventoryRequest {
+  id: string;
   codigo_vin: string;
   color: string;
   categoria: Category;
@@ -64,8 +67,10 @@ export interface PutBrandRequest {
   imageFiles: File;
 }
 export interface PutModelRequest {
-  id:string;
+  id: string;
   nombre: string;
+  categoria: Category;
+  marca: Brand;
   cilindrada:string;
   velocidades:string;
   capacidad_tanque:string;
