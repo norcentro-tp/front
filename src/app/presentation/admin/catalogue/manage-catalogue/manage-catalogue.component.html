@@ -1,0 +1,46 @@
+<div class="grid justify-content-center">
+
+    <div class="field col-12 text-center">
+    </div>
+
+    <div class="col-12">
+        <p-table [value]="lCatalogue" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+            [rowsPerPageOptions]="[5, 10, 15]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Velocidades</th>
+                    <th>Motor</th>
+                    <th>Año</th>
+                    <th class="text-center">Opciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-modelo>
+                <tr>
+                    <td>{{modelo.nombre}}</td>
+                    <td>{{modelo.descripcion}}</td>
+                    <td>{{modelo.precio}}</td>
+                    <td>{{modelo.velocidades}}</td>
+                    <td>{{modelo.motor}}</td>
+                    <td>{{modelo.anio}}</td>
+                    <td class="text-center">
+                   
+
+                            <div class="card">
+                                <form class="flex align-items-center gap-1" [formGroup]="formCatalogue">
+                                    <p-checkbox formControlName="city" value="Activo" inputId="ny"></p-checkbox>
+                                    <label for="ny">Activo</label>
+                                  
+                                </form>
+                         
+                            </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>

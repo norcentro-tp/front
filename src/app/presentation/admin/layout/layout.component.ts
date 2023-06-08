@@ -63,6 +63,17 @@ export class LayoutComponent implements OnInit {
                 ]
             },
             {
+                label: 'Catalogo',
+                icon: 'pi pi-fw pi-building',
+                items: [
+                    {
+                        label: 'Gestionar Catalogo',
+                        icon: 'pi pi-fw pi-building',
+                        command: () => this._router.navigate(['admin/catalogue'])
+                    }
+                ]
+            },
+            {
                 label: 'Usuarios',
                 icon: 'pi pi-fw pi-user',
                 items: [
