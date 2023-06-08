@@ -79,6 +79,7 @@ export interface Model {
   motor: string;
   potencia: string;
   fotos: Photo[];
+  catalogo:string;
  
 }
 

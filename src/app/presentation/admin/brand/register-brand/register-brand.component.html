@@ -14,7 +14,7 @@
                 </span>
             </div>
             <div class="field col-12">
-                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="1000000" chooseLabel="Escoger">
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="10000000" chooseLabel="Escoger">
                     <ng-template pTemplate="content">
                         <ul *ngIf="selectedFiles.length">
                             <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>

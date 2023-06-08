@@ -56,6 +56,11 @@ export class ModelWebRepository extends ModelRepository {
     const url = `${MODEL_URL}/${id}`;
     return lastValueFrom(this.http.delete<void>(url));
   }
+
+  updateCatalogue(id: string): Promise<Model | null> {
+    const url = `${MODEL_URL}/${id}/updateCatalogue`;
+    return lastValueFrom(this.http.put<Model>(url, null));
+  }
 }
 
 

@@ -4,7 +4,7 @@ import { Model } from 'src/app/core/models/all/response/all-responses.response';
 import { ConfirmationService } from 'primeng/api';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { GetAllModelsUseCase } from 'src/app/core/usecase/model/get-all-models.usecase';
-import { DeleteModelUseCase } from 'src/app/core/usecase/model/delete-model.usecase';
+import { UpdateCatalogueUseCase } from 'src/app/core/usecase/model/put-catalogue.usecase';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -14,25 +14,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ManageCatalogueComponent implements OnInit {
   lCatalogue: any[] = [];
-  formCatalogue: FormGroup;
+  checked: boolean;
 
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
     private _alertService: AlertService,
     private _getAllCatalogue: GetAllModelsUseCase,
-    private _deleteModel: DeleteModelUseCase,
-    private _formBuilder: FormBuilder
+    private _updateCatalogue: UpdateCatalogueUseCase,
   ) {}
   ngOnInit() {
     this.getAllCatalogue();
-    this.createFormCatalogue()
-  }
-
-  createFormCatalogue() {
-    this.formCatalogue = this._formBuilder.group({
-      city: [null]
-    });
   }
 
   async getAllCatalogue() {
@@ -46,14 +38,14 @@ export class ManageCatalogueComponent implements OnInit {
     }
   }
 
-  deleteCatalogue(id: string) {
+  updateCatalogue(id: string) {
     try {
       this._confirmationService.confirm({
-        message: 'Estás seguro que desea eliminar? ',
+        message: 'Esta seguro que desea cambiar el estado de modelo en la vista catalogo? ',
         accept: () => {
-          this._deleteModel.execute(id).then(() => {
+          this._updateCatalogue.execute(id).then(() => {
             this.getAllCatalogue();
-            this._alertService.success('Se elimino la marca seleccionada');
+            this._alertService.success('Se actualizo el estado del modelo');
           });
         },
         reject: () => {},

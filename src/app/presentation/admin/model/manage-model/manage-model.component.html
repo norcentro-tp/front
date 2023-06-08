@@ -11,23 +11,25 @@
             [rowsPerPageOptions]="[5, 10, 15]">
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
                     <th>Precio</th>
-                    <th>Velocidades</th>
-                    <th>Motor</th>
                     <th>Año</th>
+                    <th>Motor</th>
+                    <th>Velocidad</th>
                     <th class="text-center">Opciones</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-modelo>
                 <tr>
                     <td>{{modelo.nombre}}</td>
-                    <td>{{modelo.descripcion}}</td>
+                    <td>{{modelo.marca.nombre}}</td>
+                    <td>{{modelo.categoria.nombre}}</td>
                     <td>{{modelo.precio}}</td>
-                    <td>{{modelo.velocidades}}</td>
-                    <td>{{modelo.motor}}</td>
                     <td>{{modelo.anio}}</td>
+                    <td>{{modelo.motor}}</td>
+                    <td>{{modelo.velocidades}}</td>
                     <td class="text-center">
                         <button pButton pRipple icon="pi pi-eye" pTooltip="Ver Detalle"
                             class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"
