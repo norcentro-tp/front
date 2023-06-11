@@ -59,6 +59,29 @@ export interface PutSupplierRequest {
   correo: string;
   direccion: string;
 }
+export interface PutEmployeeRequest {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  fecha_nacimiento:string;
+  estado: string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:object;
+}
+export interface PutClientRequest {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  estado: string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:object;
+}
 export interface PutBrandRequest {
   id: string;
   nombre: string;
@@ -88,3 +111,27 @@ export interface PutCategoryRequest {
   nombre: string;
 }
 
+export interface PostEmployeeRequest {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  fecha_nacimiento:string;
+  estado: string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:object;
+}
+export interface PostClientRequest {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  fecha_nacimiento:string;
+  estado: string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:object;
+}

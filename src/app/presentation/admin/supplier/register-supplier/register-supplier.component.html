@@ -1,30 +1,32 @@
 <div class="px-5 pt-4">
+    <form [formGroup]="formSupplier">
     <div class="p-fluid grid">
         <div class="col-12 md:col-4">
             <span class="p-float-label">
-                <input pInputText id="nombre" [(ngModel)]="nombre" required />
+                <input pInputText id="nombre" formControlName="nombre" required />
                 <label htmlFor="nombre">Nombre</label>
             </span>
         </div>
         <div class=" col-12 md:col-4">
             <span class="p-float-label">
-                <input pInputText id="telefono" [(ngModel)]="telefono" required />
+                <input pInputText id="telefono" formControlName="telefono" required />
                 <label htmlFor="telefono">Telefono</label>
             </span>
         </div>
         <div class=" col-12 md:col-4">
             <span class="p-float-label">
-                <input pInputText id="correo" [(ngModel)]="correo" required />
+                <input pInputText id="correo" formControlName="correo" required />
                 <label htmlFor="email">Correo</label>
             </span>
         </div>
         <div class=" col-12 md:col-4">
             <span class="p-float-label">
-                <input pInputText id="direccion" [(ngModel)]="direccion" required />
+                <input pInputText id="direccion" formControlName="direccion" required />
                 <label htmlFor="direccion">Direccion</label>
             </span>
         </div>
     </div>
+    </form>
 
     <div class="col-12 text-center py-3">
         <button pButton class="b-primary px-5 py-2" label="Agregar proveedor" (click)="addSupplier()">

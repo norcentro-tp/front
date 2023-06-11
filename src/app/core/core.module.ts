@@ -12,6 +12,10 @@ import { SupplierRepository } from './repository/supplier/supplier.repository';
 import { SupplierWebRepository } from '../data/repository/supplier/supplier-web.repository';
 import { StatusRepository } from './repository/status/status.repository';
 import { StatusWebRepository } from '../data/repository/status/modelo-web.repository';
+import { EmployeeWebRepository } from '../data/repository/employee/employee-web.repository';
+import { EmployeeRepository } from './repository/employee/employee.repository';
+import { ClientWebRepository } from '../data/repository/client/client-web.repository';
+import { ClientRepository } from './repository/client/client.repository';
 
 
 @NgModule({
@@ -27,8 +31,9 @@ import { StatusWebRepository } from '../data/repository/status/modelo-web.reposi
         { provide: ModelRepository, useClass: ModelWebRepository },
         { provide: BrandRepository, useClass: BrandWebRepository },
         { provide: SupplierRepository, useClass: SupplierWebRepository },
-        { provide: StatusRepository, useClass: StatusWebRepository }
-
+        { provide: StatusRepository, useClass: StatusWebRepository },
+        { provide: EmployeeRepository, useClass: EmployeeWebRepository },
+        { provide: ClientRepository, useClass: ClientWebRepository }
     ]
 })
 
