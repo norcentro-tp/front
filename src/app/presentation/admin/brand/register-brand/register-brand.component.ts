@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { Brand } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostBrandRequest } from 'src/app/core/models/all/request/all-requests.request';
@@ -27,8 +26,6 @@ export class RegisterBrandComponent implements OnInit {
   ngOnInit() {
     this.createformBrand();
   }
-  nombre: string | null = null;
-  descripcion: string | null = null;
 
   createformBrand() {
     this.formBrand = this._formBuilder.group({
@@ -38,11 +35,26 @@ export class RegisterBrandComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(10),
-        ],
+        ]
       ],
-      descripcion: [null, [Validators.required, Validators.minLength(10)]],
+      descripcion: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(10)
+        ]
+      ],
     });
   }
+
+  get nombre() {
+     return this.formBrand.get('nombre'); 
+  }
+
+  get descripcion() {
+     return this.formBrand.get('descripcion'); 
+  }
+
   onSelect(event: any) {
     if (event.files && event.files.length > 0) {
       this.selectedFiles[0] = event.files[0];
@@ -58,7 +70,7 @@ export class RegisterBrandComponent implements OnInit {
       imageFiles: this.selectedFiles[0],
     };
     console.log(bodyRequestBrand);
-    console.log(this.formBrand);
+    console.log(this.formBrand.value);
 
     this.formBrand.get('nombre').markAsDirty();
     this.formBrand.get('descripcion').markAsDirty();

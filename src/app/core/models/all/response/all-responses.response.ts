@@ -2,9 +2,7 @@ export interface GetAllInventoryResponse {
   _id: string;
   codigo_vin: string;
   color: string;
-  categoria: Category;
   modelo: Model;
-  marca: Brand;
   proveedor: Supplier;
   estado: Status;
   oferta: string[];
@@ -26,7 +24,7 @@ export interface GetAllEmployeeResponse {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:string;
+  fecha_nacimiento:Date;
   estado: string;
   documento_identificador:Documento;
   telefono: string;
@@ -68,9 +66,7 @@ export interface InventoryItemResponse {
   _id: string;
   codigo_vin: string;
   color: string;
-  categoria: Category;
   modelo: Model;
-  marca: Brand;
   proveedor: Supplier;
   estado: Status;
   oferta: string[];
@@ -133,7 +129,7 @@ export interface Employee {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:string;
+  fecha_nacimiento:Date;
   estado: string;
   documento_identificador:Documento;
   telefono: string;

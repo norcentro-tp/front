@@ -13,9 +13,7 @@
                 <tr>
                     <th>Codigo Vin</th>
                     <th>Color</th>
-                    <th>Categoria</th>
                     <th>Modelo</th>
-                    <th>Marca</th>
                     <th>Precio</th>
                     <th>Estado</th>
                     <th class="text-center">Opciones</th>
@@ -28,9 +26,7 @@
                         <i class="pi pi-circle-fill" [style]="'color: '+ inventory.color" [pTooltip]="inventory.color">
                         </i>
                     </td>
-                    <td>{{inventory.categoria.nombre}}</td>
                     <td>{{inventory.modelo.nombre}}</td>
-                    <td>{{inventory.marca.nombre}}</td>
                     <td>S/. {{inventory.modelo.precio | number : "1.2-2"}}</td>
                     <td>{{inventory.estado.nombre}}</td>
                     <td class="text-center">

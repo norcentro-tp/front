@@ -66,6 +66,7 @@ export class UpdateEmployeeComponent implements OnInit {
         usuario: response.usuario.nombre_usuario,
         contraseña: response.usuario.password
       });
+      console.log(this.formEmployee.value);
     } catch (error) {
       console.error(error);
     }

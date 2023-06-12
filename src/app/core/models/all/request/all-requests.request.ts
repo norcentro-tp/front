@@ -3,9 +3,7 @@ import { Brand, Category, Model, Status, Supplier } from "../response/all-respon
 export interface PostInventoryRequest {
     codigo_vin: string;
     color: string;
-    categoria: Category;
     modelo: Model;
-    marca: Brand;
     proveedor: Supplier;
     estado: Status;
 }
@@ -47,9 +45,7 @@ export interface PutInventoryRequest {
   id: string;
   codigo_vin: string;
   color: string;
-  categoria: Category;
   modelo: Model;
-  marca: Brand;
   proveedor: Supplier;
   estado: Status;
 }

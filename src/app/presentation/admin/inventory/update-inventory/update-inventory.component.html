@@ -7,6 +7,17 @@
                     <input pInputText id="codigoVin" formControlName="codigoVin" required />
                     <label htmlFor="codigoVin">Codigo Vin</label>
                 </span>
+                <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+                  <div *ngIf="codigoVin.errors?.['minlength']">
+                    El codigo VIN debe tener como mínimo 3 caracteres.
+                  </div>
+                  <div *ngIf="codigoVin.errors?.['maxlength']">
+                    El codigo VIN debe tener como máximo 17 caracteres.
+                  </div>       
+                  <div *ngIf="codigoVin.errors?.['alphanumeric']">
+                    El codigo VIN no debe contener caracteners no alfanumericos
+                  </div>       
+                </div>
             </div>
 
             <div class="field col-12  md:col-4">
@@ -14,23 +25,16 @@
                     <input pInputText id="codigoColor" formControlName="codigoColor" required />
                     <label htmlFor="codigoColor">Color</label>
                 </span>
-            </div>
-
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaCategoriaMotos" optionLabel="nombre" optionValue="_id" formControlName="categoriaMotos"></p-dropdown>
-                </span>
+                <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">  
+                  <div *ngIf="codigoColor.errors?.['invalidHexColor']">
+                    El codigo de color tiene que ser en codigo hexadecimal
+                  </div>       
+                </div>
             </div>
 
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <p-dropdown [options]="listaModelo" optionLabel="nombre" optionValue="_id" formControlName="modelo"></p-dropdown>
-                </span>
-            </div>
-
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id" formControlName="marca"></p-dropdown>
                 </span>
             </div>
 

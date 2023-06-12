@@ -1,25 +1,24 @@
 <div class="px-5 pt-4">
+
   <form [formGroup]="formInventory">
+
     <div class="p-fluid grid">
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
           <input pInputText id="codigoVin" formControlName="codigoVin" required />
           <label htmlFor="codigoVin">Codigo Vin</label>
-          <div
-            *ngIf="formInventory.get('codigoVin').invalid && (formInventory.get('codigoVin').dirty || formInventory.get('codigoVin').touched)"
-            class="alert alert-danger">
-            <div *ngIf="formInventory.get('codigoVin').errors?.['required']" class="alert alert-danger">
-              El codigo VIN es requerido
-            </div>
-            <div *ngIf="formInventory.get('codigoVin').errors?.['minlength']">
-              El codigo VIN debe tener como mínimo 3 caracteres.
-            </div>
-            <div *ngIf="formInventory.get('codigoVin').errors?.['maxlength']">
-              El codigo VIN debe tener como máximo 12 caracteres.
-            </div>
-          </div>
-
         </span>
+        <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+          <div *ngIf="codigoVin.errors?.['minlength']">
+            El codigo VIN debe tener como mínimo 3 caracteres.
+          </div>
+          <div *ngIf="codigoVin.errors?.['maxlength']">
+            El codigo VIN debe tener como máximo 17 caracteres.
+          </div>       
+          <div *ngIf="codigoVin.errors?.['alphanumeric']">
+            El codigo VIN no debe contener caracteners no alfanumericos
+          </div>       
+        </div>
       </div>
 
       <div class="field col-12  md:col-4">
@@ -27,44 +26,30 @@
           <input pInputText id="codigoColor" formControlName="codigoColor" required />
           <label htmlFor="codigoColor">Color</label>
         </span>
+        <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">  
+          <div *ngIf="codigoColor.errors?.['invalidHexColor']">
+            El codigo de color tiene que ser en codigo hexadecimal
+          </div>       
+        </div>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
-          <p-dropdown [options]="listaCategoriaMotos" optionLabel="nombre" optionValue="_id"
-            formControlName="categoriaMotos"></p-dropdown>
-          <label for="inputtext-left">Categoria Moto</label>
-        </span>
-      </div>
-
-      <div class="field col-12  md:col-4">
-        <span class="p-float-label">
-          <p-dropdown [options]="listaModelo" optionLabel="nombre" optionValue="_id"
-            formControlName="modelo"></p-dropdown>
+          <p-dropdown [options]="listaModelo" optionLabel="nombre" [filter]="true" filterBy="nombre" filterplaceholder="Modelo Moto" placeholder="Modelo Moto" optionValue="_id" formControlName="modelo" ></p-dropdown>
           <label for="inputtext-left">Modelo Moto</label>
         </span>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
-          <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id"
-            formControlName="marca"></p-dropdown>
-          <label for="inputtext-left">Marca Moto</label>
-        </span>
-      </div>
-
-      <div class="field col-12  md:col-4">
-        <span class="p-float-label">
-          <p-dropdown [options]="listaProveedor" optionLabel="nombre" optionValue="_id"
-            formControlName="proveedor"></p-dropdown>
+          <p-dropdown [options]="listaProveedor" optionLabel="nombre" [filter]="true" filterBy="nombre" filterPlaceholder="Proveedor" placeholder="Proveedor" optionValue="_id" formControlName="proveedor"></p-dropdown>
           <label for="inputtext-left">Proveedor</label>
         </span>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
-          <p-dropdown [options]="listaStatus" optionLabel="nombre" optionValue="_id" appendTo="body"
-            formControlName="estado"></p-dropdown>
+          <p-dropdown [options]="listaStatus" optionLabel="nombre" [filter]="true" filterBy="nombre" filterPlaceholder="Estado Moto" placeholder="Estado Moto" optionValue="_id" appendTo="body" formControlName="estado"></p-dropdown>
           <label for="inputtext-left">Estado Moto</label>
         </span>
       </div>

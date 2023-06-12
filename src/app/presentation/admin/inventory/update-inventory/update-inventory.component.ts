@@ -17,7 +17,13 @@ import { InventoryItemResponse } from 'src/app/core/models/all/response/all-resp
 import { PutInventoryRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { hexadecimalColorValidator,alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-update-inventory',
@@ -32,9 +38,7 @@ export class UpdateInventoryComponent implements OnInit {
   listaProveedor: Supplier[] = []
   listaStatus: Status[] = []
   constructor(
-    private _getAllCategories: GetAllCategoriesUseCase,
     private _getAllModels: GetAllModelsUseCase,
-    private _getAllBrands: GetAllBrandsUseCase,
     private _getAllSuppliers: GetAllSuppliersUseCase,
     private _getAllStatus: GetAllStatusUseCase,
     private _getMotoById: GetInventoryByIdUseCase,
@@ -47,9 +51,7 @@ export class UpdateInventoryComponent implements OnInit {
 
   ngOnInit() {
     this.createformInventory();
-    this.getAllCategories();
     this.getAllModels();
-    this.getAllBrands();
     this.getAllSuppliers();
     this.getAllStatus();
     this.getMotobyId(this.config.data.id)
@@ -57,15 +59,26 @@ export class UpdateInventoryComponent implements OnInit {
 
   createformInventory() {
     this.formInventory = this._formBuilder.group({
-      codigoVin: [null],
-      codigoColor: [null],
-      categoriaMotos: [null],
+      codigoVin: new FormControl(null, [
+        Validators.minLength(3),
+        Validators.maxLength(17),
+        alphanumericValidator()
+      ]),
+      codigoColor: new FormControl(null, [
+        hexadecimalColorValidator()
+      ]),
       modelo: [null],
-      marca: [null],
       proveedor: [null],
-      estado: [null]
+      estado: [null],
+    }, { validators: allFieldsFilledValidator() })
+  }
 
-    })
+  get codigoVin() {
+     return this.formInventory.get('codigoVin'); 
+  }
+
+  get codigoColor() {
+     return this.formInventory.get('codigoColor'); 
   }
 
   async getMotobyId(id: string) {
@@ -75,22 +88,10 @@ export class UpdateInventoryComponent implements OnInit {
       this.formInventory.setValue({
         codigoVin: response.codigo_vin,
         codigoColor: response.color,
-        categoriaMotos: response.categoria._id,
         modelo: response.modelo._id,
-        marca: response.marca._id,
         proveedor: response.proveedor._id,
         estado: response.estado._id
-
       })
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async getAllCategories() {
-    try {
-      const response: Category[] = await this._getAllCategories.execute();
-      this.listaCategoriaMotos = response;
     } catch (error) {
       console.error(error);
     }
@@ -105,14 +106,6 @@ export class UpdateInventoryComponent implements OnInit {
     }
   }
 
-  async getAllBrands() {
-    try {
-      const response: Brand[] = await this._getAllBrands.execute();
-      this.listaMarca = response;
-    } catch (error) {
-      console.error(error);
-    }
-  }
   async getAllSuppliers() {
     try {
       const response: Supplier[] = await this._getAllSuppliers.execute();
@@ -122,6 +115,7 @@ export class UpdateInventoryComponent implements OnInit {
       console.error(error);
     }
   }
+
   async getAllStatus() {
     try {
       const response: Status[] = await this._getAllStatus.execute();
@@ -131,19 +125,24 @@ export class UpdateInventoryComponent implements OnInit {
       console.error(error);
     }
   }
+
   async updateMoto(id: string) {
     const form = this.formInventory.value
     const bodyRequestMotos: PutInventoryRequest = {
       id:id,
       codigo_vin: form.codigoVin,
       color: form.codigoColor,
-      categoria: form.categoriaMotos,
       modelo: form.model,
-      marca: form.marca,
       proveedor: form.proveedor,
       estado: form.estado,
     };
+    this.formInventory.markAllAsTouched();
+    if (this.formInventory.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
+      if (!this.formInventory.valid) return;
       const response: InventoryItemResponse = await this._putMoto.execute(bodyRequestMotos);
 
       this._alertService.success('Cambios Guardados')
