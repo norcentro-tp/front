@@ -7,8 +7,8 @@ export const CATEGORY_URL = `${environment.API_BACKEND}categorias-moto`
 export const BRAND_URL = `${environment.API_BACKEND}marcas`
 export const MODEL_URL = `${environment.API_BACKEND}modelos`
 export const STATUS_URL = `${environment.API_BACKEND}estados-moto`
-
-
+export const EMPLOYEE_URL = `${environment.API_BACKEND}trabajador`
+export const CLIENT_URL = `${environment.API_BACKEND}cliente`
 
 export const TYPE_DOCUMENT_URL = `${environment.API_BACKEND}tipo-documentos`
 

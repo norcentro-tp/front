@@ -1,0 +1,65 @@
+<div class="px-5 pt-4">
+    <form [formGroup]="formClient">
+        <div class="p-fluid grid">
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="usuario" formControlName="usuario" required />
+                    <label htmlFor="usuario">Usuario</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="contraseña" formControlName="contraseña" required />
+                    <label htmlFor="contraseña">contraseña</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombres" formControlName="nombres" required />
+                    <label htmlFor="nombres">Nombre</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="apellido_paterno" formControlName="apellido_paterno" required />
+                    <label htmlFor="apellido_paterno">Apellido Paterno</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="apellido_materno" formControlName="apellido_materno" required />
+                    <label htmlFor="apellido_materno">Apellido Materno</label>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="telefono" formControlName="telefono" required />
+                    <label htmlFor="telefono">Telefono</label>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="correo" formControlName="correo" required />
+                    <label htmlFor="correo">Correo</label>
+                </span>
+            </div>
+        <div class=" col-12 md:col-4">
+            <span class="p-float-label">
+                <input pInputText id="documento_identificador" formControlName="documento_identificador" required />
+                <label htmlFor="documento_identificador">Numero de Documento</label>
+            </span>
+        </div>
+   
+    <div class=" col-12 md:col-4">
+        <span class="p-float-label">
+            <input pInputText id="estado" formControlName="estado" required />
+            <label htmlFor="estado">Estado</label>
+        </span>
+    </div>
+    </div>
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Volver" (click)="close()">
+        </button>
+    </div>
+</div>

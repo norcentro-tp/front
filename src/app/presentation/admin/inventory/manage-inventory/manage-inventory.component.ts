@@ -7,6 +7,7 @@ import { RegisterInventoryComponent } from '../register-inventory/register-inven
 import { UpdateInventoryComponent } from '../update-inventory/update-inventory.component';
 import { ConfirmationService } from 'primeng/api';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { VisualizeInventoryComponent } from '../visualize-inventory/visualize-inventory.component';
 
 @Component({
   selector: 'app-manage-inventory',
@@ -53,7 +54,7 @@ export class ManageInventoryComponent implements OnInit {
   }
 
   openVisualizeDialog(id:string) {
-    const ref = this.dialogService.open(UpdateInventoryComponent, {
+    const ref = this.dialogService.open(VisualizeInventoryComponent, {
       header: 'Visualizar Moto',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

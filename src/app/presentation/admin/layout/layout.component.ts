@@ -27,7 +27,7 @@ export class LayoutComponent implements OnInit {
         this.items = [
             {
                 label: 'Inventario',
-                icon: 'pi pi-fw pi-box',
+                icon: 'pi pi-fw pi-book',
                 items: [
                     {
                         label: 'Gestionar Inventario',
@@ -57,22 +57,40 @@ export class LayoutComponent implements OnInit {
                 items: [
                     {
                         label: 'Gestionar Proveedor',
-                        icon: 'pi pi-fw pi-building',
+                        icon: 'pi pi-fw pi-truck',
                         command: () => this._router.navigate(['admin/supplier'])
                     }
                 ]
             },
             {
-                label: 'Usuarios',
-                icon: 'pi pi-fw pi-user',
+                label: 'Catalogo',
+                icon: 'pi pi-fw pi-images',
                 items: [
                     {
-                        label: 'Gestionar Usuario',
-                        icon: 'pi pi-fw pi-reddit',
-                        command: () => this._router.navigate(['admin/user'])
+                        label: 'Gestionar Catalogo',
+                        icon: 'pi pi-fw pi-th-large',
+                        command: () => this._router.navigate(['admin/catalogue'])
                     }
                 ]
             },
+            {
+                label: 'Usuarios',
+                icon: 'pi pi-fw pi-users',
+                items: [
+                    {
+                        label: 'Gestionar Empleado',
+                        icon: 'pi pi-fw pi-android',
+                        command: () => this._router.navigate(['admin/employee'])
+                    },
+                    {
+                        label: 'Gestionar Cliente',
+                        icon: 'pi pi-fw pi-reddit',
+                        command: () => this._router.navigate(['admin/client'])
+                    }
+                    
+                ]
+            },
+            
             {
                 label: 'Cerrar Sesión',
                 icon: 'pi pi-fw pi-sign-out',

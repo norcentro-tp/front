@@ -17,6 +17,34 @@ export interface GetAllSupplierResponse {
   correo: string;
   direccion: string;
 }
+
+export interface TemporalEmployeeResponse {
+  data:GetAllEmployeeResponse
+}
+export interface GetAllEmployeeResponse {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  fecha_nacimiento:string;
+  estado: string;
+  documento_identificador:Documento;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+}
+export interface GetAllClientResponse {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  estado: string;
+  documento_identificador:Documento;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+ 
+}
 export interface SupplierItemResponse {
   _id?: string;
   nombre: string;
@@ -79,12 +107,50 @@ export interface Model {
   motor: string;
   potencia: string;
   fotos: Photo[];
+  catalogo:string;
  
+}
+export interface Usuario {
+  _id?: string;
+  nombre_usuario: string;
+  password: string;
+  estado:string;
+  correo: string;
+}
+
+export interface Documento {
+  tipo_documento: string;
+  numero_documento: string;
 }
 
 export interface Photo {
   nombre_foto: string;
   link: string;
+}
+
+export interface Employee {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  fecha_nacimiento:string;
+  estado: string;
+  documento_identificador:Documento;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+}
+export interface Client {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  estado: string;
+  documento_identificador:Documento;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+  
 }
 
 export interface Supplier {

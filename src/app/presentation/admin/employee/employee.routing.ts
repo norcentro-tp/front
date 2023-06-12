@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
-import { ManageUserComponent } from "./manage-user/manage-user.component";
+import { ManageEmployeeComponent } from "./manage-employee/manage-employee.component";
 
 const routes: Routes = [
 
-    { path: '', component: ManageUserComponent },
+    { path: '', component: ManageEmployeeComponent },
 ]
 
 @NgModule({
@@ -12,4 +12,4 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class UserRoutingModule { }
+export class EmployeeRoutingModule { }

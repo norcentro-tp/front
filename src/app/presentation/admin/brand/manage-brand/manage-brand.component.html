@@ -12,12 +12,14 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th>Nombre</th>
+                    <th>Descripcion</th>
                     <th class="text-center">Opciones</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-brand>
                 <tr>
                     <td>{{brand.nombre}}</td>
+                    <td>{{brand.descripcion}}</td>
                     <td class="text-center">
                         <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
                             class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"

@@ -11,4 +11,6 @@ export abstract class ModelRepository {
   abstract putModel(request: PutModelRequest): Promise<Model>;
 
   abstract deleteModel(id: string): Promise<void>;
+
+  abstract updateCatalogue(id: string): Promise<Model>;
 }

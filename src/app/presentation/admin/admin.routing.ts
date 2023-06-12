@@ -25,9 +25,14 @@ const routes: Routes = [
                 path: 'supplier',
                 loadChildren: () => import('./supplier/supplier.module').then(m => m.SupplierModule)
             },
+          
             {
-                path: 'user',
-                loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+                path: 'employee',
+                loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
+            },
+            {
+                path: 'client',
+                loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
             },
             {
                 path: 'category',
@@ -40,6 +45,10 @@ const routes: Routes = [
             {
                 path: 'model',
                 loadChildren: () => import('./model/model.module').then(m => m.ModelModule)
+            },
+            {
+                path: 'catalogue',
+                loadChildren: () => import('./catalogue/catalogue.module').then(m => m.CatalogueModule)
             }
         ]
     }
