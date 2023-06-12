@@ -46,7 +46,7 @@ export class RegisterInventoryComponent implements OnInit {
     private _dialogRef: DynamicDialogRef,
     private _alertService: AlertService,
     private _formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.createformInventory();
@@ -83,9 +83,7 @@ export class RegisterInventoryComponent implements OnInit {
     }
   }
 
-  get codigoVin() {
-    return this.formInventory.get('codigoVin');
-  }
+  get codigoVin() { return this.formInventory.get('codigoVin'); }
 
   async getAllModels() {
     try {
@@ -123,6 +121,7 @@ export class RegisterInventoryComponent implements OnInit {
     }
   }
   async addMoto() {
+    if (!this.formInventory.valid) return
     const form = this.formInventory.value;
     const bodyRequestMotos: PostInventoryRequest = {
       codigo_vin: form.codigoVin,
@@ -133,13 +132,7 @@ export class RegisterInventoryComponent implements OnInit {
       proveedor: form.proveedor,
       estado: form.estado,
     };
-
-    this.formInventory.get('codigoVin').markAsDirty();
-    this.formInventory.get('codigoColor').markAsDirty();
-    console.log(this.formInventory);
-    if (!this.formInventory.valid) return;
     try {
-      if (!this.formInventory.valid) return;
       const response: GetAllInventoryResponse = await this._postMoto.execute(
         bodyRequestMotos
       );

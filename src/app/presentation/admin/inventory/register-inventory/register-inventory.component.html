@@ -1,24 +1,22 @@
 <div class="px-5 pt-4">
+
   <form [formGroup]="formInventory">
+
     <div class="p-fluid grid">
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
-          <input pInputText id="codigoVin" formControlName="codigoVin" required />
-          <label htmlFor="codigoVin">Codigo Vin</label>
-          <div
-            *ngIf="formInventory.get('codigoVin').invalid && (formInventory.get('codigoVin').dirty || formInventory.get('codigoVin').touched)"
-            class="alert alert-danger">
-            <div *ngIf="formInventory.get('codigoVin').errors?.['required']" class="alert alert-danger">
-              El codigo VIN es requerido
+          <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+
+            <div *ngIf="codigoVin.errors?.['required']">
+              Codigo Vin es requerido
             </div>
-            <div *ngIf="formInventory.get('codigoVin').errors?.['minlength']">
-              El codigo VIN debe tener como mínimo 3 caracteres.
-            </div>
-            <div *ngIf="formInventory.get('codigoVin').errors?.['maxlength']">
-              El codigo VIN debe tener como máximo 12 caracteres.
+
+            <div *ngIf="codigoVin.errors?.['minLength']">
+              Codigo Vin minimo de 5 caracteres
             </div>
           </div>
-
+          <input pInputText id="codigoVin" formControlName="codigoVin" required />
+          <label htmlFor="codigoVin">Codigo Vin</label>
         </span>
       </div>
 

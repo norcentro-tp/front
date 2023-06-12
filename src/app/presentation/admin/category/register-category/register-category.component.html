@@ -5,18 +5,6 @@
                 <span class="p-float-label">
                     <input pInputText id="nombre" formControlName="nombre" required />
                     <label htmlFor="nombre">Nombre</label>
-                    <div *ngIf="formCategory.get('nombre').invalid && (formCategory.get('nombre').dirty || formCategory.get('nombre').touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="formCategory.get('nombre').errors?.['required']" class="alert alert-danger">
-                            Nombre es requerido
-                        </div>
-                        <div *ngIf="formCategory.get('nombre').errors?.['minlength']">
-                            El nombre debe tener como mínimo 4 caracteres.
-                        </div>
-                        <div *ngIf="formCategory.get('nombre').errors?.['maxlength']">
-                            El nombre debe tener como máximo 10 caracteres.
-                        </div>
-                    </div>
                 </span>
             </div>
         </div>
