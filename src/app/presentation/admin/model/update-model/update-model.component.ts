@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {  Brand, Category, Model } from 'src/app/core/models/all/response/all-responses.response';
-import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { PutModelRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { PutModelUseCase } from 'src/app/core/usecase/model/put-model.usecase';
 import { GetModelByIdUseCase } from 'src/app/core/usecase/model/get-model-byid.usecase';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
+import { alphanumericPlusValidator, numericValidator, numericPlusValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-update-model',
@@ -26,7 +31,7 @@ export class UpdateModelComponent implements OnInit {
     private _getAllBrands: GetAllBrandsUseCase,
     private _putModelo: PutModelUseCase,
     private _alertService: AlertService,
-    public ref: DynamicDialogRef,
+    public _dialogRef: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private _formBuilder: FormBuilder
   ) {}
@@ -40,25 +45,81 @@ export class UpdateModelComponent implements OnInit {
 
   createformModelo() {
     this.formModelo = this._formBuilder.group({
-      nombre: [null],
+      nombre: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphanumericPlusValidator()
+        ],
+      ],
       categoria: [null],
       marca: [null],
-      cilindrada: [null],
-      velocidades: [null],
-      capacidad_tanque: [null],
-      torque: [null],
-      motor: [null],
-      potencia: [null],
-      precio: [null],
-      descripcion: [null],
-      anio: [null],
-      fotos:[null],
-    });
+      cilindrada: [
+        null,
+        [
+          alphanumericPlusValidator()
+        ],
+      ],
+      velocidades: [
+        null,
+        [
+          numericValidator()
+        ],
+      ],
+      capacidad_tanque: [
+        null,
+        [
+          numericPlusValidator()
+        ],
+      ],
+      torque: [
+        null,
+        [
+          alphanumericPlusValidator()
+        ],
+      ],
+      motor: [
+        null,
+        [
+          alphanumericPlusValidator()
+        ],
+      ],
+      potencia: [
+        null,
+        [
+          alphanumericPlusValidator()
+        ],
+      ],
+      precio: [
+        null,
+        [
+          numericPlusValidator()
+        ],
+      ],
+      descripcion: [
+        null,
+        [
+          Validators.minLength(10),
+          alphanumericPlusValidator()
+        ]
+      ],
+      anio: [
+        null,
+        [ 
+          Validators.max(2023),
+          Validators.minLength(4),
+          Validators.maxLength(4),
+          numericValidator()
+        ],
+      ],
+      fotos: [null],
+    },{ validators: allFieldsFilledValidator() });
   }
+
   onSelect(event: any)  {
     if (event.files && event.files.length > 0) {
       this.selectedFiles[0]= event.files[0];
-      console.log(this.selectedFiles[0])
     }
   }
 
@@ -121,16 +182,26 @@ export class UpdateModelComponent implements OnInit {
       anio:form.anio,
       imageFiles:this.selectedFiles[0]
     };
+    this.formModelo.markAllAsTouched();
+    if (this.formModelo.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
+      if (this.formModelo.invalid) return;
       const response: Model = await this._putModelo.execute( 
         bodyRequestModelo
       );
 
       this._alertService.success('Cambios Guardados');
       console.log(response);
-      this.ref.close();
+      this.close();
     } catch (error) {
       console.error(error);
     }
+  }
+
+  close() {
+    this._dialogRef.close();
   }
 }

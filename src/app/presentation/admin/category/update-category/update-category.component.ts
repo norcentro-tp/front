@@ -5,10 +5,16 @@ import {
 } from 'src/app/core/models/all/response/all-responses.response';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
 import { GetCategoryByIdUseCase } from 'src/app/core/usecase/category/get-category-byid.usecase';
 import { PutCategoryRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { PutCategoryUseCase } from 'src/app/core/usecase/category/put-category.usecase';
+import { alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-update-brand',
@@ -34,8 +40,19 @@ export class UpdateCategoryComponent implements OnInit {
 
   createformCategory() {
     this.formCategory = this._formBuilder.group({
-      nombre: [null],
-    });
+      nombre: new FormControl(
+        null,
+        [
+          Validators.minLength(3),
+          Validators.maxLength(10),
+          alphanumericValidator()
+        ]
+      ),
+    },{ validators: allFieldsFilledValidator() });
+  }
+
+  get nombre() {
+     return this.formCategory.get('nombre'); 
   }
 
   async getCategorybyId(id: string) {
@@ -55,12 +72,21 @@ export class UpdateCategoryComponent implements OnInit {
       id: id,
       nombre: form.nombre,
     };
+    console.log(bodyRequestCategory);
+    console.log(this.formCategory.value);
+
+    this.formCategory.markAllAsTouched();
+    if (this.formCategory.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
+      if (this.formCategory.invalid) return;
       const response: CategoryItemResponse = await this._putCategory.execute(
         bodyRequestCategory
       );
 
-      this._alertService.success('Cambios Guardados');
+      this._alertService.success('Cambios guardados exitosamente');
       console.log(response);
       this.ref.close();
     } catch (error) {

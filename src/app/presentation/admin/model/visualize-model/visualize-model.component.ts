@@ -4,7 +4,11 @@ import {
   Status,
 } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 import { GetModelByIdUseCase } from 'src/app/core/usecase/model/get-model-byid.usecase';
 
 @Component({
@@ -30,16 +34,16 @@ export class VisualizeModelComponent implements OnInit {
 
   createformModelo() {
     this.formModelo = this._formBuilder.group({
-      nombre: [null],
-      cilindrada: [null],
-      velocidades: [null],
-      capacidad_tanque: [null],
-      torque: [null],
-      motor: [null],
-      potencia: [null],
-      precio: [null],
-      descripcion: [null],
-      anio: [null],
+      nombre: new FormControl( {value: null, disabled: true} ),
+      cilindrada: new FormControl( {value: null, disabled: true} ),
+      velocidades: new FormControl( {value: null, disabled: true} ),
+      capacidad_tanque: new FormControl( {value: null, disabled: true} ),
+      torque: new FormControl( {value: null, disabled: true} ),
+      motor: new FormControl( {value: null, disabled: true} ),
+      potencia: new FormControl( {value: null, disabled: true} ),
+      precio: new FormControl( {value: null, disabled: true} ),
+      descripcion: new FormControl( {value: null, disabled: true} ),
+      anio: new FormControl( {value: null, disabled: true} ),
     });
   }
 

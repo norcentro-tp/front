@@ -6,6 +6,18 @@
                 <span class="p-float-label">
                     <input pInputText id="nombre" formControlName="nombre" required />
                     <label htmlFor="nombre">Nombre</label>
+                    <div *ngIf="formCategory.get('nombre').invalid && (formCategory.get('nombre').dirty || formCategory.get('nombre').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="nombre.errors?.['alphanumeric']">
+                            El nombre debe estar escrito en caracteres alfanuméricos.
+                        </div>
+                        <div *ngIf="nombre.errors?.['minlength']">
+                            El nombre debe tener como mínimo 3 caracteres.
+                        </div>
+                        <div *ngIf="nombre.errors?.['maxlength']">
+                            El nombre debe tener como máximo 10 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
         </div>

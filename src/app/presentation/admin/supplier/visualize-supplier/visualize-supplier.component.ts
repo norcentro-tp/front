@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SupplierItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 import { GetSupplierByIdUseCase } from 'src/app/core/usecase/supplier/get-supplier-byid.usecase';
 
 @Component({
@@ -25,10 +29,10 @@ export class VisualizeSupplierComponent implements OnInit {
 
   createformSupplier() {
     this.formSupplier = this._formBuilder.group({
-      nombre: [null],
-      telefono: [null],
-      correo: [null],
-      direccion: [null],
+      nombre: new FormControl( {value: null, disabled: true} ),
+      telefono: new FormControl( {value: null, disabled: true} ),
+      correo: new FormControl( {value: null, disabled: true} ),
+      direccion: new FormControl( {value: null, disabled: true} ),
     });
   }
 

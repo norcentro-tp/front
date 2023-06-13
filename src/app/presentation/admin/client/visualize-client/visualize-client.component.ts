@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Client} from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetClientByIdUseCase } from 'src/app/core/usecase/client/get-client-byid.usecase';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 
 
 @Component({
@@ -26,15 +30,15 @@ export class VisualizeClientComponent implements OnInit {
 
   createformClient() {
     this.formClient = this._formBuilder.group({
-      nombres: [null],
-      apellido_paterno: [null],
-      apellido_materno: [null],
-      estado: [null],
-      documento_identificador: [null],
-      telefono: [null],
-      correo: [null],
-      usuario: [null],
-      contraseña: [null]
+      nombres: new FormControl( {value: null, disabled: true} ),
+      apellido_paterno: new FormControl( {value: null, disabled: true} ),
+      apellido_materno: new FormControl( {value: null, disabled: true} ),
+      estado: new FormControl( {value: null, disabled: true} ),
+      documento_identificador: new FormControl( {value: null, disabled: true} ),
+      telefono: new FormControl( {value: null, disabled: true} ),
+      correo: new FormControl( {value: null, disabled: true} ),
+      usuario: new FormControl( {value: null, disabled: true} ),
+      contraseña: new FormControl( {value: null, disabled: true} )
     });
   }
 

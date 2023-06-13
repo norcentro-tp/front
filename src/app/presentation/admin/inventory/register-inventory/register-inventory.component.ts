@@ -11,7 +11,6 @@ import { GetAllStatusUseCase } from 'src/app/core/usecase/status/get-all-status.
 import { GetAllSuppliersUseCase } from 'src/app/core/usecase/supplier/get-all-suppliers.usecase';
 import { GetAllInventoryResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { PostInventoryRequest } from 'src/app/core/models/all/request/all-requests.request';
-import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { GetAllModelsUseCase } from 'src/app/core/usecase/model/get-all-models.usecase';
 import {
@@ -20,7 +19,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { hexadecimalColorValidator,alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { hexadecimalColorValidator, vinCodeValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-register-inventory',
@@ -55,9 +55,7 @@ export class RegisterInventoryComponent implements OnInit {
   createformInventory() {    
     this.formInventory = this._formBuilder.group({
       codigoVin: new FormControl(null, [
-        Validators.minLength(3),
-        Validators.maxLength(17),
-        alphanumericValidator()
+        vinCodeValidator()
       ]),
       codigoColor: new FormControl(null, [
         hexadecimalColorValidator()
@@ -126,7 +124,7 @@ export class RegisterInventoryComponent implements OnInit {
         bodyRequestMotos
       );
 
-      this._alertService.success('Se realizo el registro');
+      this._alertService.success('Se realizo el registro con exito');
       console.log(response);
       this.close();
     } catch (error) {

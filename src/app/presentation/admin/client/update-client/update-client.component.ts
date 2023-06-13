@@ -4,12 +4,17 @@ import {
   GetAllClientResponse,
 } from 'src/app/core/models/all/response/all-responses.response';
 import { PutClientRequest } from 'src/app/core/models/all/request/all-requests.request';
-import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetClientByIdUseCase } from 'src/app/core/usecase/client/get-client-byid.usecase';
 import { PutClientUseCase } from 'src/app/core/usecase/client/put-client.usecase';
-import { NgPlural } from '@angular/common';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { emailValidator, passwordValidator, numericValidator, alphabeticValidator, alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-update-Client',
@@ -35,19 +40,69 @@ export class UpdateClientComponent implements OnInit {
 
   createformClient() {
     this.formClient = this._formBuilder.group({
-      nombres: [null],
-      apellido_paterno: [null],
-      apellido_materno: [null],
+      nombres: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      apellido_paterno: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      apellido_materno: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
       estado: [null],
-      documento_identificador: [null],
-      telefono: [null],
-      correo: [null],
-      usuario: {
-        _id:[null],
-        nombre_usuario:[null],
-        password:[null]
-      }
-    });
+      documento_identificador: [
+        null,
+        [
+          Validators.minLength(8),
+          Validators.maxLength(8),
+          numericValidator()
+        ],
+      ],
+      telefono:[
+        null,
+        [
+          Validators.minLength(9),
+          Validators.maxLength(9),
+          numericValidator()
+        ],
+      ],
+      correo: [
+        null,[
+          Validators.minLength(4),
+          Validators.maxLength(20),    
+          emailValidator()
+        ],
+      ],
+      usuario: [
+        null,[
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphanumericValidator()
+        ],
+      ],
+      contraseña:  [
+        null,[
+          Validators.minLength(8),
+          Validators.maxLength(20),
+          passwordValidator()
+        ],
+      ],
+    },{ validators:allFieldsFilledValidator() });
   }
 
   async getClientbyId(id: string) {
@@ -63,7 +118,8 @@ export class UpdateClientComponent implements OnInit {
         documento_identificador: response.documento_identificador.numero_documento,
         telefono: response.telefono,
         correo: response.correo,
-        usuario: response.usuario
+        usuario: response.usuario.nombre_usuario,
+        contraseña: response.usuario.password
       });
     } catch (error) {
       console.error(error);
@@ -84,7 +140,13 @@ export class UpdateClientComponent implements OnInit {
       correo: form.correo,
       usuario:form.usuario
     };
+    this.formClient.markAllAsTouched();
+    if (this.formClient.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
+      if (this.formClient.invalid) return;
       const response: Client = await this._putClient.execute({
         id: id,
         bodyRequest: bodyRequestClient,
