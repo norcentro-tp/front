@@ -64,7 +64,6 @@ export class UpdateClientComponent implements OnInit {
           alphabeticValidator()
         ],
       ],
-      estado: [null],
       documento_identificador: [
         null,
         [
@@ -102,6 +101,7 @@ export class UpdateClientComponent implements OnInit {
           passwordValidator()
         ],
       ],
+      id_usuario: [null]
     },{ validators:allFieldsFilledValidator() });
   }
 
@@ -114,10 +114,10 @@ export class UpdateClientComponent implements OnInit {
         nombres: response.nombres,
         apellido_paterno: response.apellido_paterno,
         apellido_materno: response.apellido_materno,
-        estado: response.estado,
         documento_identificador: response.documento_identificador.numero_documento,
         telefono: response.telefono,
         correo: response.correo,
+        id_usuario: response.usuario._id,
         usuario: response.usuario.nombre_usuario,
         contraseña: response.usuario.password
       });
@@ -131,14 +131,17 @@ export class UpdateClientComponent implements OnInit {
       nombres: form.nombres,
       apellido_paterno: form.apellido_paterno,
       apellido_materno: form.apellido_materno,
-      estado: form.estado,
       documento_identificador: {
         tipo_documento:"DNI",
         numero_documento:form. documento_identificador
       },
       telefono: form.telefono,
       correo: form.correo,
-      usuario:form.usuario
+      usuario:{
+         _id: form.id_usuario,
+         nombre_usuario:form.usuario,
+         password: form.contraseña
+      }
     };
     this.formClient.markAllAsTouched();
     if (this.formClient.invalid) {
@@ -147,6 +150,7 @@ export class UpdateClientComponent implements OnInit {
     };
     try {
       if (this.formClient.invalid) return;
+      console.log(this.formClient.value)
       const response: Client = await this._putClient.execute({
         id: id,
         bodyRequest: bodyRequestClient,

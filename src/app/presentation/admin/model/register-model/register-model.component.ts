@@ -113,8 +113,7 @@ export class RegisterModelComponent implements OnInit {
           Validators.maxLength(4),
           numericValidator()
         ],
-      ],
-      fotos: [null],
+      ]
     },{ validators: allFieldsFilledValidator() });
   }
 
@@ -156,7 +155,6 @@ export class RegisterModelComponent implements OnInit {
       potencia: form.potencia,
       precio: form.precio,
       descripcion: form.descripcion,
-      fotos: form.fotos,
       anio: form.anio,
       imageFiles: this.selectedFiles[0],
     };

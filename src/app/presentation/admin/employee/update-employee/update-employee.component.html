@@ -23,6 +23,18 @@
                 <span class="p-float-label">
                     <input pInputText id="contraseña" formControlName="contraseña" required />
                     <label htmlFor="contraseña">contraseña</label>
+                    <div *ngIf="formEmployee.get('contraseña').invalid && (formEmployee.get('contraseña').dirty || formEmployee.get('contraseña').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formEmployee.get('contraseña').errors?.['password']">
+                            La contraseña tiene que contener caracteres tanto numéricos como alfabéticos.
+                        </div>
+                        <div *ngIf="formEmployee.get('contraseña').errors?.['minlength']">
+                            La contraseña debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formEmployee.get('contraseña').errors?.['maxlength']">
+                            La contraseña debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="col-12 md:col-4">

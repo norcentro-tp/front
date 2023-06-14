@@ -62,7 +62,6 @@ export class RegisterClientComponent implements OnInit {
           alphabeticValidator()
         ],
       ],
-      estado: [null],
       documento_identificador: [
         null,
         [
@@ -110,8 +109,6 @@ export class RegisterClientComponent implements OnInit {
       nombres:form.nombres,
       apellido_paterno:form.apellido_paterno,
       apellido_materno: form.apellido_materno,
-      fecha_nacimiento: form.fecha_nacimiento,
-      estado: form.estado,
       documento_identificador: {
         tipo_documento:"DNI",
         numero_documento:form. documento_identificador

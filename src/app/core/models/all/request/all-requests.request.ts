@@ -1,4 +1,4 @@
-import { Brand, Category, Model, Status, Supplier } from "../response/all-responses.response";
+import { Brand, Category, Model, Status, Supplier, Usuario } from "../response/all-responses.response";
 
 export interface PostInventoryRequest {
     codigo_vin: string;
@@ -28,7 +28,6 @@ export interface PostModelRequest {
   potencia:string;
   precio:string;
   descripcion:string;
-  fotos:string;
   anio:string;
   imageFiles: File;    
   }
@@ -60,23 +59,20 @@ export interface PutEmployeeRequest {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:string;
-  estado: string;
   documento_identificador:object;
   telefono: string;
   correo: string;
-  usuario:object;
+  usuario:Usuario;
 }
 export interface PutClientRequest {
   _id?: string;
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  estado: string;
   documento_identificador:object;
   telefono: string;
   correo: string;
-  usuario:object;
+  usuario: Usuario;
 }
 export interface PutBrandRequest {
   id: string;
@@ -112,8 +108,6 @@ export interface PostEmployeeRequest {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:string;
-  estado: string;
   documento_identificador:object;
   telefono: string;
   correo: string;
@@ -124,8 +118,6 @@ export interface PostClientRequest {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:string;
-  estado: string;
   documento_identificador:object;
   telefono: string;
   correo: string;

@@ -24,8 +24,6 @@ export interface GetAllEmployeeResponse {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:Date;
-  estado: string;
   documento_identificador:Documento;
   telefono: string;
   correo: string;
@@ -36,7 +34,6 @@ export interface GetAllClientResponse {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  estado: string;
   documento_identificador:Documento;
   telefono: string;
   correo: string;
@@ -109,9 +106,7 @@ export interface Model {
 export interface Usuario {
   _id?: string;
   nombre_usuario: string;
-  password: string;
-  estado:string;
-  correo: string;
+  password: string
 }
 
 export interface Documento {
@@ -129,8 +124,6 @@ export interface Employee {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  fecha_nacimiento:Date;
-  estado: string;
   documento_identificador:Documento;
   telefono: string;
   correo: string;
@@ -141,7 +134,6 @@ export interface Client {
   nombres: string;
   apellido_paterno: string;
   apellido_materno:string;
-  estado: string;
   documento_identificador:Documento;
   telefono: string;
   correo: string;

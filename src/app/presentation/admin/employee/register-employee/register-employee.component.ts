@@ -60,8 +60,6 @@ export class RegisterEmployeeComponent implements OnInit {
           alphabeticValidator()
         ],
       ],
-      fecha_nacimiento: [null],
-      estado: [null],
       documento_identificador: [
         null,
         [
@@ -108,8 +106,6 @@ export class RegisterEmployeeComponent implements OnInit {
       nombres:form.nombres,
       apellido_paterno:form.apellido_paterno,
       apellido_materno: form.apellido_materno,
-      fecha_nacimiento: form.fecha_nacimiento,
-      estado: form.estado,
       documento_identificador: {
         tipo_documento:"DNI",
         numero_documento:form. documento_identificador
