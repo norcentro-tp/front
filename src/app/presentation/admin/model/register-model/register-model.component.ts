@@ -50,7 +50,7 @@ export class RegisterModelComponent implements OnInit {
         null,
         [
           Validators.minLength(4),
-          Validators.maxLength(20),
+          Validators.maxLength(25),
           alphanumericPlusValidator()
         ],
       ],

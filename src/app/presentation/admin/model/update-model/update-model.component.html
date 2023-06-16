@@ -14,7 +14,7 @@
                             El nombre debe tener como mínimo 4 caracteres.
                         </div>
                         <div *ngIf="formModelo.get('nombre').errors?.['maxlength']">
-                            El nombre debe tener como máximo 20 caracteres.
+                            El nombre debe tener como máximo 25 caracteres.
                         </div>
                     </div>
                 </span>
@@ -179,7 +179,7 @@
             <div class="field col-12">
 
                 <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
-                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="1000000"
+                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="5000000"
                     chooseLabel="Reemplazar">
                     <ng-template pTemplate="content">
                         <ul *ngIf="selectedFiles.length">
