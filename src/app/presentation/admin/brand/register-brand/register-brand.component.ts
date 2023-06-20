@@ -9,6 +9,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AlertService } from 'src/app/shared/services/alert.service';
 @Component({
   selector: 'app-register-brand',
   templateUrl: 'register-brand.component.html',
@@ -20,6 +21,7 @@ export class RegisterBrandComponent implements OnInit {
   constructor(
     private _postBrand: PostBrandUseCase,
     public _dialogref: DynamicDialogRef,
+    private _alertService: AlertService,
     private _formBuilder: FormBuilder
   ) {}
 
@@ -78,6 +80,7 @@ export class RegisterBrandComponent implements OnInit {
       if (!this.formBrand.valid) return;
       const response: Brand = await this._postBrand.execute(bodyRequestBrand);
       console.log(response);
+      this._alertService.success('Se registro con exito');
       this.close();
     } catch (error) {
       console.error(error);

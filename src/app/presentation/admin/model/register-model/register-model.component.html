@@ -71,7 +71,7 @@
                             El motor debe tener como mínimo 4 caracteres.
                         </div>
                         <div *ngIf="formModelo.get('motor').errors?.['maxlength']">
-                            El motor debe tener como máximo 10 caracteres.
+                            El motor debe tener como máximo 30 caracteres.
                         </div>
                     </div>
                 </span>
@@ -108,10 +108,10 @@
                             Velocidades es requerido
                         </div>
                         <div *ngIf="formModelo.get('velocidades').errors?.['minlength']">
-                            Velocidades debe tener como mínimo 4 caracteres.
+                            Velocidades debe tener como mínimo 1 caracteres.
                         </div>
                         <div *ngIf="formModelo.get('velocidades').errors?.['maxlength']">
-                            Velocidades debe tener como máximo 10 caracteres.
+                            Velocidades debe tener como máximo 2 caracteres.
                         </div>
                     </div>
                 </span>

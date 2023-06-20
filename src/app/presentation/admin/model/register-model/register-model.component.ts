@@ -70,8 +70,8 @@ export class RegisterModelComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          Validators.minLength(1),
+          Validators.maxLength(2),
         ],
       ],
       capacidad_tanque: [
@@ -95,7 +95,7 @@ export class RegisterModelComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(10),
+          Validators.maxLength(30),
         ],
       ],
       potencia: [
