@@ -1,0 +1,258 @@
+<div class="px-5 pt-4">
+    <h2>Datos del Cliente</h2>
+    <form [formGroup]="formSale">
+        <div class="p-fluid grid">
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="usuario" formControlName="usuario" required />
+                    <label htmlFor="usuario">Usuario</label>
+                    <div *ngIf="formSale.get('usuario').invalid && (formSale.get('usuario').dirty || formSale.get('usuario').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('usuario').errors?.['alphanumeric']">
+                            El nombre debe estar escrito en caracteres alfanumpericos.
+                        </div>
+                        <div *ngIf="formSale.get('usuario').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('usuario').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="contraseña" formControlName="contraseña" required />
+                    <label htmlFor="contraseña">contraseña</label>
+                    <div *ngIf="formSale.get('contraseña').invalid && (formSale.get('contraseña').dirty || formSale.get('contraseña').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('contraseña').errors?.['password']">
+                            La contraseña tiene que contener caracteres tanto numéricos como alfabéticos.
+                        </div>
+                        <div *ngIf="formSale.get('contraseña').errors?.['minlength']">
+                            La contraseña debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('contraseña').errors?.['maxlength']">
+                            La contraseña debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombres" formControlName="nombres" required />
+                    <label htmlFor="nombres">Nombre</label>
+                    <div *ngIf="formSale.get('nombres').invalid && (formSale.get('nombres').dirty || formSale.get('nombres').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('nombres').errors?.['alphabetic']">
+                            El nombre debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formSale.get('nombres').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('nombres').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="apellido_paterno" formControlName="apellido_paterno" required />
+                    <label htmlFor="apellido_paterno">Apellido Paterno</label>
+                    <div *ngIf="formSale.get('apellido_paterno').invalid && (formSale.get('apellido_paterno').dirty || formSale.get('apellido_paterno').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('apellido_paterno').errors?.['alphabetic']">
+                            El apellido materno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formSale.get('apellido_paterno').errors?.['minlength']">
+                            El apellido materno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('apellido_paterno').errors?.['maxlength']">
+                            El apellido materno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="apellido_materno" formControlName="apellido_materno" required />
+                    <label htmlFor="apellido_materno">Apellido Materno</label>
+                    <div *ngIf="formSale.get('apellido_materno').invalid && (formSale.get('apellido_materno').dirty || formSale.get('apellido_materno').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('apellido_materno').errors?.['alphabetic']">
+                            El apellido materno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formSale.get('apellido_materno').errors?.['minlength']">
+                            El apellido materno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('apellido_materno').errors?.['maxlength']">
+                            El apellido materno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="documento_identificador" formControlName="documento_identificador" required />
+                    <label htmlFor="documento_identificador">Numero de Documento</label>
+                    <div *ngIf="formSale.get('documento_identificador').invalid && (formSale.get('documento_identificador').dirty || formSale.get('documento_identificador').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('documento_identificador').errors?.['numeric']">
+                            El DNI debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formSale.get('documento_identificador').errors?.['minlength']">
+                            El nombre debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('documento_identificador').errors?.['maxlength']">
+                            El nombre debe tener como máximo 8 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="telefono" formControlName="telefono" required />
+                    <label htmlFor="telefono">Telefono</label>
+                    <div *ngIf="formSale.get('telefono').invalid && (formSale.get('telefono').dirty || formSale.get('telefono').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('telefono').errors?.['numeric']">
+                            El telefono debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formSale.get('telefono').errors?.['minlength']">
+                            El telefono debe tener como mínimo 9 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('telefono').errors?.['maxlength']">
+                            El telefono debe tener como máximo 9 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="correo" formControlName="correo" required />
+                    <label htmlFor="email">Correo</label>
+                </span>
+                <div *ngIf="formSale.get('correo').invalid && (formSale.get('correo').dirty || formSale.get('correo').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="formSale.get('correo').errors?.['email']">
+                        El correo debe tener el siguiente formato: aaa@aaa.aaa.
+                    </div>
+                    <div *ngIf="formSale.get('correo').errors?.['minlength']">
+                        El correo debe tener como mínimo 4 caracteres.
+                    </div>
+                    <div *ngIf="formSale.get('correo').errors?.['maxlength']">
+                        El correo debe tener como máximo 20 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="estado" formControlName="estado" required />
+                    <label htmlFor="estado">Estado</label>
+                    <div *ngIf="formSale.get('estado').invalid && (formSale.get('estado').dirty || formSale.get('estado').touched)"
+                        class="alert alert-danger">
+                   </div>
+                </span>
+            </div>
+            <h2>Detalles del Pedido</h2>
+            <div class="p-fluid grid">
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="precio" formControlName="precio" required />
+                    <label htmlFor="precio">Precio</label>
+                    <div *ngIf="formSale.get('precio').invalid && (formSale.get('precio').dirty || formSale.get('precio').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('precio').errors?.['numericPlus']">
+                            El precio debe estar escrito en caracteres numéricos.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="metodo_pago" formControlName="metodo_pago"required />
+                    <label htmlFor="metodo_pago">Metodo Pago</label>
+                    <div *ngIf="formSale.get('metodo_pago').invalid && (formSale.get('metodo_pago').dirty || formSale.get('metodo_pago').touched)"
+                        class="alert alert-danger">
+                   </div>
+                </span>
+
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="boleta_pago" formControlName="boleta_pago" required />
+                    <label htmlFor="boleta_pago">Boleta de Pago</label>
+                    <div *ngIf="formSale.get('boleta_pago').invalid && (formSale.get('boleta_pago').dirty || formSale.get('boleta_pago').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('boleta_pago').errors?.['numericPlus']">
+                            El boleta_pago debe estar escrito en caracteres numéricos.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="codigo__vin" formControlName="codigo__vin" required />
+                    <label htmlFor="codigo__vin">Codigo Vin</label>
+                    <div *ngIf="formSale.get('codigo__vin').invalid && (formSale.get('codigo__vin').dirty || formSale.get('codigo__vin').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('codigo__vin').errors?.['numeric']">
+                            El DNI debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formSale.get('codigo__vin').errors?.['minlength']">
+                            El nombre debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('codigo__vin').errors?.['maxlength']">
+                            El nombre debe tener como máximo 8 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="color" formControlName="color" required />
+                    <label htmlFor="color">Color</label>
+                    <div *ngIf="formSale.get('color').invalid && (formSale.get('color').dirty || formSale.get('color').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('color').errors?.['numeric']">
+                            El DNI debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formSale.get('color').errors?.['minlength']">
+                            El nombre debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('color').errors?.['maxlength']">
+                            El nombre debe tener como máximo 8 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>  
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="modelo" formControlName="modelo" required />
+                    <label htmlFor="modelo">modelo</label>
+                    <div *ngIf="formSale.get('Modelo').invalid && (formSale.get('modelo').dirty || formSale.get('modelo').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formSale.get('modelo').errors?.['numeric']">
+                            El DNI debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formSale.get('modelo').errors?.['minlength']">
+                            El nombre debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formSale.get('modelo').errors?.['maxlength']">
+                            El nombre debe tener como máximo 8 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+  
+        </div>
+        
+    </div>
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Agregar Venta" (click)="addSale()">
+        </button>
+    </div>
+</div>

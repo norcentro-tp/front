@@ -1,0 +1,121 @@
+<div class="px-5 pt-4">
+    <form [formGroup]="formCampaing">
+        <div class="p-fluid grid">
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombre" formControlName="nombre" required />
+                    <label htmlFor="nombre">Nombre</label>
+                    <div *ngIf="formCampaing.get('nombre').invalid && (formCampaing.get('nombre').dirty || formCampaing.get('nombre').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formCampaing.get('nombre').errors?.['alphanumeric']">
+                            El nombre debe estar escrito en caracteres alfanumpericos.
+                        </div>
+                        <div *ngIf="formCampaing.get('nombre').errors?.['minlength']">
+                            El nombre debe tener como mínimo 2 caracteres.
+                        </div>
+                        <div *ngIf="formCampaing.get('nombre').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="fecha_inicio" formControlName="fecha_inicio" required />
+                    <label htmlFor="fecha_inicio">Fecha Inicio</label>
+                    <div *ngIf="formCampaing.get('fecha_inicio').invalid && (formCampaing.get('fecha_inicio').dirty || formCampaing.get('fecha_inicio').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formCampaing.get('fecha_inicio').errors?.['password']">
+                            La fecha_inicio tiene que contener caracteres tanto numéricos como alfabéticos.
+                        </div>
+                        <div *ngIf="formCampaing.get('fecha_inicio').errors?.['minlength']">
+                            La fecha_inicio debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formCampaing.get('fecha_inicio').errors?.['maxlength']">
+                            La fecha_inicio debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="fecha_fin" formControlName="fecha_fin" required />
+                    <label htmlFor="fecha_fin">Fecha Fin</label>
+                    <div *ngIf="formCampaing.get('fecha_fin').invalid && (formCampaing.get('fecha_fin').dirty || formCampaing.get('fecha_fin').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formCampaing.get('fecha_fin').errors?.['alphabetic']">
+                            El nombre debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formCampaing.get('fecha_fin').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formCampaing.get('fecha_fin').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="descripcion" formControlName="descripcion" required />
+                    <label htmlFor="descripcion">Descripcion</label>
+                    <div *ngIf="formCampaing.get('descripcion').invalid && (formCampaing.get('descripcion').dirty || formCampaing.get('descripcion').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formCampaing.get('descripcion').errors?.['alphabetic']">
+                            El apellido paterno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formCampaing.get('descripcion').errors?.['minlength']">
+                            El apellido paterno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formCampaing.get('descripcion').errors?.['maxlength']">
+                            El apellido paterno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="estado" formControlName="estado" required />
+                    <label htmlFor="estado">Estado</label>
+                    <div *ngIf="formCampaing.get('estado').invalid && (formCampaing.get('estado').dirty || formCampaing.get('estado').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formCampaing.get('estado').errors?.['alphabetic']">
+                            El apellido materno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formCampaing.get('estado').errors?.['minlength']">
+                            El apellido materno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formCampaing.get('estado').errors?.['maxlength']">
+                            El apellido materno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="archivos" formControlName="archivos" required />
+                    <label htmlFor="archivos">Archivos</label>
+                    <div *ngIf="formCampaing.get('archivos').invalid && (formCampaing.get('archivos').dirty || formCampaing.get('archivos').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formCampaing.get('archivos').errors?.['numeric']">
+                            El archivos debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formCampaing.get('archivos').errors?.['minlength']">
+                            El archivos debe tener como mínimo 9 caracteres.
+                        </div>
+                        <div *ngIf="formCampaing.get('archivos').errors?.['maxlength']">
+                            El archivos debe tener como máximo 9 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+      
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
+            (click)="updateCampaing(this.config.data.id)">
+        </button>
+    </div>
+
+</div>

@@ -39,7 +39,70 @@ export interface PostSupplierRequest {
   correo: string;
   direccion: string;
 }
+export interface PostOfferRequest {
+  _id?: string;
+  nombre: string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  modelo: Model;
+  estado: string;
+  descuento: string;
+}
 
+export interface PostCampaingRequest {
+  _id?: string;
+  nombre: string;
+  descripcion:string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  estado: string;
+  archivos: string;
+}
+export interface PostSaleRequest {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+  codigo_vin: string;
+  color: string;
+  modelo: Model;
+  precio:string;
+  metodo_pago:string;
+  archivo_boleta:string;
+  estado:string;
+
+}
+
+export interface PutCampaingRequest {
+  _id?: string;
+  nombre: string;
+  descripcion:string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  estado: string;
+  archivos: string;
+}
+export interface PutSaleRequest {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+  codigo_vin: string;
+  color: string;
+  modelo: Model;
+  precio:string;
+  metodo_pago:string;
+  archivo_boleta:string;
+  estado:string;
+}
 export interface PutInventoryRequest {
   id: string;
   codigo_vin: string;
@@ -73,6 +136,15 @@ export interface PutClientRequest {
   telefono: string;
   correo: string;
   usuario: Usuario;
+}
+export interface PutOfferRequest {
+  _id?: string;
+  nombre: string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  modelo: Model;
+  estado: string;
+  descuento: string;
 }
 export interface PutBrandRequest {
   id: string;

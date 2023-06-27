@@ -90,6 +90,40 @@ export class LayoutComponent implements OnInit {
                     
                 ]
             },
+            {
+                label: 'Postventa',
+                icon: 'pi pi-fw pi-bitcoin',
+                items: [
+                    {
+                        label: 'Gestionar Oferta',
+                        icon: 'pi pi-fw pi-chart-pie',
+                        command: () => this._router.navigate(['admin/offer'])
+                    },
+                    {
+                        label: 'Gestionar Campaña',
+                        icon: 'pi pi-fw pi-file-export',
+                        command: () => this._router.navigate(['admin/campaing'])
+                    }
+                    
+                ]
+            },
+            {
+                label: 'Ventas ',
+                icon: 'pi pi-fw pi-bitcoin',
+                items: [
+                    {
+                        label: 'Gestionar Venta Tienda',
+                        icon: 'pi pi-fw pi-chart-pie',
+                        command: () => this._router.navigate(['admin/sale'])
+                    },
+                    {
+                        label: 'Gestionar Venta Pedido',
+                        icon: 'pi pi-fw pi-file-export',
+                        command: () => this._router.navigate(['admin/order'])
+                    }
+                    
+                ]
+            },
             
             {
                 label: 'Cerrar Sesión',

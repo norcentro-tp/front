@@ -189,6 +189,7 @@ export class UpdateModelComponent implements OnInit {
     };
     try {
       if (this.formModelo.invalid) return;
+    console.log(bodyRequestModelo);
       const response: Model = await this._putModelo.execute( 
         bodyRequestModelo
       );

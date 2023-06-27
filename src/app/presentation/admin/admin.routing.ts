@@ -49,6 +49,18 @@ const routes: Routes = [
             {
                 path: 'catalogue',
                 loadChildren: () => import('./catalogue/catalogue.module').then(m => m.CatalogueModule)
+            },
+            {
+                path: 'offer',
+                loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
+            },
+            {
+                path: 'campaing',
+                loadChildren: () => import('./campaing/campaing.module').then(m => m.CampaingModule)
+            },
+            {
+                path: 'sale',
+                loadChildren: () => import('./sale/sale.module').then(m => m.SaleModule)
             }
         ]
     }

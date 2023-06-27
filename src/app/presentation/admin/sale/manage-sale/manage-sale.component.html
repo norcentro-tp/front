@@ -1,0 +1,52 @@
+<div class="grid justify-content-center">
+
+    <div class="field col-12 text-center">
+        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Venta" (click)="openRegister()">
+        </button>
+    </div>
+
+    <div class="col-12">
+    
+            <ng-template pTemplate="header">
+                <tr>
+                      
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Documento identificador</th>
+                    <th>Correo</th>   
+                    <th>Modelo</th>  
+                    <th>Color</th>    
+                    <th>Precio</th>    
+                    <th>Estado</th>    
+                    
+                    
+
+                    <th class="text-center">Opciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-sale>
+                <tr>
+                    <td>{{sale.nombre}}</td>
+                    <td>{{sale.apellido_paterno}}</td>
+                    <td>{{sale.documento_identificador}}</td>
+                    <td>{{sale.correo}}</td>
+                    <td>{{sale.modelo}}</td>     
+                    <td>{{sale.color}}</td>     
+                    <td>{{sale.precio}}</td>   
+                    <td>{{sale.estado}}</td>        
+                    <td class="text-center">
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="Ver Detalle"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"
+                            (click)="openVisualizeDialog(sale._id)"></button>
+                        <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"
+                            (click)="openUpdateDialog(sale._id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" pTooltip="Eliminar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised"
+                             (click)="deleteSale(sale._id)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+    </div>
+
+</div>

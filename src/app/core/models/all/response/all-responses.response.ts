@@ -29,6 +29,47 @@ export interface GetAllEmployeeResponse {
   correo: string;
   usuario:Usuario;
 }
+
+
+export interface GetAllOfferResponse {
+  _id?: string;
+  nombre: string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  modelo: Model;
+  estado: string;
+  descuento: string;
+ 
+}
+export interface GetAllSaleResponse {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+  codigo_vin: string;
+  color: string;
+  modelo: Model;
+  precio:string;
+  metodo_pago:string;
+  archivo_boleta:string;
+  estado:string;
+}
+
+export interface GetAllCampaingResponse {
+  _id?: string;
+  nombre: string;
+  descripcion:string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  estado: string;
+  archivos: string;
+ 
+}
+
 export interface GetAllClientResponse {
   _id?: string;
   nombres: string;
@@ -129,6 +170,43 @@ export interface Employee {
   correo: string;
   usuario:Usuario;
 }
+export interface Offer {
+_id?: string;
+nombre: string;
+fecha_inicio: string;
+fecha_fin:string;
+modelo: Model;
+estado: string;
+descuento: string;
+}
+export interface Sale {
+  _id?: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno:string;
+  documento_identificador:object;
+  telefono: string;
+  correo: string;
+  usuario:Usuario;
+  codigo_vin: string;
+  color: string;
+  modelo: Model;
+  precio:string;
+  metodo_pago:string;
+  archivo_boleta:string;
+  estado:string;
+  }
+
+export interface Campaing {
+  _id?: string;
+  nombre: string;
+  descripcion:string;
+  fecha_inicio: string;
+  fecha_fin:string;
+  estado: string;
+  archivos: string;
+  }
+
 export interface Client {
   _id?: string;
   nombres: string;

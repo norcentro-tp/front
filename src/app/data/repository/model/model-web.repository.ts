@@ -27,9 +27,14 @@ export class ModelWebRepository extends ModelRepository {
   postModel(
     bodyRequest: PostModelRequest
   ): Promise<Model> {
+    const formData = new FormData();
+    const keys = Object.keys(bodyRequest);
+    keys.forEach((key) => {
+      formData.append(key, bodyRequest[key]);
+    });
     const url = `${MODEL_URL}`;
     return lastValueFrom(
-      this.http.post<Model>(url, bodyRequest)
+      this.http.post<Model>(url, formData)
     );
   }
 
