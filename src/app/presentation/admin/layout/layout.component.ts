@@ -91,12 +91,29 @@ export class LayoutComponent implements OnInit {
                 ]
             },
             {
+                label: 'Ventas ',
+                icon: 'pi pi-fw pi-money-bill',
+                items: [
+                    {
+                        label: 'Gestionar Venta Tienda',
+                        icon: 'pi pi-fw pi-cart-plus',
+                        command: () => this._router.navigate(['admin/sale'])
+                    },
+                    {
+                        label: 'Gestionar Venta Pedido',
+                        icon: 'pi pi-fw pi-paypal',
+                        command: () => this._router.navigate(['admin/order'])
+                    }
+                    
+                ]
+            },
+            {
                 label: 'Postventa',
-                icon: 'pi pi-fw pi-bitcoin',
+                icon: 'pi pi-fw pi-wallet',
                 items: [
                     {
                         label: 'Gestionar Oferta',
-                        icon: 'pi pi-fw pi-chart-pie',
+                        icon: 'pi pi-fw pi-folder-open',
                         command: () => this._router.navigate(['admin/offer'])
                     },
                     {
@@ -107,24 +124,6 @@ export class LayoutComponent implements OnInit {
                     
                 ]
             },
-            {
-                label: 'Ventas ',
-                icon: 'pi pi-fw pi-bitcoin',
-                items: [
-                    {
-                        label: 'Gestionar Venta Tienda',
-                        icon: 'pi pi-fw pi-chart-pie',
-                        command: () => this._router.navigate(['admin/sale'])
-                    },
-                    {
-                        label: 'Gestionar Venta Pedido',
-                        icon: 'pi pi-fw pi-file-export',
-                        command: () => this._router.navigate(['admin/order'])
-                    }
-                    
-                ]
-            },
-            
             {
                 label: 'Cerrar Sesión',
                 icon: 'pi pi-fw pi-sign-out',
