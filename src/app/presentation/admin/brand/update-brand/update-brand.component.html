@@ -8,15 +8,34 @@
                     <input pInputText id="nombre" formControlName="nombre" required />
                     <label htmlFor="nombre">Nombre</label>
                 </span>
+                <div *ngIf="nombre.invalid && (nombre.dirty || formBrand.get('nombre').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="nombre.errors?.['alphanumericPlus']">
+                        El nombre debe estar escrito en caracteres alfanuméricos.
+                    </div>
+                    <div *ngIf="nombre.errors?.['minlength']">
+                        El nombre debe tener como mínimo 4 caracteres.
+                    </div>
+                    <div *ngIf="nombre.errors?.['maxlength']">
+                        El nombre debe tener como máximo 10 caracteres.
+                    </div>
+                </div>
             </div>
             <div class="field col-12">
                 <span class="p-float-label">
                     <textarea pInputTextarea id="descripcion" formControlName="descripcion" required></textarea>
                     <label htmlFor="descripcion">Descripcion</label>
+                    <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert">
+                        <div *ngIf="descripcion.errors?.['minlength']">
+                            La descripcion debe tener como mínimo 10 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="field col-12">
-                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="10000000" chooseLabel="Reemplazar">
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="10000000"
+                    chooseLabel="Reemplazar">
                     <ng-template pTemplate="content">
                         <ul *ngIf="selectedFiles.length">
                             <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
@@ -29,8 +48,7 @@
     </form>
 
     <div class="col-12 text-center py-3">
-        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
-            (click)="updateBrand(this.config.data.id)">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios" (click)="updateBrand(this.config.data.id)">
         </button>
     </div>
 </div>

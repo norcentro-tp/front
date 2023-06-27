@@ -7,14 +7,14 @@
                     <label htmlFor="nombre">Nombre</label>
                     <div *ngIf="formModelo.get('nombre').invalid && (formModelo.get('nombre').dirty || formModelo.get('nombre').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('nombre').errors?.['required']" class="alert alert-danger">
-                            Nombre es requerido
+                        <div *ngIf="formModelo.get('nombre').errors?.['alphanumericPlus']">
+                            El nombre debe estar escrito en caracteres alfanuméricos.
                         </div>
                         <div *ngIf="formModelo.get('nombre').errors?.['minlength']">
                             El nombre debe tener como mínimo 4 caracteres.
                         </div>
                         <div *ngIf="formModelo.get('nombre').errors?.['maxlength']">
-                            El nombre debe tener como máximo 10 caracteres.
+                            El nombre debe tener como máximo 25 caracteres.
                         </div>
                     </div>
                 </span>
@@ -44,14 +44,8 @@
                     <label htmlFor="precio">Precio</label>
                     <div *ngIf="formModelo.get('precio').invalid && (formModelo.get('precio').dirty || formModelo.get('precio').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('precio').errors?.['required']" class="alert alert-danger">
-                            Precio es requerido
-                        </div>
-                        <div *ngIf="formModelo.get('precio').errors?.['minlength']">
-                            El precio debe tener como mínimo 4 caracteres.
-                        </div>
-                        <div *ngIf="formModelo.get('precio').errors?.['maxlength']">
-                            El precio debe tener como máximo 10 caracteres.
+                        <div *ngIf="formModelo.get('precio').errors?.['numericPlus']">
+                            El precio debe estar escrito en caracteres numéricos.
                         </div>
                     </div>
                 </span>
@@ -84,14 +78,8 @@
                     <label htmlFor="motor">Cilindrada</label>
                     <div *ngIf="formModelo.get('cilindrada').invalid && (formModelo.get('cilindrada').dirty || formModelo.get('cilindrada').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('cilindrada').errors?.['required']" class="alert alert-danger">
-                            Cilindrada es requerido
-                        </div>
-                        <div *ngIf="formModelo.get('cilindrada').errors?.['minlength']">
-                            La cilindrada debe tener como mínimo 4 caracteres.
-                        </div>
-                        <div *ngIf="formModelo.get('cilindrada').errors?.['maxlength']">
-                            La cilindrada debe tener como máximo 10 caracteres.
+                        <div *ngIf="formModelo.get('cilindrada').errors?.['alphanumericPlus']">
+                            La cilindarad debe estar escrita en caracteres alfanuméricos.
                         </div>
                     </div>
                 </span>
@@ -124,14 +112,8 @@
                     <label htmlFor="capacidad_tanque">Capacidad de Tanque</label>
                     <div *ngIf="formModelo.get('capacidad_tanque').invalid && (formModelo.get('capacidad_tanque').dirty || formModelo.get('capacidad_tanque').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('capacidad_tanque').errors?.['required']" class="alert alert-danger">
-                            Capacidad de tanque es requerido
-                        </div>
-                        <div *ngIf="formModelo.get('capacidad_tanque').errors?.['minlength']">
-                            Capacidad de tanque debe tener como mínimo 4 caracteres.
-                        </div>
-                        <div *ngIf="formModelo.get('capacidad_tanque').errors?.['maxlength']">
-                            Capacidad de tanque debe tener como máximo 10 caracteres.
+                        <div *ngIf="formModelo.get('capacidad_tanque').errors?.['numericPlus']">
+                            La capacidad de tanque debe estar escrita en caracteres numéricos.
                         </div>
                     </div>
                 </span>
@@ -144,14 +126,8 @@
                     <label htmlFor="torque">Torque</label>
                     <div *ngIf="formModelo.get('torque').invalid && (formModelo.get('torque').dirty || formModelo.get('torque').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('torque').errors?.['required']" class="alert alert-danger">
-                            Torque es requerido
-                        </div>
-                        <div *ngIf="formModelo.get('torque').errors?.['minlength']">
-                            El torque debe tener como mínimo 4 caracteres.
-                        </div>
-                        <div *ngIf="formModelo.get('torque').errors?.['maxlength']">
-                            El torque debe tener como máximo 10 caracteres.
+                        <div *ngIf="formModelo.get('torque').errors?.['alphanumericPlus']" class="alert alert-danger">
+                            El torque debe ser escrito en caracteres alfanuméricos.
                         </div>
                     </div>
                 </span>
@@ -164,14 +140,8 @@
                     <label htmlFor="potencia">Potencia</label>
                     <div *ngIf="formModelo.get('potencia').invalid && (formModelo.get('potencia').dirty || formModelo.get('potencia').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('potencia').errors?.['required']" class="alert alert-danger">
-                            Nombre es requerido
-                        </div>
-                        <div *ngIf="formModelo.get('potencia').errors?.['minlength']">
-                            El nombre debe tener como mínimo 4 caracteres.
-                        </div>
-                        <div *ngIf="formModelo.get('potencia').errors?.['maxlength']">
-                            El nombre debe tener como máximo 10 caracteres.
+                        <div *ngIf="formModelo.get('potencia').errors?.['alphanumericPlus']" class="alert alert-danger">
+                            La potencia debe ser escrita en caracteres alfanuméricos.
                         </div>
                     </div>
                 </span>
@@ -184,14 +154,17 @@
                     <label htmlFor="anio">Año</label>
                     <div *ngIf="formModelo.get('anio').invalid && (formModelo.get('anio').dirty || formModelo.get('anio').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('anio').errors?.['required']" class="alert alert-danger">
-                            Nombre es requerido
+                        <div *ngIf="formModelo.get('anio').errors?.['numeric']">
+                            El año debe ser escrito en caracteres alfanuméricos
+                        </div>
+                        <div *ngIf="formModelo.get('anio').errors?.['max']">
+                            El año no puede ser mayor al año actual
                         </div>
                         <div *ngIf="formModelo.get('anio').errors?.['minlength']">
                             El nombre debe tener como mínimo 4 caracteres.
                         </div>
                         <div *ngIf="formModelo.get('anio').errors?.['maxlength']">
-                            El nombre debe tener como máximo 10 caracteres.
+                            El nombre debe tener como máximo 4 caracteres.
                         </div>
                     </div>
                 </span>
@@ -204,11 +177,12 @@
                     <label htmlFor="descripcion">Descripcion</label>
                     <div *ngIf="formModelo.get('descripcion').invalid && (formModelo.get('descripcion').dirty || formModelo.get('descripcion').touched)"
                         class="alert alert-danger">
-                        <div *ngIf="formModelo.get('descripcion').errors?.['required']" class="alert alert-danger">
-                            Descripción es requerido
+                        <div *ngIf="formModelo.get('descripcion').errors?.['alphanumericPlus']"
+                            class="alert alert-danger">
+                            La descripción debe ser escrita en caracteres alfanuméricos.
                         </div>
                         <div *ngIf="formModelo.get('descripcion').errors?.['minlength']">
-                            Descripcion debe tener como mínimo 10 caracteres.
+                            La descripcion debe tener como mínimo 10 caracteres.
                         </div>
                     </div>
                 </span>
@@ -218,7 +192,7 @@
             <div class="field col-12">
 
                 <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
-                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="1000000"
+                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="5000000"
                     chooseLabel="Escoger">
                     <ng-template pTemplate="content">
                         <ul *ngIf="selectedFiles.length">

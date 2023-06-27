@@ -89,11 +89,11 @@ export class ManageInventoryComponent implements OnInit {
   
   deleteInventory(id: string){
     try { this._confirmationService.confirm({ 
-      message: "Estás seguro que desea eliminar? ",
+      message: "Estás seguro que desea desactivar este producto? ",
       accept: ()=> {
         this._deleteMoto.execute(id).then(() => {
           this.getAllInventory();
-          this._alertService.success('Se elimino el producto seleccionado');
+          this._alertService.success('Se cambio el estado a inactivo');
         });
       },
       reject: ()=> {},

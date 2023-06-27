@@ -6,10 +6,16 @@ import {
 } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostModelRequest } from 'src/app/core/models/all/request/all-requests.request';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { PostModelUseCase } from 'src/app/core/usecase/model/post-model.usecase';
 import { GetAllBrandsUseCase } from 'src/app/core/usecase/brand/get-all-brands.usecase';
 import { GetAllCategoriesUseCase } from 'src/app/core/usecase/category/get-all-categories.usecase';
+import { alphanumericPlusValidator, numericValidator, numericPlusValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-register-model',
@@ -20,13 +26,16 @@ export class RegisterModelComponent implements OnInit {
   selectedFiles: File[] = [];
   listaCategoria: Category[] = [];
   listaMarca: Brand[] = [];
+  fileSelected: Boolean = false;
+
 
   constructor(
     private _postModelo: PostModelUseCase,
     public _dialogref: DynamicDialogRef,
     private _formBuilder: FormBuilder,
     private _getAllBrands: GetAllBrandsUseCase,
-    private _getAllCategories: GetAllCategoriesUseCase
+    private _getAllCategories: GetAllCategoriesUseCase,
+    private _alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -34,26 +43,15 @@ export class RegisterModelComponent implements OnInit {
     this.getAllBrands();
     this.createformModelo();
   }
-  nombre: string | null = null;
-  cilindrada: string | null = null;
-  velocidades: string | null = null;
-  capacidad_tanque: string | null = null;
-  torque: string | null = null;
-  motor: string | null = null;
-  potencia: string | null = null;
-  precio: string | null = null;
-  descripcion: string | null = null;
-  anio: string | null = null;
-  Foto: string | null = null;
 
   createformModelo() {
     this.formModelo = this._formBuilder.group({
       nombre: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          Validators.minLength(4),
+          Validators.maxLength(25),
+          alphanumericPlusValidator()
         ],
       ],
       categoria: [null],
@@ -61,9 +59,7 @@ export class RegisterModelComponent implements OnInit {
       cilindrada: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          alphanumericPlusValidator()
         ],
       ],
       velocidades: [
@@ -77,17 +73,13 @@ export class RegisterModelComponent implements OnInit {
       capacidad_tanque: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          numericPlusValidator()
         ],
       ],
       torque: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          alphanumericPlusValidator()
         ],
       ],
       motor: [
@@ -101,30 +93,32 @@ export class RegisterModelComponent implements OnInit {
       potencia: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          alphanumericPlusValidator()
         ],
       ],
       precio: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
+          numericPlusValidator()
         ],
       ],
-      descripcion: [null, [Validators.required, Validators.minLength(10)]],
-      anio: [
+      descripcion: [
         null,
         [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
-        ],
+          Validators.minLength(10),
+          alphanumericPlusValidator()
+        ]
       ],
-      fotos: [null],
-    });
+      anio: [
+        null,
+        [ 
+          Validators.max(2023),
+          Validators.minLength(4),
+          Validators.maxLength(4),
+          numericValidator()
+        ],
+      ]
+    },{ validators: allFieldsFilledValidator() });
   }
 
   async getAllCategories() {
@@ -147,7 +141,7 @@ export class RegisterModelComponent implements OnInit {
   onSelect(event: any) {
     if (event.files && event.files.length > 0) {
       this.selectedFiles[0] = event.files[0];
-      console.log(this.selectedFiles[0]);
+      this.fileSelected = true;
     }
   }
 
@@ -165,7 +159,6 @@ export class RegisterModelComponent implements OnInit {
       potencia: form.potencia,
       precio: form.precio,
       descripcion: form.descripcion,
-      fotos: form.fotos,
       anio: form.anio,
       imageFiles: this.selectedFiles[0],
     };
@@ -180,8 +173,11 @@ export class RegisterModelComponent implements OnInit {
     this.formModelo.get('descripcion').markAsDirty();
     this.formModelo.get('anio').markAsDirty();
     try {
-      if (!this.formModelo.valid) return;
+      if (this.formModelo.invalid && this.fileSelected) return;
       const response: Model = await this._postModelo.execute(bodyRequestModelo);
+      
+
+      this._alertService.success('Se realizo el registro con exito');
       console.log(response);
       this.close();
     } catch (error) {

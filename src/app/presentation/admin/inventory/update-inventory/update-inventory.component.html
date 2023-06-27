@@ -6,48 +6,44 @@
                 <span class="p-float-label">
                     <input pInputText id="codigoVin" formControlName="codigoVin" required />
                     <label htmlFor="codigoVin">Codigo Vin</label>
+                    <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+                        <div *ngIf="codigoVin.errors?.['vinCodeValidator']">
+                            Los primeros 12 digitos del Codigo VIN deben ser alfanuméricos y el resto numérico.
+                        </div>
+                    </div>
                 </span>
-                <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
-                  <div *ngIf="codigoVin.errors?.['minlength']">
-                    El codigo VIN debe tener como mínimo 3 caracteres.
-                  </div>
-                  <div *ngIf="codigoVin.errors?.['maxlength']">
-                    El codigo VIN debe tener como máximo 17 caracteres.
-                  </div>       
-                  <div *ngIf="codigoVin.errors?.['alphanumeric']">
-                    El codigo VIN no debe contener caracteners no alfanumericos
-                  </div>       
-                </div>
             </div>
 
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="codigoColor" formControlName="codigoColor" required />
                     <label htmlFor="codigoColor">Color</label>
-                </span>
-                <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">  
-                  <div *ngIf="codigoColor.errors?.['invalidHexColor']">
-                    El codigo de color tiene que ser en codigo hexadecimal
-                  </div>       
-                </div>
-            </div>
-
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <p-dropdown [options]="listaModelo" optionLabel="nombre" optionValue="_id" formControlName="modelo"></p-dropdown>
+                    <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">
+                        <div *ngIf="codigoColor.errors?.['invalidHexColor']">
+                            El codigo de color tiene que ser en codigo hexadecimal.
+                        </div>
+                    </div>
                 </span>
             </div>
 
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
-                    <p-dropdown [options]="listaProveedor" optionLabel="nombre" optionValue="_id" formControlName="proveedor"></p-dropdown>
+                    <p-dropdown [options]="listaModelo" optionLabel="nombre" optionValue="_id"
+                        formControlName="modelo"></p-dropdown>
                 </span>
             </div>
 
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
-                    <p-dropdown [options]="listaStatus" optionLabel="nombre" optionValue="_id"
-                        appendTo="body" formControlName="estado"></p-dropdown>
+                    <p-dropdown [options]="listaProveedor" optionLabel="nombre" optionValue="_id"
+                        formControlName="proveedor"></p-dropdown>
+                </span>
+            </div>
+
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <p-dropdown [options]="listaStatus" optionLabel="nombre" optionValue="_id" appendTo="body"
+                        formControlName="estado"></p-dropdown>
                 </span>
             </div>
 

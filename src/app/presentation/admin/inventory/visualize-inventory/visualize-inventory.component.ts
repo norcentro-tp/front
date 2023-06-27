@@ -9,7 +9,11 @@ import {
 import { GetInventoryByIdUseCase } from 'src/app/core/usecase/inventory/get-moto-byid.usecase';
 import { InventoryItemResponse } from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { 
+  FormBuilder,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 
 @Component({
   selector: 'app-visualize-inventory',
@@ -37,11 +41,11 @@ export class VisualizeInventoryComponent implements OnInit {
 
   createformInventory() {
     this.formInventory = this._formBuilder.group({
-      codigoVin: [null],
-      codigoColor: [null],
-      modelo: [null],
-      proveedor: [null],
-      estado: [null]
+      codigoVin: new FormControl( {value: null, disabled: true} ),
+      codigoColor: new FormControl( {value: null, disabled: true} ),
+      modelo: new FormControl( {value: null, disabled: true} ),
+      proveedor: new FormControl( {value: null, disabled: true} ),
+      estado: new FormControl( {value: null, disabled: true} ),
 
     })
   }

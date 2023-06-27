@@ -6,19 +6,27 @@ import {
 } from 'src/app/core/models/all/response/all-responses.response';
 import { PostClientRequest} from 'src/app/core/models/all/request/all-requests.request';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PostClientUseCase } from 'src/app/core/usecase/client/post-client.usecase';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { emailValidator, passwordValidator, numericValidator, alphabeticValidator, alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
-  selector: 'app-register-Client',
-  templateUrl: 'register-Client.component.html',
+  selector: 'app-register-client',
+  templateUrl: 'register-client.component.html',
 })
 export class RegisterClientComponent implements OnInit {
   formClient: FormGroup;
   constructor(
     private _postClient: PostClientUseCase,
     public _dialogref: DynamicDialogRef,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _alertService: AlertService
   ) {}
 
   
@@ -27,28 +35,71 @@ export class RegisterClientComponent implements OnInit {
     this.createformClient();
     
   }
-  nombres: string | null = null;
-  apellido_paterno: string | null = null;
-  apellido_materno: string | null = null;
-  estado: Status | null = null;
-  documento_identificador: string | null = null;
-  telefono: string | null = null;
-  correo: string | null = null;
-  usuario: string | null = null;
-  contraseña: string | null = null;
 
   createformClient() {
     this.formClient = this._formBuilder.group({
-      nombres: [null],
-      apellido_paterno: [null],
-      apellido_materno: [null],
-      estado: [null],
-      documento_identificador: [null],
-      telefono: [null],
-      correo: [null],
-      usuario: [null],
-      contraseña: [null],
-    });
+      nombres: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      apellido_paterno: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      apellido_materno: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      documento_identificador: [
+        null,
+        [
+          Validators.minLength(8),
+          Validators.maxLength(8),
+          numericValidator()
+        ],
+      ],
+      telefono:[
+        null,
+        [
+          Validators.minLength(9),
+          Validators.maxLength(9),
+          numericValidator()
+        ],
+      ],
+      correo: [
+        null,[
+          Validators.minLength(4),
+          Validators.maxLength(20),    
+          emailValidator()
+        ],
+      ],
+      usuario: [
+        null,[
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphanumericValidator()
+        ],
+      ],
+      contraseña:  [
+        null,[
+          Validators.minLength(8),
+          Validators.maxLength(20),
+          passwordValidator()
+        ],
+      ],
+    },{ validators:allFieldsFilledValidator() });
   }
 
 
@@ -58,8 +109,6 @@ export class RegisterClientComponent implements OnInit {
       nombres:form.nombres,
       apellido_paterno:form.apellido_paterno,
       apellido_materno: form.apellido_materno,
-      fecha_nacimiento: form.fecha_nacimiento,
-      estado: form.estado,
       documento_identificador: {
         tipo_documento:"DNI",
         numero_documento:form. documento_identificador
@@ -71,7 +120,13 @@ export class RegisterClientComponent implements OnInit {
          password: form.contraseña
       }
     };
+    this.formClient.markAllAsTouched();
+    if (this.formClient.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
+      if (this.formClient.invalid) return;
       const response: GetAllClientResponse = await this._postClient.execute(
         bodyRequestClient
       );

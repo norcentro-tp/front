@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee} from 'src/app/core/models/all/response/all-responses.response';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 import { GetEmployeeByIdUseCase } from 'src/app/core/usecase/employee/get-employee-byid.usecase';
 
 @Component({
@@ -25,16 +29,14 @@ export class VisualizeEmployeeComponent implements OnInit {
 
   createformEmployee() {
     this.formEmployee = this._formBuilder.group({
-      nombres: [null],
-      apellido_paterno: [null],
-      apellido_materno: [null],
-      fecha_nacimiento: [null],
-      estado: [null],
-      documento_identificador: [null],
-      telefono: [null],
-      correo: [null],
-      usuario: [null],
-      contraseña: [null]
+      nombres: new FormControl( {value: null, disabled: true} ),
+      apellido_paterno: new FormControl( {value: null, disabled: true} ),
+      apellido_materno: new FormControl( {value: null, disabled: true} ),
+      documento_identificador: new FormControl( {value: null, disabled: true} ),
+      telefono: new FormControl( {value: null, disabled: true} ),
+      correo: new FormControl( {value: null, disabled: true} ),
+      usuario: new FormControl( {value: null, disabled: true} ),
+      contraseña: new FormControl( {value: null, disabled: true} )
     });
   }
 
@@ -47,8 +49,6 @@ export class VisualizeEmployeeComponent implements OnInit {
         nombres: response.nombres,
         apellido_paterno: response.apellido_paterno,
         apellido_materno: response.apellido_materno,
-        fecha_nacimiento: response.fecha_nacimiento,
-        estado: response.estado,
         documento_identificador: response.documento_identificador.numero_documento,
         telefono: response.telefono,
         correo: response.correo,

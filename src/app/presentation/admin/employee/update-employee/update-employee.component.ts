@@ -4,11 +4,17 @@ import {
   GetAllEmployeeResponse,
 } from 'src/app/core/models/all/response/all-responses.response';
 import { PutEmployeeRequest } from 'src/app/core/models/all/request/all-requests.request';
-import { AlertService } from 'src/app/shared/services/alert.service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetEmployeeByIdUseCase } from 'src/app/core/usecase/employee/get-employee-byid.usecase';
 import { PutEmployeeUseCase } from 'src/app/core/usecase/employee/put-employee.usecase';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { emailValidator, passwordValidator, numericValidator, alphabeticValidator, alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-update-employee',
@@ -36,17 +42,69 @@ export class UpdateEmployeeComponent implements OnInit {
 
   createformEmployee() {
     this.formEmployee = this._formBuilder.group({
-      nombres: [null],
-      apellido_paterno: [null],
-      apellido_materno: [null],
-      fecha_nacimiento: [null],
-      estado: [null],
-      documento_identificador: [null],
-      telefono: [null],
-      correo: [null],
-      usuario: [null],
-      contraseña: [null],
-    });
+      nombres: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      apellido_paterno: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      apellido_materno: [
+        null,
+        [
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphabeticValidator()
+        ],
+      ],
+      documento_identificador: [
+        null,
+        [
+          Validators.minLength(8),
+          Validators.maxLength(8),
+          numericValidator()
+        ],
+      ],
+      telefono:[
+        null,
+        [
+          Validators.minLength(9),
+          Validators.maxLength(9),
+          numericValidator()
+        ],
+      ],
+      correo: [
+        null,[
+          Validators.minLength(4),
+          Validators.maxLength(20),    
+          emailValidator()
+        ],
+      ],
+      usuario: [
+        null,[
+          Validators.minLength(4),
+          Validators.maxLength(20),
+          alphanumericValidator()
+        ],
+      ],
+      contraseña:  [
+        null,[
+          Validators.minLength(8),
+          Validators.maxLength(20),
+          passwordValidator()
+        ],
+      ],
+      id_usuario: [null]
+    },{ validators:allFieldsFilledValidator() });
   }
 
   async getEmployeebyId(id: string) {
@@ -58,11 +116,10 @@ export class UpdateEmployeeComponent implements OnInit {
         nombres: response.nombres,
         apellido_paterno: response.apellido_paterno,
         apellido_materno: response.apellido_materno,
-        fecha_nacimiento: response.fecha_nacimiento,
-        estado: response.estado,
         documento_identificador: response.documento_identificador.numero_documento,
         telefono: response.telefono,
-        correo: response.correo,
+        correo: response.correo,        
+        id_usuario: response.usuario._id,
         usuario: response.usuario.nombre_usuario,
         contraseña: response.usuario.password
       });
@@ -77,8 +134,6 @@ export class UpdateEmployeeComponent implements OnInit {
       nombres: form.nombres,
       apellido_paterno: form.apellido_paterno,
       apellido_materno: form.apellido_materno,
-      fecha_nacimiento: form.fecha_nacimiento,
-      estado: form.estado,
       documento_identificador: {
         tipo_documento:"DNI",
         numero_documento:form. documento_identificador
@@ -86,11 +141,18 @@ export class UpdateEmployeeComponent implements OnInit {
       telefono: form.telefono,
       correo: form.correo,
       usuario:{
-         nombre_usuario:form.usuario,
+         _id: form.id_usuario,
+         nombre_usuario: form.usuario,
          password: form.contraseña
       }
     };
+    this.formEmployee.markAllAsTouched();
+    if (this.formEmployee.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
+      if (this.formEmployee.invalid) return;
       const response: Employee = await this._putEmployee.execute({
         id: id,
         bodyRequest: bodyRequestEmployee,

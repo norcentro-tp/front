@@ -23,7 +23,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { hexadecimalColorValidator,alphanumericValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
+import { hexadecimalColorValidator, vinCodeValidator, allFieldsFilledValidator } from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-update-inventory',
@@ -44,7 +44,7 @@ export class UpdateInventoryComponent implements OnInit {
     private _getMotoById: GetInventoryByIdUseCase,
     private _putMoto: PutMotoUseCase,
     private _alertService: AlertService,
-    public ref: DynamicDialogRef,
+    public _dialogRef: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private _formBuilder: FormBuilder
   ) { }
@@ -60,9 +60,7 @@ export class UpdateInventoryComponent implements OnInit {
   createformInventory() {
     this.formInventory = this._formBuilder.group({
       codigoVin: new FormControl(null, [
-        Validators.minLength(3),
-        Validators.maxLength(17),
-        alphanumericValidator()
+        vinCodeValidator()
       ]),
       codigoColor: new FormControl(null, [
         hexadecimalColorValidator()
@@ -145,11 +143,15 @@ export class UpdateInventoryComponent implements OnInit {
       if (!this.formInventory.valid) return;
       const response: InventoryItemResponse = await this._putMoto.execute(bodyRequestMotos);
 
-      this._alertService.success('Cambios Guardados')
+      this._alertService.success('Cambios guardados exitosamente')
       console.log(response);
-      this.ref.close();
+      this.close();
     } catch (error) {
       console.error(error);
     }
+  }
+
+  close() {
+    this._dialogRef.close();
   }
 }

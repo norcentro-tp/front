@@ -3,66 +3,152 @@
         <div class="p-fluid grid">
             <div class="col-12 md:col-4">
                 <span class="p-float-label">
-                    <input pInputText id="usuario.nombre_usuario" formControlName="usuario.nombre_usuario" required />
-                    <label htmlFor="usuario.nombre_usuario">Usuario</label>
+                    <input pInputText id="usuario" formControlName="usuario" required />
+                    <label htmlFor="usuario">Usuario</label>
+                    <div *ngIf="formClient.get('usuario').invalid && (formClient.get('usuario').dirty || formClient.get('usuario').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('usuario').errors?.['alphanumeric']">
+                            El nombre debe estar escrito en caracteres alfanumpericos.
+                        </div>
+                        <div *ngIf="formClient.get('usuario').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('usuario').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="col-12 md:col-4">
                 <span class="p-float-label">
-                    <input pInputText id="usuario.password" formControlName="usuario.password" required />
-                    <label htmlFor="usuario.password">contraseña</label>
+                    <input pInputText id="contraseña" formControlName="contraseña" required />
+                    <label htmlFor="contraseña">contraseña</label>
+                    <div *ngIf="formClient.get('contraseña').invalid && (formClient.get('contraseña').dirty || formClient.get('contraseña').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('contraseña').errors?.['password']">
+                            La contraseña tiene que contener caracteres tanto numéricos como alfabéticos.
+                        </div>
+                        <div *ngIf="formClient.get('contraseña').errors?.['minlength']">
+                            La contraseña debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('contraseña').errors?.['maxlength']">
+                            La contraseña debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="col-12 md:col-4">
                 <span class="p-float-label">
-                    <input pInputText id="nombres"formControlName="nombres" required />
+                    <input pInputText id="nombres" formControlName="nombres" required />
                     <label htmlFor="nombres">Nombre</label>
+                    <div *ngIf="formClient.get('nombres').invalid && (formClient.get('nombres').dirty || formClient.get('nombres').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('nombres').errors?.['alphabetic']">
+                            El nombre debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formClient.get('nombres').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('nombres').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="col-12 md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="apellido_paterno" formControlName="apellido_paterno" required />
                     <label htmlFor="apellido_paterno">Apellido Paterno</label>
+                    <div *ngIf="formClient.get('apellido_paterno').invalid && (formClient.get('apellido_materno').dirty || formClient.get('apellido_materno').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('apellido_paterno').errors?.['alphabetic']">
+                            El apellido materno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formClient.get('apellido_paterno').errors?.['minlength']">
+                            El apellido materno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('apellido_paterno').errors?.['maxlength']">
+                            El apellido materno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="col-12 md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="apellido_materno" formControlName="apellido_materno" required />
                     <label htmlFor="apellido_materno">Apellido Materno</label>
+                    <div *ngIf="formClient.get('apellido_materno').invalid && (formClient.get('apellido_materno').dirty || formClient.get('apellido_materno').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('apellido_materno').errors?.['alphabetic']">
+                            El apellido materno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formClient.get('apellido_materno').errors?.['minlength']">
+                            El apellido materno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('apellido_materno').errors?.['maxlength']">
+                            El apellido materno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class=" col-12 md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="telefono" formControlName="telefono" required />
                     <label htmlFor="telefono">Telefono</label>
+                    <div *ngIf="formClient.get('telefono').invalid && (formClient.get('telefono').dirty || formClient.get('telefono').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('telefono').errors?.['numeric']">
+                            El telefono debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formClient.get('telefono').errors?.['minlength']">
+                            El telefono debe tener como mínimo 9 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('telefono').errors?.['maxlength']">
+                            El telefono debe tener como máximo 9 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class=" col-12 md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="correo" formControlName="correo" required />
-                    <label htmlFor="email">Correo</label>
+                    <label htmlFor="correo">Correo</label>
+                </span>
+                <div *ngIf="formClient.get('correo').invalid && (formClient.get('correo').dirty || formClient.get('correo').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="formClient.get('correo').errors?.['email']">
+                        El correo debe tener el siguiente formato: aaa@aaa.aaa.
+                    </div>
+                    <div *ngIf="formClient.get('correo').errors?.['minlength']">
+                        El correo debe tener como mínimo 4 caracteres.
+                    </div>
+                    <div *ngIf="formClient.get('correo').errors?.['maxlength']">
+                        El correo debe tener como máximo 20 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="documento_identificador" formControlName="documento_identificador" required />
+                    <label htmlFor="documento_identificador">Numero de Documento</label>
+                    <div *ngIf="formClient.get('documento_identificador').invalid && (formClient.get('documento_identificador').dirty || formClient.get('documento_identificador').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formClient.get('documento_identificador').errors?.['numeric']">
+                            El DNI debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formClient.get('documento_identificador').errors?.['minlength']">
+                            El nombre debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formClient.get('documento_identificador').errors?.['maxlength']">
+                            El nombre debe tener como máximo 8 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
-       
-        <div class=" col-12 md:col-4">
-            <span class="p-float-label">
-                <input pInputText id="documento_identificador" formControlName="documento_identificador" required />
-                <label htmlFor="documento_identificador">numero de Documento</label>
-            </span>
         </div>
-    
-   
-    <div class=" col-12 md:col-4">
-        <span class="p-float-label">
-            <input pInputText id="estado" formControlName="estado" required />
-            <label htmlFor="estado">Estado</label>
-        </span>
-    </div>
-</div>
-</form>
+    </form>
     <div class="col-12 text-center py-3">
-        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
-            (click)="updateClient(this.config.data.id)">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios" (click)="updateClient(this.config.data.id)">
         </button>
     </div>
 

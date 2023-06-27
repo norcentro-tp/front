@@ -7,49 +7,49 @@
         <span class="p-float-label">
           <input pInputText id="codigoVin" formControlName="codigoVin" required />
           <label htmlFor="codigoVin">Codigo Vin</label>
-        </span>
-        <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
-          <div *ngIf="codigoVin.errors?.['minlength']">
-            El codigo VIN debe tener como mínimo 3 caracteres.
+          <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+            <div *ngIf="codigoVin.errors?.['invalidVINCode']">
+              Los primeros 12 digitos del Codigo VIN deben ser alfanuméricos y el resto numérico.
+            </div>
           </div>
-          <div *ngIf="codigoVin.errors?.['maxlength']">
-            El codigo VIN debe tener como máximo 17 caracteres.
-          </div>       
-          <div *ngIf="codigoVin.errors?.['alphanumeric']">
-            El codigo VIN no debe contener caracteners no alfanumericos
-          </div>       
-        </div>
+        </span>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
           <input pInputText id="codigoColor" formControlName="codigoColor" required />
           <label htmlFor="codigoColor">Color</label>
+          <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">
+            <div *ngIf="codigoColor.errors?.['invalidHexColor']">
+              El codigo de color tiene que ser en codigo hexadecimal.
+            </div>
+          </div>
         </span>
-        <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">  
-          <div *ngIf="codigoColor.errors?.['invalidHexColor']">
-            El codigo de color tiene que ser en codigo hexadecimal
-          </div>       
-        </div>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
-          <p-dropdown [options]="listaModelo" optionLabel="nombre" [filter]="true" filterBy="nombre" filterplaceholder="Modelo Moto" placeholder="Modelo Moto" optionValue="_id" formControlName="modelo" ></p-dropdown>
+          <p-dropdown [options]="listaModelo" optionLabel="nombre" [filter]="true" filterBy="nombre"
+            filterplaceholder="Modelo Moto" placeholder="Modelo Moto" optionValue="_id"
+            formControlName="modelo"></p-dropdown>
           <label for="inputtext-left">Modelo Moto</label>
         </span>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
-          <p-dropdown [options]="listaProveedor" optionLabel="nombre" [filter]="true" filterBy="nombre" filterPlaceholder="Proveedor" placeholder="Proveedor" optionValue="_id" formControlName="proveedor"></p-dropdown>
+          <p-dropdown [options]="listaProveedor" optionLabel="nombre" [filter]="true" filterBy="nombre"
+            filterPlaceholder="Proveedor" placeholder="Proveedor" optionValue="_id"
+            formControlName="proveedor"></p-dropdown>
           <label for="inputtext-left">Proveedor</label>
         </span>
       </div>
 
       <div class="field col-12  md:col-4">
         <span class="p-float-label">
-          <p-dropdown [options]="listaStatus" optionLabel="nombre" [filter]="true" filterBy="nombre" filterPlaceholder="Estado Moto" placeholder="Estado Moto" optionValue="_id" appendTo="body" formControlName="estado"></p-dropdown>
+          <p-dropdown [options]="listaStatus" optionLabel="nombre" [filter]="true" filterBy="nombre"
+            filterPlaceholder="Estado Moto" placeholder="Estado Moto" optionValue="_id" appendTo="body"
+            formControlName="estado"></p-dropdown>
           <label for="inputtext-left">Estado Moto</label>
         </span>
       </div>

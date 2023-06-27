@@ -1,90 +1,186 @@
 <div class="px-5 pt-4">
     <form [formGroup]="formModelo">
         <div class="p-fluid grid">
-            <!--Nombre-->
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="nombre" formControlName="nombre" required />
                     <label htmlFor="nombre">Nombre</label>
+                    <div *ngIf="formModelo.get('nombre').invalid && (formModelo.get('nombre').dirty || formModelo.get('nombre').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('nombre').errors?.['alphanumericPlus']">
+                            El nombre debe estar escrito en caracteres alfanuméricos.
+                        </div>
+                        <div *ngIf="formModelo.get('nombre').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formModelo.get('nombre').errors?.['maxlength']">
+                            El nombre debe tener como máximo 25 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
-              <span class="p-float-label">
-                <p-dropdown [options]="listaCategoria" optionLabel="nombre" optionValue="_id"
-                  formControlName="categoria"></p-dropdown>
-                <label for="inputtext-left">Categoria Moto</label>
-              </span>
+                <span class="p-float-label">
+                    <p-dropdown [options]="listaCategoria" optionLabel="nombre" optionValue="_id"
+                        formControlName="categoria"></p-dropdown>
+                    <label for="inputtext-left">Categoria Moto</label>
+                </span>
             </div>
-      
+
             <div class="field col-12  md:col-4">
-              <span class="p-float-label">
-                <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id"
-                  formControlName="marca"></p-dropdown>
-                <label for="inputtext-left">Marca Moto</label>
-              </span>
+                <span class="p-float-label">
+                    <p-dropdown [options]="listaMarca" optionLabel="nombre" optionValue="_id"
+                        formControlName="marca"></p-dropdown>
+                    <label for="inputtext-left">Marca Moto</label>
+                </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="precio" formControlName="precio" required />
                     <label htmlFor="precio">Precio</label>
+                    <div *ngIf="formModelo.get('precio').invalid && (formModelo.get('precio').dirty || formModelo.get('precio').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('precio').errors?.['numericPlus']">
+                            El precio debe estar escrito en caracteres numéricos.
+                        </div>
+                    </div>
                 </span>
             </div>
-            <div class="field col-12  md:col-4">
-                <span class="p-float-label">
-                    <input pInputText id="anio" formControlName="anio" required />
-                    <label htmlFor="anio">Año</label>
-                </span>
-            </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="motor" formControlName="motor" required />
                     <label htmlFor="motor">Motor</label>
+                    <div *ngIf="formModelo.get('motor').invalid && (formModelo.get('motor').dirty || formModelo.get('motor').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('motor').errors?.['alphanumericPlus']">
+                            El motor debe estar escrito en caracteres alfanuméricos.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="cilindrada" formControlName="cilindrada" required />
                     <label htmlFor="motor">Cilindrada</label>
+                    <div *ngIf="formModelo.get('cilindrada').invalid && (formModelo.get('cilindrada').dirty || formModelo.get('cilindrada').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('cilindrada').errors?.['alphanumericPlus']">
+                            La cilindarad debe estar escrita en caracteres alfanuméricos.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="velocidades" formControlName="velocidades" required />
                     <label htmlFor="velocidades">Velocidades</label>
+                    <div *ngIf="formModelo.get('velocidades').invalid && (formModelo.get('velocidades').dirty || formModelo.get('velocidades').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('velocidades').errors?.['numeric']">
+                            El numero de velocidades debe estar escrito en caracteres numéricos.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="capacidad_tanque" formControlName="capacidad_tanque" required />
                     <label htmlFor="capacidad_tanque">Capacidad de Tanque</label>
+                    <div *ngIf="formModelo.get('capacidad_tanque').invalid && (formModelo.get('capacidad_tanque').dirty || formModelo.get('capacidad_tanque').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('capacidad_tanque').errors?.['numericPlus']">
+                            La capacidad de tanque debe estar escrita en caracteres numéricos.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="torque" formControlName="torque" required />
                     <label htmlFor="torque">Torque</label>
+                    <div *ngIf="formModelo.get('torque').invalid && (formModelo.get('torque').dirty || formModelo.get('torque').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('torque').errors?.['alphanumericPlus']" class="alert alert-danger">
+                            El torque debe ser escrito en caracteres alfanuméricos.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="potencia" formControlName="potencia" required />
                     <label htmlFor="potencia">Potencia</label>
+                    <div *ngIf="formModelo.get('potencia').invalid && (formModelo.get('potencia').dirty || formModelo.get('potencia').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('potencia').errors?.['alphanumericPlus']" class="alert alert-danger">
+                            La potencia debe ser escrita en caracteres alfanuméricos.
+                        </div>
+                    </div>
                 </span>
             </div>
-            <div class="field col-12">
-                <span class="p-float-label">
-                    <textarea pInputTextarea id="descripcion" formControlName="descripcion" required></textarea>
-                    <label htmlFor="descripcion">Descripcion</label>
-                </span>
-            </div> 
+
+
             <div class="field col-12  md:col-4">
                 <span class="p-float-label">
                     <input pInputText id="anio" formControlName="anio" required />
                     <label htmlFor="anio">Año</label>
+                    <div *ngIf="formModelo.get('anio').invalid && (formModelo.get('anio').dirty || formModelo.get('anio').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('anio').errors?.['numeric']">
+                            El año debe ser escrito en caracteres alfanuméricos
+                        </div>
+                        <div *ngIf="formModelo.get('anio').errors?.['max']">
+                            El año no puede ser mayor al año actual
+                        </div>
+                        <div *ngIf="formModelo.get('anio').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formModelo.get('anio').errors?.['maxlength']">
+                            El nombre debe tener como máximo 4 caracteres.
+                        </div>
+                    </div>
                 </span>
             </div>
+
+
             <div class="field col-12">
-                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="10000000" chooseLabel="Reemplazar">
+                <span class="p-float-label">
+                    <textarea pInputTextarea id="descripcion" formControlName="descripcion" required></textarea>
+                    <label htmlFor="descripcion">Descripcion</label>
+                    <div *ngIf="formModelo.get('descripcion').invalid && (formModelo.get('descripcion').dirty || formModelo.get('descripcion').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formModelo.get('descripcion').errors?.['alphanumericPlus']">
+                            La descripción debe ser escrita en caracteres alfanuméricos.
+                        </div>
+                        <div *ngIf="formModelo.get('descripcion').errors?.['minlength']">
+                            La descripcion debe tener como mínimo 10 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+
+            <div class="field col-12">
+
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="5000000"
+                    chooseLabel="Reemplazar">
                     <ng-template pTemplate="content">
                         <ul *ngIf="selectedFiles.length">
                             <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
@@ -92,10 +188,11 @@
                     </ng-template>
                 </p-fileUpload>
             </div>
-
-            <div class="col-12 text-center py-3">
-                <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
-                    (click)="updateModelo(this.config.data.id)">
-                </button>
-            </div>
         </div>
+
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios" (click)="updateModelo(this.config.data.id)">
+        </button>
+    </div>
+</div>
