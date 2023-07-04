@@ -30,21 +30,12 @@ export class VisualizeSaleComponent implements OnInit {
 
   createformSale() {
     this.formSale = this._formBuilder.group({
-      nombres: new FormControl( {value: null, disabled: true} ),
-      apellido_paterno: new FormControl( {value: null, disabled: true} ),
-      apellido_materno: new FormControl( {value: null, disabled: true} ),
-      documento_identificador: new FormControl( {value: null, disabled: true} ),
-      telefono: new FormControl( {value: null, disabled: true} ),
-      correo: new FormControl( {value: null, disabled: true} ),
-      usuario: new FormControl( {value: null, disabled: true} ),
-      contraseña: new FormControl( {value: null, disabled: true} ),
-      codigo_vin: new FormControl( {value: null, disabled: true}),
-      color: new FormControl( {value: null, disabled: true}),
-      modelo: new FormControl( {value: null, disabled: true}),
-      precio: new FormControl( {value: null, disabled: true}),
+      cliente: new FormControl( {value: null, disabled: true}),
+      moto: new FormControl( {value: null, disabled: true}),
+      fecha_venta: new FormControl( {value: null, disabled: true}),
+      fecha_entrega: new FormControl( {value: null, disabled: true}),
       metodo_pago: new FormControl( {value: null, disabled: true}),
-      archivo_boleta: new FormControl( {value: null, disabled: true}),
-      estado: new FormControl( {value: null, disabled: true}),
+      monto: new FormControl( {value: null, disabled: true} ),
     });
   }
 
@@ -54,22 +45,12 @@ export class VisualizeSaleComponent implements OnInit {
         await this._getSaleById.execute(id);
       console.log(response);
       this.formSale.setValue({
-        nombres: response.nombres,
-        apellido_paterno: response.apellido_paterno,
-        apellido_materno: response.apellido_materno,
-        documento_identificador: response.documento_identificador,
-        telefono: response.telefono,
-        correo: response.correo,
-        id_usuario: response.usuario._id,
-        usuario: response.usuario.nombre_usuario,
-        contraseña: response.usuario.password,
-        precio: response.precio,
-        color:response.color,
-        estado: response.estado,
-        codigo_vin: response.codigo_vin,
+        cliente: response.cliente,
+        moto: response.moto,
+        fecha_venta: response.fecha_venta,
+        fecha_entrega: response.fecha_entrega,
         metodo_pago: response.metodo_pago,
-        modelo: response.modelo,
-        archivo_boleta: response.archivo_boleta
+        monto: response.monto,
       });
     } catch (error) {
       console.error(error);

@@ -43,20 +43,13 @@ export interface GetAllOfferResponse {
 }
 export interface GetAllSaleResponse {
   _id?: string;
-  nombres: string;
-  apellido_paterno: string;
-  apellido_materno:string;
-  documento_identificador:object;
-  telefono: string;
-  correo: string;
-  usuario:Usuario;
-  codigo_vin: string;
-  color: string;
-  modelo: Model;
-  precio:string;
-  metodo_pago:string;
-  archivo_boleta:string;
-  estado:string;
+  monto: number;
+  metodo_pago: string;
+  fecha_venta: Date;
+  fecha_entrega: Date;
+  cliente:Client;
+  moto: Moto;
+  boleta_pago: Photo[];
 }
 
 export interface GetAllCampaingResponse {
@@ -120,6 +113,15 @@ export interface Brand {
   descripcion:string;
   icono:string;
 }
+export interface Moto {
+  _id: string;
+  codigo_vin: string;
+  color: string;
+  modelo: Model;
+  proveedor: Supplier;
+  estado: Status;
+  oferta: string[];
+}
 
 export interface Status {
   _id: string;
@@ -181,20 +183,13 @@ descuento: string;
 }
 export interface Sale {
   _id?: string;
-  nombres: string;
-  apellido_paterno: string;
-  apellido_materno:string;
-  documento_identificador:object;
-  telefono: string;
-  correo: string;
-  usuario:Usuario;
-  codigo_vin: string;
-  color: string;
-  modelo: Model;
-  precio:string;
-  metodo_pago:string;
-  archivo_boleta:string;
-  estado:string;
+  monto: number;
+  metodo_pago: string;
+  fecha_venta: Date;
+  fecha_entrega: Date;
+  cliente:Client;
+  moto: Moto;
+  boleta_pago: Photo[];
   }
 
 export interface Campaing {

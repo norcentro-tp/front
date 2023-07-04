@@ -43,6 +43,7 @@ export class SaleWebRepository extends SaleRepository {
       this.http.put<GetAllSaleResponse>(url, bodyRequest)
     );
   }
+  
   getSaleById(id: string): Promise<Sale | null> {
     const url = `${SALE_URL}/${id}`;
     return lastValueFrom(this.http.get<Sale>(url));

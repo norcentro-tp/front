@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { GetAllSaleResponse } from 'src/app/core/models/all/response/all-responses.response';
+import { GetAllSaleResponse, Sale } from 'src/app/core/models/all/response/all-responses.response';
 import { ConfirmationService } from 'primeng/api';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { GetAllSaleUseCase } from 'src/app/core/usecase/sale/get-all-sale.usecase';
@@ -15,7 +15,8 @@ import { VisualizeSaleComponent } from '../visualize-sale/visualize-sale.compone
   providers: [DialogService],
 })
 export class ManageSaleComponent implements OnInit {
-  lSale: any[] = [];
+  lVenta: any[] = [];
+  
   constructor(
     public dialogService: DialogService,
     private _confirmationService: ConfirmationService,
@@ -34,7 +35,7 @@ export class ManageSaleComponent implements OnInit {
         await this._getAllSale.execute();
 
       console.log('Venta RESPUESTA BACKEND', response);
-      this.lSale = response.reverse();
+      this.lVenta = response.reverse();
     } catch (error) {
       console.log(error);
     }
@@ -84,7 +85,7 @@ export class ManageSaleComponent implements OnInit {
       this.getAllSale();
     });
   }
-  deleteSale(id: string) {
+  deleteVenta(id: string) {
     try {
       this._confirmationService.confirm({
         message: 'Estás seguro que desea eliminar? ',

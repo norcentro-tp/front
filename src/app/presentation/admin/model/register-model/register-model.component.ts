@@ -20,6 +20,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 @Component({
   selector: 'app-register-model',
   templateUrl: 'register-model.component.html',
+  styleUrls: ['register-model.component.css'],
 })
 export class RegisterModelComponent implements OnInit {
   formModelo: FormGroup;
@@ -138,6 +139,7 @@ export class RegisterModelComponent implements OnInit {
       console.error(error);
     }
   }
+
   onSelect(event: any) {
     if (event.files && event.files.length > 0) {
       this.selectedFiles[0] = event.files[0];
@@ -162,16 +164,12 @@ export class RegisterModelComponent implements OnInit {
       anio: form.anio,
       imageFiles: this.selectedFiles[0],
     };
-    this.formModelo.get('nombre').markAsDirty();
-    this.formModelo.get('cilindrada').markAsDirty();
-    this.formModelo.get('velocidades').markAsDirty();
-    this.formModelo.get('capacidad_tanque').markAsDirty();
-    this.formModelo.get('torque').markAsDirty();
-    this.formModelo.get('motor').markAsDirty();
-    this.formModelo.get('potencia').markAsDirty();
-    this.formModelo.get('precio').markAsDirty();
-    this.formModelo.get('descripcion').markAsDirty();
-    this.formModelo.get('anio').markAsDirty();
+
+    this.formModelo.markAllAsTouched();
+    if (this.formModelo.invalid) {
+      this._alertService.error('Por favor llene todos los campos correctamente');
+      return;
+    };
     try {
       if (this.formModelo.invalid && this.fileSelected) return;
       const response: Model = await this._postModelo.execute(bodyRequestModelo);

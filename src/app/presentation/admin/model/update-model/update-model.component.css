@@ -1,0 +1,7 @@
+::ng-deep .p-fileupload-choose {
+    background-color: #ba080f!important;
+}
+
+::ng-deep .p-fileupload-choose:hover {
+    background-color: #d75a60!important;
+}

@@ -1,4 +1,4 @@
-import { Brand, Category, Model, Status, Supplier, Usuario } from "../response/all-responses.response";
+import { Brand, Category, Model, Status, Supplier, Usuario, Client, Moto } from "../response/all-responses.response";
 
 export interface PostInventoryRequest {
     codigo_vin: string;
@@ -60,21 +60,12 @@ export interface PostCampaingRequest {
 }
 export interface PostSaleRequest {
   _id?: string;
-  nombres: string;
-  apellido_paterno: string;
-  apellido_materno:string;
-  documento_identificador:object;
-  telefono: string;
-  correo: string;
-  usuario:Usuario;
-  codigo_vin: string;
-  color: string;
-  modelo: Model;
-  precio:string;
-  metodo_pago:string;
-  archivo_boleta:string;
-  estado:string;
-
+  monto: number;
+  metodo_pago: string;
+  fecha_entrega: Date;
+  cliente:Client;
+  moto: Moto;
+  imageFiles: File;    
 }
 
 export interface PutCampaingRequest {
@@ -88,20 +79,12 @@ export interface PutCampaingRequest {
 }
 export interface PutSaleRequest {
   _id?: string;
-  nombres: string;
-  apellido_paterno: string;
-  apellido_materno:string;
-  documento_identificador:object;
-  telefono: string;
-  correo: string;
-  usuario:Usuario;
-  codigo_vin: string;
-  color: string;
-  modelo: Model;
-  precio:string;
-  metodo_pago:string;
-  archivo_boleta:string;
-  estado:string;
+  monto: number;
+  metodo_pago: string;
+  fecha_entrega: Date;
+  cliente:Client;
+  moto: Moto;
+  imageFiles: File;    
 }
 export interface PutInventoryRequest {
   id: string;
