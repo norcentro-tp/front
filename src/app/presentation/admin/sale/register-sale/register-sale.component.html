@@ -1,0 +1,145 @@
+<div class="px-5 pt-4">
+    <h3>Datos del Cliente</h3>
+    <form [formGroup]="formVenta">
+        <div class="p-fluid grid">
+            <div class="col-12 md:col-12">
+                <span class="p-float-label">
+                    <p-dropdown id="cliente" formControlName="cliente" [options]="listaCliente" [filter]="true" [showClear]="true">
+                        <ng-template let-cliente pTemplate="item">
+                          {{ cliente.apellido_paterno }} {{ cliente.apellido_materno }}, {{ cliente.nombres }}
+                        </ng-template>
+                    </p-dropdown>
+                <label htmlFor="cliente">Cliente</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="moto" formControlName="moto" required />
+                    <label htmlFor="moto">Moto</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="fecha_entrega" formControlName="fecha_entrega" required />
+                    <label htmlFor="fecha_entrega">Fecha Entrega</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="metodo_pago" formControlName="metodo_pago" required />
+                    <label htmlFor="metodo_pago">Metodo Pago</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="monto" formControlName="monto" required />
+                    <label htmlFor="monto">Monto</label>
+                </span>
+            </div>
+        </div>
+        <div *ngIf="!selectedMoto">
+            <h3>Motos</h3>
+            <div class="p-fluid grid">
+                <div class="col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input pInputText id="filtro_moto" formControlName="filtro_moto" (input)="applyFilter()" />
+                        <label htmlFor="filtro_moto">Buscar</label>
+                    </span>
+                </div>
+                <div class="field col-12">
+                    <p-table [value]="listaMotoFiltrado" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+                        [rowsPerPageOptions]="[5, 10, 15]">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Codigo Vin</th>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Color</th>
+                                <th>Precio</th>
+                                <th class="text-center">Opciones</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-moto>
+                            <tr>
+                                <td>{{moto.codigo_vin}}</td>
+                                <td>{{moto.modelo.nombre}}</td>
+                                <td>{{moto.modelo.marca.nombre}}</td>
+                                <td class="text-center">
+                                    <i class="pi pi-circle-fill" [style]="'color: '+ moto.color"
+                                        [pTooltip]="moto.color">
+                                    </i>
+                                </td>
+                                <td>S/. {{moto.modelo.precio | number : "1.2-2"}}</td>
+                                <td class="text-center">
+                                    <button pButton pRipple icon="pi pi-play" pTooltip="Seleccionar"
+                                        class="p-button-rounded p-button-text p-button-primary p-button-raised"
+                                        (click)="SeleccionarMoto(moto._id)"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedMoto">
+            <h3>Datos del Producto</h3>
+            <div class="p-fluid grid">
+                <div class="col-12 md:col-8">
+                    <span class="p-float-label">
+                        <input pInputText id="codigo_vin" formControlName="codigo_vin" readonly />
+                        <label htmlFor="codigo_vin">Codigo Vin</label>
+                    </span>
+                </div>
+                <div class="col-12 md:col-4">
+                    <button pButton class="b-primary px-5 py-2" label="Limpiar" (click)="DeseleccionarMoto()">
+                    </button>
+                </div>
+            </div>
+            <div class="p-fluid grid">
+                <div class="col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input pInputText id="modelo" formControlName="modelo" readonly />
+                        <label htmlFor="modelo">Modelo</label>
+                    </span>
+                </div>
+                <div class="col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input pInputText id="marca" formControlName="marca" readonly />
+                        <label htmlFor="marca">Marca</label>
+                    </span>
+                </div>
+                <div class="col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input pInputText id="color" formControlName="color" readonly />
+                        <label htmlFor="color">Color</label>
+                    </span>
+                </div>
+                <div class="col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input pInputText id="precio" formControlName="precio" readonly />
+                        <label htmlFor="precio">Precio</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="p-fluid grid">
+            <h3>Boleta de Pago</h3>
+            <div class="field col-12">
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                    (onSelect)="onSelectImage($event)" accept="image/*" [auto]="true" [maxFileSize]="5000000"
+                    chooseLabel="Escoger">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="selectedFiles.length">
+                            <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Agregar Venta" (click)="addSale()">
+        </button>
+    </div>
+</div>

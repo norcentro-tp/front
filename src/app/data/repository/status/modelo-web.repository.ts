@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { STATUS_URL } from 'src/app/shared/helpers/constants/url.constants';
-import { Status } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { Status } from 'src/app/core/models/all/response/all-responses.response';
 import { StatusRepository } from 'src/app/core/repository/status/status.repository';
 
 @Injectable({

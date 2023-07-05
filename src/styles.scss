@@ -561,6 +561,30 @@ p-steps {
     display: none !important;
 }
 
+.p-panelmenu .p-panelmenu-header>a {
+    color: var(--primary-color) !important;
+}
+
+.p-panelmenu .p-panelmenu-panel {
+    box-shadow: none
+}
+
+.p-panelmenu .p-panelmenu-content {
+    padding: 0.5rem 1rem;
+}
+
+.p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon {
+    color: var(--primary-color) !important;
+}
+
+.p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+    color: var(--primary-color) !important;
+}
+
+.p-panelmenu .p-panelmenu-content {
+    background: #ffebeb;
+}
+
 .layout-sidebar .app-logo {
     padding: 2.5rem 0 2rem;
     display: flex;
@@ -630,6 +654,9 @@ p-steps {
     background-color: #ffffff;
 }
 
-.p-inputgroup .p-inputtext, .p-fluid .p-inputgroup .p-inputtext, .p-inputgroup .p-inputwrapper, .p-inputgroup .p-inputwrapper>.p-component{
+.p-inputgroup .p-inputtext,
+.p-fluid .p-inputgroup .p-inputtext,
+.p-inputgroup .p-inputwrapper,
+.p-inputgroup .p-inputwrapper>.p-component {
     width: 100% !important;
 }

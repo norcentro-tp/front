@@ -1,0 +1,48 @@
+<div class="grid justify-content-center">
+
+    <div class="field col-12 text-center">
+        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Venta" (click)="openRegister()">
+        </button>
+    </div>
+    <div class="col-12">
+        <p-table [value]="lVenta" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+            [rowsPerPageOptions]="[5, 10, 15]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Codigo Vin</th>
+                    <th>Modelo</th>
+                    <th>Fecha Entrega</th>   
+                    <th>Fecha Venta</th> 
+                    <th>Metodo Pago</th>
+                    <th>Monto</th> 
+                    <th class="text-center">Opciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-venta>
+                <tr>
+                    <td>{{venta.cliente.apellido_paterno + ' ' + venta.cliente.apellido_materno + ', ' + venta.cliente.nombres }}</td>
+                    <td>{{venta.moto.codigo_vin}}</td>   
+                    <td>{{venta.moto.modelo.nombre}}</td>     
+                    <td>{{venta.fecha_entrega}}</td>     
+                    <td>{{venta.fecha_venta}}</td>  
+                    <td>{{venta.metodo_pago}}</td>   
+                    <td>S/. {{venta.monto | number : "1.2-2"}}</td> 
+                    <td class="text-center">
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="Ver Detalle"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"
+                            (click)="openVisualizeDialog(venta._id)"></button>
+                        <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"
+                            (click)="openUpdateDialog(venta._id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" pTooltip="Eliminar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised"
+                            (click)="deleteVenta(venta._id)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>

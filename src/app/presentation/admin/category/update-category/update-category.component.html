@@ -1,0 +1,32 @@
+<div class="px-5 pt-4">
+    <form [formGroup]="formCategory">
+        <div class="p-fluid grid">
+
+            <div class="field col-12">
+                <span class="p-float-label">
+                    <input pInputText id="nombre" formControlName="nombre" required />
+                    <label htmlFor="nombre">Nombre</label>
+                    <div *ngIf="formCategory.get('nombre').invalid && (formCategory.get('nombre').dirty || formCategory.get('nombre').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="nombre.errors?.['alphanumeric']">
+                            El nombre debe estar escrito en caracteres alfanuméricos.
+                        </div>
+                        <div *ngIf="nombre.errors?.['minlength']">
+                            El nombre debe tener como mínimo 3 caracteres.
+                        </div>
+                        <div *ngIf="nombre.errors?.['maxlength']">
+                            El nombre debe tener como máximo 10 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
+            (click)="updateCategory(this.config.data.id)">
+        </button>
+    </div>
+
+</div>

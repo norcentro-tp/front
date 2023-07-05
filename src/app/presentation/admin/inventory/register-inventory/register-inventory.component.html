@@ -1,39 +1,65 @@
-<div class="p-inputgroup grid" style="height: 100%; padding: 2rem;">
-    <div class="container-input col-5">
+<div class="px-5 pt-4">
+
+  <form [formGroup]="formInventory">
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
         <span class="p-float-label">
-            <input pInputText id="codigoVin" [(ngModel)]="codigoVin" />
-            <label htmlFor="codigoVin">Codigo Vin</label>
+          <input pInputText id="codigoVin" formControlName="codigoVin" required />
+          <label htmlFor="codigoVin">Codigo Vin</label>
+          <div *ngIf="codigoVin.invalid && (codigoVin.dirty || codigoVin.touched)" class="alert">
+            <div *ngIf="codigoVin.errors?.['invalidVINCode']">
+              Los primeros 12 digitos del Codigo VIN deben ser alfanuméricos y el resto numérico.
+            </div>
+          </div>
         </span>
-    </div>
-    <div class="container-input col-5">
+      </div>
+
+      <div class="field col-12  md:col-4">
         <span class="p-float-label">
-            <input pInputText id="codigoColor" [(ngModel)]="codigoColor" />
-            <label htmlFor="codigoColor">Color</label>
+          <input pInputText id="codigoColor" formControlName="codigoColor" required />
+          <label htmlFor="codigoColor">Color</label>
+          <div *ngIf="codigoColor.invalid && (codigoColor.dirty || codigoColor.touched)" class="alert">
+            <div *ngIf="codigoColor.errors?.['invalidHexColor']">
+              El codigo de color tiene que ser en codigo hexadecimal.
+            </div>
+          </div>
         </span>
+      </div>
+
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaModelo" optionLabel="nombre" [filter]="true" filterBy="nombre"
+            filterplaceholder="Modelo Moto" placeholder="Modelo Moto" optionValue="_id"
+            formControlName="modelo"></p-dropdown>
+          <label for="inputtext-left">Modelo Moto</label>
+        </span>
+      </div>
+
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaProveedor" optionLabel="nombre" [filter]="true" filterBy="nombre"
+            filterPlaceholder="Proveedor" placeholder="Proveedor" optionValue="_id"
+            formControlName="proveedor"></p-dropdown>
+          <label for="inputtext-left">Proveedor</label>
+        </span>
+      </div>
+
+      <div class="field col-12  md:col-4">
+        <span class="p-float-label">
+          <p-dropdown [options]="listaStatus" optionLabel="nombre" [filter]="true" filterBy="nombre"
+            filterPlaceholder="Estado Moto" placeholder="Estado Moto" optionValue="_id" appendTo="body"
+            formControlName="estado"></p-dropdown>
+          <label for="inputtext-left">Estado Moto</label>
+        </span>
+      </div>
+
     </div>
-    <div class="container-input col-5">
-        <p-dropdown [options]="listaCategoriaMotos" [(ngModel)]="categoriaMoto" optionLabel="nombre"></p-dropdown>
-    </div>
 
-
-    <div class="container-input col-5">
-        <p-dropdown [options]="listaModelo" [(ngModel)]="modelo" optionLabel="nombre"></p-dropdown>
-    </div>
-
-    <div class="container-input col-5">
-        <p-dropdown [options]="listaMarca" [(ngModel)]="marca" optionLabel="nombre"></p-dropdown>
-    </div>
-
-
-    <div class="container-input col-5">
-        <p-dropdown [options]="listaProveedor" [(ngModel)]="proveedor" optionLabel="nombre"></p-dropdown>
-    </div>
-    <!------------------------------------------------------------------------------------------>
-
-    <div class="container-input col-5">
-        <p-dropdown [options]="listaStatus" [(ngModel)]="status" optionLabel="nombre"></p-dropdown>
-    </div>
-
-
+  </form>
+  <div class="col-12 text-center py-3">
+    <button pButton class="b-primary px-5 py-2" label="Agregar Moto" (click)="addMoto()">
+    </button>
+  </div>
 
 </div>

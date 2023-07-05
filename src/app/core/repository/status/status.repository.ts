@@ -1,4 +1,4 @@
-import { Model, Status } from "../../models/inventory/response/get-all-inventory.response";
+import { Model, Status } from "../../models/all/response/all-responses.response";
 
 export abstract class StatusRepository {
 

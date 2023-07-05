@@ -1,0 +1,118 @@
+<div class="px-5 pt-4">
+    <form [formGroup]="formOffer">
+        <div class="p-fluid grid">
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombre" formControlName="nombre" required />
+                    <label htmlFor="nombre">Nombre</label>
+                    <div *ngIf="formOffer.get('nombre').invalid && (formOffer.get('nombre').dirty || formOffer.get('nombre').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formOffer.get('nombre').errors?.['alphanumeric']">
+                            El nombre debe estar escrito en caracteres alfanumpericos.
+                        </div>
+                        <div *ngIf="formOffer.get('nombre').errors?.['minlength']">
+                            El nombre debe tener como mínimo 2 caracteres.
+                        </div>
+                        <div *ngIf="formOffer.get('nombre').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="fecha_inicio" formControlName="fecha_inicio" required />
+                    <label htmlFor="fecha_inicio">Fecha Inicio</label>
+                    <div *ngIf="formOffer.get('fecha_inicio').invalid && (formOffer.get('fecha_inicio').dirty || formOffer.get('fecha_inicio').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formOffer.get('fecha_inicio').errors?.['password']">
+                            La fecha_inicio tiene que contener caracteres tanto numéricos como alfabéticos.
+                        </div>
+                        <div *ngIf="formOffer.get('fecha_inicio').errors?.['minlength']">
+                            La fecha_inicio debe tener como mínimo 8 caracteres.
+                        </div>
+                        <div *ngIf="formOffer.get('fecha_inicio').errors?.['maxlength']">
+                            La fecha_inicio debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="fecha_fin" formControlName="fecha_fin" required />
+                    <label htmlFor="fecha_fin">Fecha Fin</label>
+                    <div *ngIf="formOffer.get('fecha_fin').invalid && (formOffer.get('fecha_fin').dirty || formOffer.get('fecha_fin').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formOffer.get('fecha_fin').errors?.['alphabetic']">
+                            El nombre debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formOffer.get('fecha_fin').errors?.['minlength']">
+                            El nombre debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formOffer.get('fecha_fin').errors?.['maxlength']">
+                            El nombre debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="modelo" formControlName="modelo" required />
+                    <label htmlFor="modelo">Modelo</label>
+                    <div *ngIf="formOffer.get('modelo').invalid && (formOffer.get('modelo').dirty || formOffer.get('modelo').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formOffer.get('modelo').errors?.['alphabetic']">
+                            El apellido paterno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formOffer.get('modelo').errors?.['minlength']">
+                            El apellido paterno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formOffer.get('modelo').errors?.['maxlength']">
+                            El apellido paterno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="estado" formControlName="estado" required />
+                    <label htmlFor="estado">Estado</label>
+                    <div *ngIf="formOffer.get('estado').invalid && (formOffer.get('estado').dirty || formOffer.get('estado').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formOffer.get('estado').errors?.['alphabetic']">
+                            El apellido materno debe estar escrito en caracteres alfabéticos.
+                        </div>
+                        <div *ngIf="formOffer.get('estado').errors?.['minlength']">
+                            El apellido materno debe tener como mínimo 4 caracteres.
+                        </div>
+                        <div *ngIf="formOffer.get('estado').errors?.['maxlength']">
+                            El apellido materno debe tener como máximo 20 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class=" col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="descuento" formControlName="descuento" required />
+                    <label htmlFor="descuento">Descuento</label>
+                    <div *ngIf="formOffer.get('descuento').invalid && (formOffer.get('descuento').dirty || formOffer.get('descuento').touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="formOffer.get('descuento').errors?.['numeric']">
+                            El descuento debe estar escrito en caracteres numéricos.
+                        </div>
+                        <div *ngIf="formOffer.get('descuento').errors?.['minlength']">
+                            El descuento debe tener como mínimo 9 caracteres.
+                        </div>
+                        <div *ngIf="formOffer.get('descuento').errors?.['maxlength']">
+                            El descuento debe tener como máximo 9 caracteres.
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Volver" (click)="close()">
+        </button>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="px-5 pt-4">
+    <h2>Datos del Cliente</h2>
+    <form [formGroup]="formVenta">
+        <div class="p-fluid grid">
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="cliente" formControlName="cliente" required />
+                    <label htmlFor="cliente">Cliente</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="moto" formControlName="moto" required />
+                    <label htmlFor="moto">Moto</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="fecha_entrega" formControlName="fecha_entrega" required />
+                    <label htmlFor="fecha_entrega">Fecha Entrega</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="metodo_pago" formControlName="metodo_pago" required />
+                    <label htmlFor="metodo_pago">Metodo Pago</label>
+                </span>
+            </div>
+            <div class="col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="monto" formControlName="monto" required />
+                    <label htmlFor="monto">Monto</label>
+                </span>
+            </div>   
+            <div class="field col-12">
+
+                <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+                    (onSelect)="onSelect($event)" accept="image/*" [auto]="true" [maxFileSize]="5000000"
+                    chooseLabel="Escoger">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="selectedFiles.length">
+                            <li *ngFor="let file of selectedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>     
+    </div>
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Guardar Cambios"
+            (click)="updateSale(this.config.data.id)">
+        </button>
+    </div>
+
+</div>

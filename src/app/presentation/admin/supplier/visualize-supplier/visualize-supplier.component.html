@@ -1,0 +1,36 @@
+<div class="px-5 pt-4">
+    <form [formGroup]="formSupplier">
+        <div class="p-fluid grid">
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="nombre" formControlName="nombre" readonly />
+                    <label htmlFor="nombre">Nombre</label>
+                </span>
+            </div>
+
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="telefono" formControlName="telefono" readonly />
+                    <label htmlFor="telefono">Telefono</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="correo" formControlName="correo" readonly />
+                    <label htmlFor="correo">Correo</label>
+                </span>
+            </div>
+            <div class="field col-12  md:col-4">
+                <span class="p-float-label">
+                    <input pInputText id="direccion" formControlName="direccion" readonly />
+                    <label htmlFor="direccion">Direccion</label>
+                </span>
+            </div>
+        </div>
+    </form>
+    <div class="col-12 text-center py-3">
+        <button pButton class="b-primary px-5 py-2" label="Volver" (click)="close()">
+        </button>
+    </div>
+</div>

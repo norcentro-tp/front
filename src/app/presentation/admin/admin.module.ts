@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin.routing';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from 'primeng/api';
 import { PrimeNGModule } from 'src/app/shared/primeng/primeng.module';
+import { FileUploadModule } from 'primeng/fileupload';
 
 const COMPONENTS = [
     LayoutComponent
@@ -22,7 +23,8 @@ const COMPONENTS = [
         ReactiveFormsModule,
         PrimeNGModule,
         SharedModule,
-        AdminRoutingModule
+        AdminRoutingModule,
+        FileUploadModule,
     ]
 })
 

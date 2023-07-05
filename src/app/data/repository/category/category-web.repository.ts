@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { CATEGORY_URL, INVENTORY_URL } from 'src/app/shared/helpers/constants/url.constants';
-import { Category } from 'src/app/core/models/inventory/response/get-all-inventory.response';
+import { CATEGORY_URL } from 'src/app/shared/helpers/constants/url.constants';
+import { Category, CategoryItemResponse } from 'src/app/core/models/all/response/all-responses.response';
+import { PostCategoryRequest, PutCategoryRequest } from 'src/app/core/models/all/request/all-requests.request';
 import { CategoryRepository } from 'src/app/core/repository/category/category.repository';
 
 @Injectable({
@@ -23,6 +24,28 @@ export class CategoryWebRepository extends CategoryRepository  {
 
         return lastValueFrom(this.http.get<Category[]>(url))
     }
+    postCategory(bodyRequest: PostCategoryRequest): Promise<Category> {
+        const url = `${CATEGORY_URL}`;
+        return lastValueFrom(
+          this.http.post<Category>(url, bodyRequest)
+        );
+      }
+    putCategory(request: PutCategoryRequest): Promise<Category | null> {
 
+        const url = `${CATEGORY_URL}/${request.id}`;
+    
+        return lastValueFrom(
+          this.http.put<Category>(url, request)
+        );
+      }
+    getCategoryById(id: string): Promise<CategoryItemResponse | null> {
+        const url = `${CATEGORY_URL}/${id}`;
+        return lastValueFrom(this.http.get<CategoryItemResponse>(url));
+      }
+    
+    deleteCategory(id: string): Promise<void> {
+        const url = `${CATEGORY_URL}/${id}`;
+        return lastValueFrom(this.http.delete<void>(url));
+      }
     
 }

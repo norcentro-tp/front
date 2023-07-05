@@ -1,21 +1,19 @@
 <div class="grid justify-content-center">
 
     <div class="field col-12 text-center">
-        <button pButton class="b-primary px-5 py-2 mx-2" label="Prueba 1" (click)="openDialog()">
-        </button>
-        <button pButton class="b-secondary px-5 py-2" label="Prueba 2">
+        <button pButton class="b-primary px-5 py-2 mx-2" label="Agregar Producto" (click)="openRegisterDialog()">
         </button>
     </div>
 
     <div class="col-12">
-        <p-table [value]="lInventory">
+        <p-table [value]="lInventory" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} resultados"
+            [rowsPerPageOptions]="[5, 10, 15]">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Codigo Vin</th>
                     <th>Color</th>
-                    <th>Categoria</th>
                     <th>Modelo</th>
-                    <th>Marca</th>
                     <th>Precio</th>
                     <th>Estado</th>
                     <th class="text-center">Opciones</th>
@@ -25,22 +23,19 @@
                 <tr>
                     <td>{{inventory.codigo_vin}}</td>
                     <td class="text-center">
-                        <i class="pi pi-circle-fill" [style]="'color: '+ inventory.color"
-                            [pTooltip]="inventory.color">
+                        <i class="pi pi-circle-fill" [style]="'color: '+ inventory.color" [pTooltip]="inventory.color">
                         </i>
                     </td>
-                    <td>{{inventory.categoria.nombre}}</td>
                     <td>{{inventory.modelo.nombre}}</td>
-                    <td>{{inventory.marca.nombre}}</td>
                     <td>S/. {{inventory.modelo.precio | number : "1.2-2"}}</td>
                     <td>{{inventory.estado.nombre}}</td>
                     <td class="text-center">
-                        <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-primary mr-2" 
-                        (click)="openDialog()">
-                        </button>
-                        <button pButton pRipple icon="pi pi-pencil"
-                            class="p-button-rounded p-button-success mr-2"></button>
-                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning">
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="Ver Detalle"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"(click)="openVisualizeDialog(inventory._id)"></button>
+                        <button pButton pRipple icon="pi pi-pencil" pTooltip="Editar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised mr-2"(click)="openUpdateDialog(inventory._id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" pTooltip="Eliminar"
+                            class="p-button-rounded p-button-text p-button-primary p-button-raised"(click)="deleteInventory(inventory._id)">
                         </button>
                     </td>
                 </tr>

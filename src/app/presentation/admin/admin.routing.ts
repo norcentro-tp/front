@@ -25,9 +25,42 @@ const routes: Routes = [
                 path: 'supplier',
                 loadChildren: () => import('./supplier/supplier.module').then(m => m.SupplierModule)
             },
+          
             {
-                path: 'user',
-                loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+                path: 'employee',
+                loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule)
+            },
+            {
+                path: 'client',
+                loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
+            },
+            {
+                path: 'category',
+                loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+            },
+            {
+                path: 'brand',
+                loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule)
+            },
+            {
+                path: 'model',
+                loadChildren: () => import('./model/model.module').then(m => m.ModelModule)
+            },
+            {
+                path: 'catalogue',
+                loadChildren: () => import('./catalogue/catalogue.module').then(m => m.CatalogueModule)
+            },
+            {
+                path: 'offer',
+                loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
+            },
+            {
+                path: 'campaing',
+                loadChildren: () => import('./campaing/campaing.module').then(m => m.CampaingModule)
+            },
+            {
+                path: 'sale',
+                loadChildren: () => import('./sale/sale.module').then(m => m.SaleModule)
             }
         ]
     }

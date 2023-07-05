@@ -1,0 +1,73 @@
+<div class="px-5 pt-4">
+  <form [formGroup]="formModelo">
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="nombre" formControlName="nombre" readonly />
+          <label htmlFor="nombre">Nombre</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="" formControlName="descripcion" readonly />
+          <label htmlFor="descripcion">Descripcion</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="precio" formControlName="precio" readonly />
+          <label htmlFor="precio">Precio</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="motor" formControlName="motor" readonly />
+          <label htmlFor="motor">Motor</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="cilindrada" formControlName="cilindrada" readonly />
+          <label htmlFor="motor">Cilindrada</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="velocidades" formControlName="velocidades" readonly />
+          <label htmlFor="velocidades">Velocidades</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="capacidad_tanque" formControlName="capacidad_tanque" readonly />
+          <label htmlFor="capacidad_tanque">Capacidad de Tanque</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="anio" formControlName="anio" readonly />
+          <label htmlFor="anio">Año</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="torque" formControlName="torque" readonly />
+          <label htmlFor="torque">Torque</label>
+        </span>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input pInputText id="potencia" formControlName="potencia" required />
+          <label htmlFor="potencia">Potencia</label>
+        </span>
+      </div>
+    </div>
+  </form>
+  <div class="col-12 text-center py-3">
+    <button pButton class="b-primary px-5 py-2" label="Volver" (click)="close()">
+    </button>
+  </div>
+</div>
