@@ -99,11 +99,9 @@ export class UpdateSaleComponent implements OnInit {
     try {
       if (this.formVenta.invalid) return;
       console.log(this.formVenta.value)
-      const response: Sale = await this._putSale.execute({
-        id: id,
-        bodyRequest: bodyRequestSale,
-      });
-
+      const response: Sale = await this._putSale.execute( 
+        bodyRequestSale
+      );
       this._alertService.success('Cambios Guardados');
       console.log(response);
       this.ref.close();

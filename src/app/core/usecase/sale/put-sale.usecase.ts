@@ -9,20 +9,11 @@ import { SaleRepository } from '../../repository/sale/sale.repository';
 })
 export class PutSaleUseCase
   implements
-    UseCasePromise<
-      { id: string; bodyRequest: PutSaleRequest },
-      GetAllSaleResponse
-    >
+    UseCasePromise<PutSaleRequest,GetAllSaleResponse>
 {
   constructor(private _saleRepository: SaleRepository) {}
 
-  execute({
-    id,
-    bodyRequest,
-  }: {
-    id: string;
-    bodyRequest: PutSaleRequest;
-  }): Promise<GetAllSaleResponse> {
-    return this._saleRepository.putSale(id, bodyRequest);
+  execute(request: PutSaleRequest): Promise<GetAllSaleResponse> {
+    return this._saleRepository.putSale(request);
   }
 }

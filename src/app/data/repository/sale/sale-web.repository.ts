@@ -27,20 +27,30 @@ export class SaleWebRepository extends SaleRepository {
   }
   postSale(
     bodyRequest: PostSaleRequest
-  ): Promise<GetAllSaleResponse> {
+  ): Promise<Sale> {
+    const formData = new FormData();
+    const keys = Object.keys(bodyRequest);
+    keys.forEach((key) => {
+      formData.append(key, bodyRequest[key]);
+    });
     const url = `${SALE_URL}`;
     return lastValueFrom(
-      this.http.post<GetAllSaleResponse>(url, bodyRequest)
+      this.http.post<Sale>(url, formData)
     );
   }
 
   putSale(
-    id: string,
-    bodyRequest: PutSaleRequest
-  ): Promise<GetAllSaleResponse | null> {
-    const url = `${SALE_URL}/${id}`;
+    request: PutSaleRequest
+  ): Promise<Sale | null> {
+    const formData = new FormData();
+    const keys = Object.keys(request);
+
+    keys.forEach((key) => {
+      formData.append(key, request[key]);
+    });
+    const url = `${SALE_URL}/${request._id}`;
     return lastValueFrom(
-      this.http.put<GetAllSaleResponse>(url, bodyRequest)
+      this.http.put<Sale>(url, formData)
     );
   }
   

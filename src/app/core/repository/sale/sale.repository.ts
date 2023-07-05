@@ -12,14 +12,9 @@ export abstract class SaleRepository {
 
   abstract getAllSale(): Promise<Sale[]>;
 
-  abstract postSale(
-    bodyRequest: PostSaleRequest
-  ): Promise<GetAllSaleResponse>;
+  abstract postSale(bodyRequest: PostSaleRequest): Promise<Sale>;
 
-  abstract putSale(
-    id: string,
-    bodyRequest: PutSaleRequest
-  ): Promise<GetAllSaleResponse>;
+  abstract putSale(request: PutSaleRequest): Promise<Sale>;
 
   abstract deleteSale(id: string): Promise<void>;
 }

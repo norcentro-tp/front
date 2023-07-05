@@ -119,7 +119,7 @@ export class RegisterSaleComponent implements OnInit {
     }
   }
 
-  onSelect(event: any) {
+  onSelectImage(event: any) {
     if (event.files && event.files.length > 0) {
       this.selectedFiles[0] = event.files[0];
       this.fileSelected = true;
